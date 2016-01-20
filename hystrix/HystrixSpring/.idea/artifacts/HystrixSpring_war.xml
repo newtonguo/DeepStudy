@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="HystrixSpring:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="HystrixSpring-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="HystrixSpring:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -3,6 +3,7 @@ package com.hg.mybatis.study;
 import com.hg.mybatis.study.dao.UserDao;
 import com.hg.mybatis.study.entity.User;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -10,11 +11,20 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Created by wangqinghui on 2015/12/23.
  */
 public class UserDaoTest {
+    @Test
+    public void typeAliase() {
+        Configuration con = getSessionFactory().getConfiguration();
+        Map<String, Class<?>> typeMap = con.getTypeAliasRegistry().getTypeAliases();
+        for (Map.Entry<String, Class<?>> entry : typeMap.entrySet()) {
+            System.out.println(entry.getKey() + " ================> " + entry.getValue().getSimpleName());
+        }
+    }
 
         @Test
         public void findUserById() {

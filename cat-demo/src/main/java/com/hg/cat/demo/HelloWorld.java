@@ -8,8 +8,8 @@ import com.dianping.cat.Cat;
 
 public class HelloWorld {
     public static void main(String[] args){
-        User u = new User();
-        u.getId();
+//        User u = new User();
+//        u.getId();
 
         Cat.logEvent("as","ss");
     }

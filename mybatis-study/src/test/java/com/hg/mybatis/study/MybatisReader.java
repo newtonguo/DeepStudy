@@ -22,8 +22,6 @@ public class MybatisReader {
 
         SqlSession session = ssf.openSession();
 
-
-
         try {
             User user = (User) session.selectOne("com.hg.mybatis.study.dao.UserDao.findUserById", "2");
             System.out.println(user);
