@@ -16,16 +16,16 @@ import java.net.URISyntaxException;
 import java.util.Map;
 
 @Service
-public class AccessTokenService {
+public class GithubAccessTokenService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AccessTokenService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GithubAccessTokenService.class);
 
     private final ParameterizedTypeReference<Map<String, String>> TYPE_REF_MAP_STRING_STRING = new ParameterizedTypeReference<Map<String, String>>() { };
 
-    @Value("${api.client_id}")
+    @Value("${oauth.github.client_id}")
     private String clientId;
 
-    @Value("${api.client_secret}")
+    @Value("${oauth.github.client_secret}")
     private String clientSecret;
 
     private RestTemplate restTemplate = new RestTemplate();

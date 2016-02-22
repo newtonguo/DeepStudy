@@ -1,7 +1,10 @@
 package com.github.ericdahl.spring_boot_github_oauth.api;
 
-import com.github.ericdahl.spring_boot_github_oauth.oauth.AccessTokenService;
+import com.github.ericdahl.spring_boot_github_oauth.oauth.GithubAccessTokenService;
 import com.github.ericdahl.spring_boot_github_oauth.oauth.InvalidOAuthStateException;
+import com.google.common.collect.Maps;
+import com.hg.oauth.thrid.oauth.Oauth;
+import com.hg.oauth.thrid.oauth.OauthGithub;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +19,24 @@ import javax.servlet.http.HttpSession;
 import java.net.URISyntaxException;
 import java.security.SecureRandom;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 @Controller
+@RequestMapping("/oauth/")
 public class ApiController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ApiController.class);
     private static final Random RANDOM = new SecureRandom();
 
-    private final AccessTokenService accessTokenService;
+    private final GithubAccessTokenService accessTokenService;
     private final UserService userService;
 
     private final UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://github.com/login/oauth/authorize");
 
 
     @Autowired
-    public ApiController(final AccessTokenService accessTokenService,
+    public ApiController(final GithubAccessTokenService accessTokenService,
                          final UserService userService,
                          @Value("${api.client_id}") String clientId,
                          @Value("${api.scope}") String scope,
@@ -45,6 +50,56 @@ public class ApiController {
     }
 
 
+    public static Map<String,String> oauthStateMap = Maps.newHashMap();
+
+    // 获取授权界面路径
+    @RequestMapping(value = "authorize/{type}", method = RequestMethod.GET)
+    @ResponseBody
+    public String index( @RequestParam(value = "clientid", required = true) String clientid,
+                         @PathVariable(value = "type") String type
+                         ) {
+
+        String authorizeUrl = "";
+        if(type.equals(OauthType.github)){
+            // state必须是整数
+            final long state = RANDOM.nextLong();
+            String str =  String.valueOf(state);
+            oauthStateMap.put(clientid, str);
+            authorizeUrl = OauthGithub.me().getAuthorizeUrl( str );
+            LOGGER.info( clientid + " " + str);
+        }else{
+
+        }
+        return  authorizeUrl;
+    }
+
+
+    @RequestMapping(value = "callback/{type}", method=RequestMethod.GET)
+    @ResponseBody
+    public Object callback(@RequestParam("code") final String code,
+                                      @RequestParam("state") final long state,
+                                 @PathVariable(value = "type") String type
+                                    ) throws URISyntaxException {
+
+//        oauthStateMap.get(state);
+        Object o = null;
+        if( type.equals(OauthType.github) ){
+           String token =  OauthGithub.me().getAccessToken( code );
+//            o = OauthGithub.me().getUserEmails( token );
+            o = OauthGithub.me().getUserInfo(token);
+//            return userService.getUserEmails(accessTokenService.getAccessToken(code));
+        }
+
+        return o;
+    }
+
+
+
+
+
+
+
+    // 用于web页面授权
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(final HttpSession httpSession, final Model model) {
         final long state = RANDOM.nextLong();
@@ -55,7 +110,6 @@ public class ApiController {
 
         return "index";
     }
-
 
     @RequestMapping("/authorized")
     @ResponseBody

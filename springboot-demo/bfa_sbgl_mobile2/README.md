@@ -1,3 +1,12 @@
 #simpleApp
-##spring boot + mybatis 搭建的中小型应用
-##swagger作为RESTFUL接口的文档在线自动生成+功能测试
+##spring boot + mybatis 锟筋建锟斤拷锟斤拷小锟斤拷应锟斤拷
+##swagger锟斤拷为RESTFUL锟接口碉拷锟侥碉拷锟斤拷锟斤拷锟皆讹拷锟斤拷锟斤拷+锟斤拷锟杰诧拷锟斤拷
+
+
+
+
+curl -X POST -vu clientapp:123456 http://localhost:8080/oauth/token -H "Accept: application/json" -d "password=spring&username=roy&grant_type=password&scope=read%20write&client_secret=123456&client_id=clientapp"
+
+
+
+http://localhost:8080/oauth/token?password=spring&username=roy&grant_type=password&scope=read%20write&client_secret=123456&client_id=clientapp

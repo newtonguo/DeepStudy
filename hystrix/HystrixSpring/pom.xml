@@ -23,46 +23,95 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-        	<groupId>org.springframework</groupId>
-        	<artifactId>spring-webmvc</artifactId>
-        	<version>4.0.3.RELEASE</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.0.3.RELEASE</version>
         </dependency>
         <dependency>
-        	<groupId>org.springframework</groupId>
-        	<artifactId>spring-aspects</artifactId>
-        	<version>4.0.3.RELEASE</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>4.0.3.RELEASE</version>
         </dependency>
+
+
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-integration</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.cloud</groupId>-->
+        <!--<artifactId>spring-cloud-config-client</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.cloud</groupId>-->
+        <!--<artifactId>spring-cloud-starter-eureka</artifactId>-->
+        <!--</dependency>-->
+
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter</artifactId>-->
+            <!--<version>1.0.2.RELEASE</version>-->
+        <!--</dependency>-->
+
+
         <dependency>
             <groupId>com.netflix.hystrix</groupId>
             <artifactId>hystrix-core</artifactId>
             <version>1.4.0-RC1</version>
         </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.netflix.hystrix</groupId>-->
+            <!--<artifactId>hystrix-javanica</artifactId>-->
+            <!--<version>1.4.21</version>-->
+        <!--</dependency>-->
+
         <dependency>
             <groupId>com.netflix.hystrix</groupId>
             <artifactId>hystrix-request-servlet</artifactId>
             <version>1.4.0-RC1</version>
         </dependency>
         <dependency>
-        	<groupId>com.netflix.hystrix</groupId>
-        	<artifactId>hystrix-metrics-event-stream</artifactId>
-        	<version>1.4.0-RC1</version>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-metrics-event-stream</artifactId>
+            <version>1.4.0-RC1</version>
         </dependency>
+        <dependency>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-rx-netty-metrics-stream</artifactId>
+            <version>1.4.15</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup.okhttp</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 
     <build>
-        <plugins>    <plugin>
-            <groupId>org.apache.tomcat.maven</groupId>
-            <artifactId>tomcat7-maven-plugin</artifactId>
-            <version>2.1</version>
-            <configuration>
-                <port>9090</port>
-                <path>/test</path>
-                <uriEncoding>UTF-8</uriEncoding>
-                <finalName>test</finalName>
-                <server>tomcat7</server>
-            </configuration>
-        </plugin>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <port>9090</port>
+                    <path>/test</path>
+                    <uriEncoding>UTF-8</uriEncoding>
+                    <finalName>test</finalName>
+                    <server>tomcat7</server>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
