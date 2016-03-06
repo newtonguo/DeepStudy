@@ -6,6 +6,10 @@
 
     <!-- 指定properties配置文件， 我这里面配置的是数据库相关 -->
     <!--<properties resource="dbConfig.properties"></properties>-->
+    <properties resource="db.properties">
+        <property name="username" value="dev_user"/>
+        <property name="password" value="F2Fa3!33TYyg"/>
+    </properties>
 
     <!-- 指定Mybatis使用log4j -->
     <settings>

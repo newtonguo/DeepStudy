@@ -29,7 +29,7 @@ public class App
 
         Stat e=zk.exists("/yangqi_test",null);
 
-        System.out.println("exists "+e);
+        System.out.println("exists: "+e);
 
         zk.setData("/yangqi_test", "Data of node 3".getBytes(), -1);
     }

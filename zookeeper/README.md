@@ -25,3 +25,6 @@ zookeeper
 [源代码解读之Jute生成传输协议消息体](https://github.com/llohellohe/llohellohe.github.com/tree/master/readers/ZooKeeper/11-传输协议.md)
 
 
+
+zookeeper学习
+http://my.oschina.net/xianggao/blog?catalog=3412352

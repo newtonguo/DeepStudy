@@ -169,6 +169,5 @@ public class AsynMaster implements Watcher, Runnable {
         }
 
         sleep(1000);
-
     }
 }
