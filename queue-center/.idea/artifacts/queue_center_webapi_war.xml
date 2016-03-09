@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="queue-center-webapi:war">
+    <output-path>$PROJECT_DIR$/queue-center-webapi/target</output-path>
+    <root id="archive" name="queue-center-webapi-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="queue-center-webapi:war exploded" />
+    </root>
+  </artifact>
+</component>
