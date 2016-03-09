@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/mybatis-spring-boot.iml" filepath="$PROJECT_DIR$/mybatis-spring-boot.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sbgl-mobile.iml" filepath="$PROJECT_DIR$/sbgl-mobile.iml" />
-      <module fileurl="file://$PROJECT_DIR$/simpleApp.iml" filepath="$PROJECT_DIR$/simpleApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/captcha-generator.iml" filepath="$PROJECT_DIR$/captcha-generator.iml" />
     </modules>
   </component>
 </project>

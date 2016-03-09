@@ -1,8 +1,8 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="sbgl-mobile:war">
+  <artifact type="war" name="captcha-generator:war">
     <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="captcha-generator-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="sbgl-mobile:war exploded" />
+      <element id="artifact" artifact-name="captcha-generator:war exploded" />
     </root>
   </artifact>
 </component>

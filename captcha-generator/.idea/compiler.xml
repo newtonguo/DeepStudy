@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <option name="DEFAULT_COMPILER" value="Javac" />
+    <option name="DEFAULT_COMPILER" value="Eclipse" />
     <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
@@ -23,15 +23,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="mybatis-spring-boot" />
-        <module name="sbgl-mobile" />
-        <module name="simpleApp" />
+        <module name="captcha-generator" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="mybatis-spring-boot" target="1.7" />
-      <module name="sbgl-mobile" target="1.7" />
-      <module name="simpleApp" target="1.7" />
+      <module name="captcha-generator" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
