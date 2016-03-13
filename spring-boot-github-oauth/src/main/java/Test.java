@@ -1,6 +1,6 @@
-import com.hg.oauth.thrid.oauth.*;
-import com.hg.oauth.thrid.util.Display;
-import com.hg.oauth.thrid.util.TokenUtil;
+import com.zhiyin.oauth.thrid.oauth.*;
+import com.zhiyin.oauth.thrid.util.Display;
+import com.zhiyin.oauth.thrid.util.TokenUtil;
 
 /**
  * Oauth 测试
