@@ -1,0 +1,6 @@
+com\zhiyin\queue\core\factory\QueueEventGenFactory.class
+com\zhiyin\queue\core\event\AliQueueEventMessage.class
+com\zhiyin\queue\core\type\ProducerType.class
+com\zhiyin\queue\core\type\ConsumerType.class
+com\zhiyin\queue\core\type\TopicType.class
+com\zhiyin\queue\core\util\BeanMapper.class

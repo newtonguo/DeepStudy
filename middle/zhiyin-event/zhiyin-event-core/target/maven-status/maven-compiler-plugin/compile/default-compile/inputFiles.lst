@@ -1,0 +1,12 @@
+C:\Users\wangqinghui\Desktop\zhiyin-event\zhiyin-event-core\src\main\java\com\zhiyin\event\core\EventModuleType.java
+C:\Users\wangqinghui\Desktop\zhiyin-event\zhiyin-event-core\src\main\java\com\zhiyin\event\core\EventType.java
+C:\Users\wangqinghui\Desktop\zhiyin-event\zhiyin-event-core\src\main\java\com\zhiyin\event\core\factory\BinlogEventFactory.java
+C:\Users\wangqinghui\Desktop\zhiyin-event\zhiyin-event-core\src\main\java\com\zhiyin\event\core\body\ISerializable.java
+C:\Users\wangqinghui\Desktop\zhiyin-event\zhiyin-event-core\src\main\java\com\zhiyin\event\core\EventProducerType.java
+C:\Users\wangqinghui\Desktop\zhiyin-event\zhiyin-event-core\src\main\java\com\zhiyin\event\core\body\EventEntity.java
+C:\Users\wangqinghui\Desktop\zhiyin-event\zhiyin-event-core\src\main\java\com\zhiyin\event\core\body\BasicEventBody.java
+C:\Users\wangqinghui\Desktop\zhiyin-event\zhiyin-event-core\src\main\java\com\zhiyin\event\core\body\content\ContentAddBody.java
+C:\Users\wangqinghui\Desktop\zhiyin-event\zhiyin-event-core\src\main\java\com\zhiyin\event\core\body\EventBodyAdapter.java
+C:\Users\wangqinghui\Desktop\zhiyin-event\zhiyin-event-core\src\main\java\com\zhiyin\event\core\EventOperateType.java
+C:\Users\wangqinghui\Desktop\zhiyin-event\zhiyin-event-core\src\main\java\com\zhiyin\event\core\factory\EventBuilderFactory.java
+C:\Users\wangqinghui\Desktop\zhiyin-event\zhiyin-event-core\src\main\java\com\zhiyin\event\core\util\PropertiesAppender.java
