@@ -26,7 +26,7 @@ public class RedisCachableTest {
     @Test
     public void testFind(){
 
-        redisCacheService.findById(6);
+        redisCacheService.findById(1);
 
         User search = new User();
         search.setId(2);
