@@ -76,14 +76,14 @@ public interface IMsgNotifyService {
 
     遍历动作组，每一个动作新建一则Subscription记录
     **/
-    public void cancelSubscription(user, target ,targetType);
+//    public void cancelSubscription(user, target ,targetType);
 
     /**
      *     删除user、target、targetType对应的一则或多则记录
      */
-    public void getSubscriptionConfig(userID)
+//    public void getSubscriptionConfig(userID)
 
-    查询SubscriptionConfig表，获取用户的订阅配置
+//    查询SubscriptionConfig表，获取用户的订阅配置
 
     /**
      *     更新用户的SubscriptionConfig记录
