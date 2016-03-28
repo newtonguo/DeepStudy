@@ -1,8 +1,10 @@
+package scripts;
+
 import com.sun.btrace.annotations.*;
 import static com.sun.btrace.BTraceUtils.*;
 
 @BTrace
-public class TracingScript4 {
+public class SleepNumCount {
    private static long count; 
      
    @OnMethod(

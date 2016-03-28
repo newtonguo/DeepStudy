@@ -1,8 +1,10 @@
+package scripts;
+
 import com.sun.btrace.annotations.*;
 import static com.sun.btrace.BTraceUtils.*;
 
 @BTrace
-public class TracingScript3 {
+public class PrintMethodComsume {
    @TLS private static long startTime = 0;
    
    @OnMethod(

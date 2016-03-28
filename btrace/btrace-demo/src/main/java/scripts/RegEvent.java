@@ -1,8 +1,10 @@
+package scripts;
+
 import com.sun.btrace.annotations.*;
 import static com.sun.btrace.BTraceUtils.*;
 
 @BTrace
-public class TracingScript5 {
+public class RegEvent {
    private static long count; 
      
    @OnMethod(
