@@ -17,7 +17,7 @@ public class Gen {
 
     public static void main(String[] args) throws Exception {
         List<String> warnings = new ArrayList<String>();
-        boolean overwrite = true;
+        boolean overwrite = false;
         File configFile = new File(Gen.class.getResource("/").getPath() + "generatorConfig.xml");
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);

@@ -9,15 +9,19 @@ public class MsgNotify {
 
     private Integer type;
 
-    private Integer target;
+    private Long target;
 
-    private String targettype;
+    private String targetType;
 
     private String action;
 
     private Long sender;
 
-    private Date createtime;
+    private Date createTime;
+
+    private Date updateTime;
+
+    private Integer delStatus;
 
     public Long getId() {
         return id;
@@ -43,20 +47,20 @@ public class MsgNotify {
         this.type = type;
     }
 
-    public Integer getTarget() {
+    public Long getTarget() {
         return target;
     }
 
-    public void setTarget(Integer target) {
+    public void setTarget(Long target) {
         this.target = target;
     }
 
-    public String getTargettype() {
-        return targettype;
+    public String getTargetType() {
+        return targetType;
     }
 
-    public void setTargettype(String targettype) {
-        this.targettype = targettype == null ? null : targettype.trim();
+    public void setTargetType(String targetType) {
+        this.targetType = targetType == null ? null : targetType.trim();
     }
 
     public String getAction() {
@@ -75,11 +79,27 @@ public class MsgNotify {
         this.sender = sender;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Integer getDelStatus() {
+        return delStatus;
+    }
+
+    public void setDelStatus(Integer delStatus) {
+        this.delStatus = delStatus;
     }
 }

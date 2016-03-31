@@ -1,9 +1,35 @@
 package com.hg.msg.entity;
 
+import java.util.Date;
+
 public class MsgSubscriptionConfig {
+    private Long id;
+
+    private Long userId;
+
     private String action;
 
-    private Long user;
+    private Date createTime;
+
+    private Date updateTime;
+
+    private Integer delStatus;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public String getAction() {
         return action;
@@ -13,11 +39,27 @@ public class MsgSubscriptionConfig {
         this.action = action == null ? null : action.trim();
     }
 
-    public Long getUser() {
-        return user;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setUser(Long user) {
-        this.user = user;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Integer getDelStatus() {
+        return delStatus;
+    }
+
+    public void setDelStatus(Integer delStatus) {
+        this.delStatus = delStatus;
     }
 }

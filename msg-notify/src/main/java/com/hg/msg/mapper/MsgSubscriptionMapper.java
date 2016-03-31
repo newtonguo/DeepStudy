@@ -2,6 +2,8 @@ package com.hg.msg.mapper;
 
 import com.hg.msg.entity.MsgSubscription;
 
+import java.util.List;
+
 public interface MsgSubscriptionMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,6 @@ public interface MsgSubscriptionMapper {
     int updateByPrimaryKeySelective(MsgSubscription record);
 
     int updateByPrimaryKey(MsgSubscription record);
+
+    List<MsgSubscription> selectByUserId(Long userId);
 }

@@ -5,13 +5,19 @@ import java.util.Date;
 public class MsgUserNotify {
     private Long id;
 
-    private Integer isread;
+    private Integer isRead;
 
-    private Long user;
+    private Long userId;
 
-    private Long notify;
+    private Long notifyId;
 
-    private Date createtime;
+    private Integer notifyType;
+
+    private Date createTime;
+
+    private Date updateTime;
+
+    private Integer delStatus;
 
     public Long getId() {
         return id;
@@ -21,35 +27,59 @@ public class MsgUserNotify {
         this.id = id;
     }
 
-    public Integer getIsread() {
-        return isread;
+    public Integer getIsRead() {
+        return isRead;
     }
 
-    public void setIsread(Integer isread) {
-        this.isread = isread;
+    public void setIsRead(Integer isRead) {
+        this.isRead = isRead;
     }
 
-    public Long getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(Long user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public Long getNotify() {
-        return notify;
+    public Long getNotifyId() {
+        return notifyId;
     }
 
-    public void setNotify(Long notify) {
-        this.notify = notify;
+    public void setNotifyId(Long notifyId) {
+        this.notifyId = notifyId;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Integer getNotifyType() {
+        return notifyType;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setNotifyType(Integer notifyType) {
+        this.notifyType = notifyType;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Integer getDelStatus() {
+        return delStatus;
+    }
+
+    public void setDelStatus(Integer delStatus) {
+        this.delStatus = delStatus;
     }
 }

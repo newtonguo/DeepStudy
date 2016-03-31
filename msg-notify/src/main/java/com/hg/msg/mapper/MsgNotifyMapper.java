@@ -6,9 +6,19 @@ import java.util.Date;
 import java.util.List;
 
 public interface MsgNotifyMapper {
+    int deleteByPrimaryKey(Long id);
+
     int insert(MsgNotify record);
 
     int insertSelective(MsgNotify record);
 
-    List<MsgNotify> selectLatestByType(int type,Date date);
+    MsgNotify selectByPrimaryKey(Long id);
+
+    int updateByPrimaryKeySelective(MsgNotify record);
+
+    int updateByPrimaryKey(MsgNotify record);
+
+    List<MsgNotify> selectAfterDate(int announce, Date createTime);
+
+    MsgNotify selectSubNotify(MsgNotify msgNotify);
 }

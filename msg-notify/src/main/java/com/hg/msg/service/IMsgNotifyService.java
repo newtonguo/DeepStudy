@@ -1,6 +1,7 @@
 package com.hg.msg.service;
 
 import com.hg.msg.entity.MsgNotify;
+import com.hg.msg.entity.MsgSubscriptionConfig;
 import com.hg.msg.entity.MsgUserNotify;
 
 import java.util.Date;
@@ -18,7 +19,7 @@ public interface IMsgNotifyService {
 
 
     /**
-     *     从UserNotify中获取最近的一条公告信息的创建时间: lastTime
+     从UserNotify中获取最近的一条公告信息的创建时间: lastTime
      用lastTime作为过滤条件，查询Notify的公告信息
      新建UserNotify并关联查询出来的公告信息
      * @param userId
@@ -29,7 +30,7 @@ public interface IMsgNotifyService {
 
 
 
-    public List<MsgNotify> selectAnnounce(Date lastDate);
+//    public List<MsgNotify> selectAnnounce(Date lastDate);
 
 
     public Long  create(String content, Long sender);
@@ -39,7 +40,7 @@ public interface IMsgNotifyService {
      *
      往Notify表中插入一条提醒记录
      */
-    public MsgNotify createRemind(Long target, Integer targetType,Integer action,Long sender,String content);
+    public MsgNotify createRemind(Long target, String targetType,String action,Long sender,String content);
 
     /**
 
@@ -49,15 +50,11 @@ public interface IMsgNotifyService {
     public Long createMessage(String content, Long sender, Long receiver);
 
 
-
-
-
-
     /**
     从UserNotify中获取最近的一条公告信息的创建时间: lastTime
 
     用lastTime作为过滤条件，查询Notify的公告信息
-            新建UserNotify并关联查询出来的公告信息
+    新建UserNotify并关联查询出来的公告信息
     **/
     public Long pullRemind(Long user);
 
@@ -76,7 +73,10 @@ public interface IMsgNotifyService {
 
     遍历动作组，每一个动作新建一则Subscription记录
     **/
-//    public void cancelSubscription(user, target ,targetType);
+    public void cancelSubscription(Long userId, Long target, String targetType) ;
+
+    //
+    MsgSubscriptionConfig getSubConfig(Long userId);
 
     /**
      *     删除user、target、targetType对应的一则或多则记录
@@ -84,6 +84,9 @@ public interface IMsgNotifyService {
 //    public void getSubscriptionConfig(userID)
 
 //    查询SubscriptionConfig表，获取用户的订阅配置
+
+    //
+    List<String> getSubscriptionConfig(Long userId);
 
     /**
      *     更新用户的SubscriptionConfig记录
