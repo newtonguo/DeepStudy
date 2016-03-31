@@ -40,7 +40,7 @@ public interface IMsgNotifyService {
      *
      往Notify表中插入一条提醒记录
      */
-    public MsgNotify createRemind(Long target, String targetType,String action,Long sender,String content);
+    public Long createRemind(Long target, String targetType,String action,Long sender,String content);
 
     /**
 

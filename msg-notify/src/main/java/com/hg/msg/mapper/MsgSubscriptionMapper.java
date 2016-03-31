@@ -1,6 +1,7 @@
 package com.hg.msg.mapper;
 
 import com.hg.msg.entity.MsgSubscription;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,5 +18,5 @@ public interface MsgSubscriptionMapper {
 
     int updateByPrimaryKey(MsgSubscription record);
 
-    List<MsgSubscription> selectByUserId(Long userId);
+    List<MsgSubscription> selectByUserId(@Param("userId") Long userId);
 }

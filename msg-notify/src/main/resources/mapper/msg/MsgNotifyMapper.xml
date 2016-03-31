@@ -17,6 +17,30 @@
     id, content, type, target, target_type, action, sender, create_time, update_time, 
     del_status
   </sql>
+
+
+    <!-- 根据类型查询新的notify-->
+  <select id="selectNewByType" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from msg_notify
+    where
+
+      type = #{type} and create_time &gt; #{createTime}
+  </select>
+
+
+    <select id="selectSubNotifyAfter" resultMap="BaseResultMap"  >
+        select
+        <include refid="Base_Column_List" />
+        from msg_notify
+        where
+        target = #{target} and target_type = #{targetType} and action = #{action} and create_time &gt; #{createTime}
+    </select>
+
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />

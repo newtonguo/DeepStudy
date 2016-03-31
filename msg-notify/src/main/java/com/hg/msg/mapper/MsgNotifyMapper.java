@@ -1,6 +1,7 @@
 package com.hg.msg.mapper;
 
 import com.hg.msg.entity.MsgNotify;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -18,7 +19,10 @@ public interface MsgNotifyMapper {
 
     int updateByPrimaryKey(MsgNotify record);
 
-    List<MsgNotify> selectAfterDate(int announce, Date createTime);
+    List<MsgNotify> selectNewByType(@Param("type") Integer type, @Param("createTime") Date createTime);
 
-    MsgNotify selectSubNotify(MsgNotify msgNotify);
+//    MsgNotify selectSubNotify(MsgNotify msgNotify);
+
+
+    List<MsgNotify>  selectSubNotifyAfter(@Param("target") Long target, @Param("targetType") String targetType, @Param("action") String action, @Param("createTime") Date createTime);
 }

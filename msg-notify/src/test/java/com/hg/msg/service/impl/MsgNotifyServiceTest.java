@@ -1,6 +1,7 @@
 package com.hg.msg.service.impl;
 
 import com.hg.Application;
+import org.joda.time.DateTime;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,15 +30,21 @@ public class MsgNotifyServiceTest {
 
     Long testUserId = 11L ;
 
+    Long UserAId = 111L ;
+    Long UserBId = 112L ;
+    Long adminId = 1L;
+
+    Long ProductAId = 435L;
+
     @Autowired
     private MsgNotifyService msgNotifyService;
 
     @Test
     public void testAnnounce() throws Exception {
 
-        msgNotifyService.createAnnounce("sd",testUserId);
+        msgNotifyService.createAnnounce("sd",adminId);
         msgNotifyService.pullAnnounce( testUserId );
-//        msgNotifyService.s
+//        msgNotifyService.selectUserNewNotify(testUserId, DateTime.now().minusHours(1).toDate());
     }
 
     @Test
@@ -49,8 +56,41 @@ public class MsgNotifyServiceTest {
     }
 
     @Test
+    public void testCreateRemind() throws Exception {
+
+        // 用户B评论Product A
+        msgNotifyService.createRemind(ProductAId,"product","comment",UserBId,"用户B评论Product A");
+
+
+    }
+
+
+    @Test
     public void testSubscribe(){
 
-        msgNotifyService.subscribe(1L,22L,"product","comment");
+        msgNotifyService.subscribe(1L,22L,"product","create_product");
+    }
+
+    @Test
+    public void testPullRemind(){
+
+        msgNotifyService.pullRemind(UserAId);
+    }
+
+
+    @Test
+    public void testRemindSuit(){
+
+        // 用户A订阅ProductA的被喜欢的事件
+        msgNotifyService.subscribe(UserAId , ProductAId ,"product","like_product");
+
+
+        // 用户B评论Product A
+        msgNotifyService.createRemind(ProductAId,"product","comment",UserBId,"用户B评论Product A");
+
+
+        msgNotifyService.pullRemind(UserAId);
+
+
     }
 }

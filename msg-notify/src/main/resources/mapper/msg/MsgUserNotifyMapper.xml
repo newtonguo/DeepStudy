@@ -15,22 +15,31 @@
     id, is_read, user_id, notify_id, notify_type, create_time, update_time, del_status
   </sql>
 
+    <!-- 查询用户新的notify -->
+    <select id="selectUserNewNotify" resultMap="BaseResultMap"   >
+        select
+        <include refid="Base_Column_List" />
+        from msg_user_notify
+        where
+        user_id = #{userId} and create_time &gt; #{createTime} and notify_type = #{notifyType}
+    </select>
 
+    <!-- 查询最新的一条notify -->
+    <select id="selectLatestNotify" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from msg_user_notify
+        where
+        user_id = #{userId}  and notify_type = #{notifyType}
+        order by create_time desc
+        limit 0,1
+    </select>
 
-  <select id="selectUserNewNotify" >
-
-
-    select
-    <include refid="Base_Column_List" />
-    from msg_user_notify
-    where
-    user_id = #{userId} and create_time &gt; #{createTime} and notify_type = #{notifyType}
-  </select>
 
 
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from msg_user_notify
     where id = #{id,jdbcType=BIGINT}

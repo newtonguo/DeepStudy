@@ -1,5 +1,6 @@
 package com.hg.msg.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.hg.msg.config.NotifyType;
@@ -12,6 +13,9 @@ import com.hg.msg.mapper.MsgSubscriptionConfigMapper;
 import com.hg.msg.mapper.MsgSubscriptionMapper;
 import com.hg.msg.mapper.MsgUserNotifyMapper;
 import com.hg.msg.service.IMsgNotifyService;
+import com.hg.msg.service.IMsgSubService;
+import com.hg.msg.service.IMsgUserNotifyService;
+import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +26,14 @@ import java.util.List;
 /**
  * Created by wangqinghui on 2016/3/22.
  */
+@Slf4j
 @Service
 public class MsgNotifyService implements IMsgNotifyService {
+
+    @Autowired
+    private IMsgUserNotifyService msgUserNotifyService;
+    @Autowired
+    private IMsgSubService msgSubService;
 
     @Autowired
     private MsgNotifyMapper msgNotifyMapper;
@@ -37,16 +47,28 @@ public class MsgNotifyService implements IMsgNotifyService {
     @Autowired
     private MsgSubscriptionConfigMapper msgSubscriptionConfigMapper;
 
+    public Long insertSelective( MsgNotify msgNotify){
+
+        msgNotify.setId( IdGen.gen() );
+        msgNotify.setCreateTime(DateTime.now().toDate());
+        msgNotify.setUpdateTime(DateTime.now().toDate());
+
+        msgNotify.setDelStatus(0);
+
+        msgNotifyMapper.insertSelective(msgNotify);
+
+        return msgNotify.getId();
+    }
+
     @Override
     public Long createAnnounce(String content, Long sender) {
         MsgNotify msgNotify = new MsgNotify();
         msgNotify.setContent(content);
         msgNotify.setSender(sender);
-        msgNotify.setId(DateTime.now().getMillis());
+        msgNotify.setType(NotifyType.Announce);
 
-        msgNotifyMapper.insertSelective(msgNotify);
+        return insertSelective(msgNotify);
 
-        return msgNotify.getId();
     }
 
     @Override
@@ -58,15 +80,24 @@ public class MsgNotifyService implements IMsgNotifyService {
         MsgUserNotify latestAnnounce =  msgUserNotifyMapper.selectLatestNotify(userId,NotifyType.Announce);
 
 
-//        用lastTime作为过滤条件，查询Notify的公告信息
-        List<MsgNotify> annList = msgNotifyMapper.selectAfterDate( NotifyType.Announce, latestAnnounce.getCreateTime() );
 
-        for(MsgNotify msgNotify : annList){
-            MsgUserNotify msgUserNotify = new MsgUserNotify();
-            msgUserNotify.setId( IdGen.gen() );
-            msgUserNotify.setNotifyId(msgNotify.getId());
-            msgUserNotify.setCreateTime( DateTime.now().toDate() );
-            msgUserNotify.setUserId(userId);
+        Date latestTime = null ;
+        if(latestAnnounce == null || latestAnnounce.getCreateTime() == null){
+            // 如果为null,说明用户没有公告信息，用户可能为新用户
+            // 拉取公告的起始时间应为为用户注册日
+//            log.warn("latest announce is null.");
+            latestTime = DateTime.parse("2016-03-31").toDate();
+
+        }else{
+            latestTime = latestAnnounce.getCreateTime();
+        }
+
+
+//        用lastTime作为过滤条件，查询Notify的公告信息
+        List<MsgNotify> annList = msgNotifyMapper.selectNewByType( NotifyType.Announce, latestTime );
+
+        for(MsgNotify ann : annList){
+            msgUserNotifyService.insertSelective(userId, ann.getId());
         }
 
         // TODO add return
@@ -87,17 +118,16 @@ public class MsgNotifyService implements IMsgNotifyService {
     }
 
     @Override
-    public MsgNotify createRemind(Long target, String targetType, String action, Long sender, String content) {
+    public Long createRemind(Long target, String targetType, String action, Long sender, String content) {
 
         MsgNotify msgNotify = new MsgNotify();
-        msgNotify.setId( IdGen.gen() );
         msgNotify.setType( NotifyType.Remind );
         msgNotify.setTarget( target );
         msgNotify.setTargetType( targetType );
         msgNotify.setAction( action );
         msgNotify.setSender( sender );
         msgNotify.setContent(content);
-        return msgNotify;
+        return insertSelective(msgNotify);
     }
 
     @Override
@@ -135,9 +165,9 @@ public class MsgNotifyService implements IMsgNotifyService {
 //        通过每一条的订阅记录的target、targetType、action、createdAt去查询Notify表，获取订阅的Notify记录。（注意订阅时间必须早于提醒创建时间）
         List<MsgNotify> notifyList = Lists.newArrayList();
         for(MsgSubscription sub : subList){
-            MsgNotify notify = selectSubNotifyAfter(sub.getTarget(), sub.getTargetType(), sub.getAction(), sub.getCreateTime());
+            List<MsgNotify> notify = msgNotifyMapper.selectSubNotifyAfter(sub.getTarget(), sub.getTargetType(), sub.getAction(), sub.getCreateTime());
             if(notify != null){
-                notifyList.add(notify);
+                notifyList.addAll(notify);
             }
         }
 
@@ -161,42 +191,34 @@ public class MsgNotifyService implements IMsgNotifyService {
 //                使用过滤好的Notify作为关联新建UserNotify
         for(MsgNotify notify : filtedNotify){
             MsgUserNotify tmp = new MsgUserNotify();
-            tmp.setId(IdGen.gen());
             tmp.setNotifyId(notify.getId());
-            tmp.setUserId(userId);
-            tmp.setIsRead(0);
-            tmp.setCreateTime(DateTime.now().toDate());
-            tmp.setUpdateTime(DateTime.now().toDate());
-
-            msgUserNotifyMapper.insertSelective(tmp);
+            tmp.setNotifyType(NotifyType.Remind);
+            msgUserNotifyService.insertSelective(tmp);
         }
 
         return null;
     }
 
-    public MsgNotify selectSubNotifyAfter(Long target,String targetType,String action,Date createTime){
-        MsgNotify msgNotify = new MsgNotify();
-        msgNotify.setTarget(target);
-        msgNotify.setTargetType(targetType);
-        msgNotify.setAction(action);
-        msgNotify.setCreateTime(createTime);
-
-
-        return msgNotifyMapper.selectSubNotify(msgNotify);
-    }
+//    public MsgNotify selectSubNotifyAfter(Long target,String targetType,String action,Date createTime){
+//        MsgNotify msgNotify = new MsgNotify();
+//        msgNotify.setTarget(target);
+//        msgNotify.setTargetType(targetType);
+//        msgNotify.setAction(action);
+//        msgNotify.setCreateTime(createTime);
+//
+//
+//        return msgNotifyMapper.selectSubNotify(msgNotify);
+//    }
 
     @Override
     public void subscribe(Long userId, Long targetId,String targetType,String reason){
 
-        MsgNotify msgNotify = new MsgNotify();
-        msgNotify.setId( IdGen.gen() );
-        msgNotify.setContent(reason);
-        msgNotify.setSender(userId);
-        msgNotify.setTarget(targetId ) ;
-        msgNotify.setTargetType(targetType);
-        msgNotifyMapper.insertSelective(msgNotify);
 
+        List<String> actionList = NotifyConfig.action(reason);
+        for(String action : actionList){
 
+            msgSubService.insertSelective(targetId,targetType,action,userId);
+        }
     }
 
     @Override
@@ -213,7 +235,7 @@ public class MsgNotifyService implements IMsgNotifyService {
 @Override
 public MsgSubscriptionConfig getSubConfig(Long userId) {
 
-    MsgSubscriptionConfig sel = msgSubscriptionConfigMapper.selectByUid(userId);
+    MsgSubscriptionConfig sel = msgSubscriptionConfigMapper.selectByUserId(userId);
 
     if(sel == null || Strings.isNullOrEmpty(sel.getAction())){
         sel = NotifyUtil.defaultSubConfig();
@@ -225,11 +247,8 @@ return sel;
     @Override
     public List<String> getSubscriptionConfig(Long userId) {
 
-        MsgSubscriptionConfig sel = msgSubscriptionConfigMapper.selectByUid(userId);
 
-        if(sel == null || Strings.isNullOrEmpty(sel.getAction())){
-            sel = NotifyUtil.defaultSubConfig();
-        }
+        MsgSubscriptionConfig sel = getSubConfig(userId);
 
         return NotifyUtil.getSubAction(sel.getAction());
 

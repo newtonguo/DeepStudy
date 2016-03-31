@@ -1,6 +1,7 @@
 package com.hg.msg.mapper;
 
 import com.hg.msg.entity.MsgUserNotify;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -18,7 +19,7 @@ public interface MsgUserNotifyMapper {
 
     int updateByPrimaryKey(MsgUserNotify record);
 
-    MsgUserNotify selectLatestNotify(Long userId, int announce);
+    MsgUserNotify selectLatestNotify(@Param("userId") Long userId,@Param("notifyType") Integer notifyType);
 
-    List<MsgUserNotify> selectUserNewNotify(Long userId, Date updateDate, int announce);
+    List<MsgUserNotify> selectUserNewNotify(Long userId, Date createTime, int notifyType);
 }

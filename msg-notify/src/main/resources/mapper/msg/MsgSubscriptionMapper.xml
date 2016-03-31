@@ -14,6 +14,15 @@
   <sql id="Base_Column_List" >
     id, target, target_type, action, user_id, create_time, update_time, del_status
   </sql>
+
+
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from msg_subscription
+    where user_id = #{userId}
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />

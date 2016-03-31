@@ -15,5 +15,5 @@ public interface MsgSubscriptionConfigMapper {
 
     int updateByPrimaryKey(MsgSubscriptionConfig record);
 
-    MsgSubscriptionConfig selectByUid(Long userId);
+    MsgSubscriptionConfig selectByUserId(Long userId);
 }
