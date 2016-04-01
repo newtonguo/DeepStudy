@@ -4,4 +4,4 @@ bin
 dependency-reduced-pom.xml
 target
 *.iml
-.idea
+/.idea
