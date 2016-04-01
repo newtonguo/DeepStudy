@@ -3,6 +3,7 @@ package com.bfa.sbgl.app.api.security.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.bfa.sbgl.app.api.security.entity.AuthUser;
 import com.bfa.sbgl.app.api.security.service.IAuthUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
+@Slf4j
 @Component
 public class CustomUserDetailsService implements UserDetailsService {
 
@@ -26,7 +28,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 		}
         AuthUserDetails d = new AuthUserDetails();
         d.setU(user);
-        System.out.println(JSON.toJSONString(user));
+
+        log.debug("login user info:{}",JSON.toJSONString(d));
 		return d;
 	}
 

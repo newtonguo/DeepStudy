@@ -69,9 +69,12 @@ public class OAuth2ServerConfiguration {
 
         @Bean
         public TokenStore tokenStore() {
-            return new JdbcTokenStore(dataSource);
 
-//            return  new InMemoryTokenStore();
+            // 基于数据库的token
+//            return new JdbcTokenStore(dataSource);
+
+            // 内存token
+            return  new InMemoryTokenStore();
         }
 
 

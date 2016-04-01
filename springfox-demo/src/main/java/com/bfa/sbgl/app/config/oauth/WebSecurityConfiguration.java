@@ -24,13 +24,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         // 设置数据库授权
-//        auth.userDetailsService(customUserDetailsService);
+        auth.userDetailsService(customUserDetailsService);
 
         // 使用内存数据
-        auth.inMemoryAuthentication()
-                .withUser("user")
-                .password("password")
-                .roles("USER");
+//        auth.inMemoryAuthentication()
+//                .withUser("user")
+//                .password("password")
+//                .roles("USER");
     }
 
 

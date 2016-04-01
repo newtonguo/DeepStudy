@@ -14,6 +14,9 @@ http://localhost:8080/oauth/token?password=spring&username=roy&grant_type=passwo
 
 
 
+
+
+
 ## springfox 去掉默认状态码
 
 ```
@@ -24,3 +27,8 @@ http://localhost:8080/oauth/token?password=spring&username=roy&grant_type=passwo
 
 
 http://stackoverflow.com/questions/30047129/swagger-springfox-always-generates-some-response-messages-401-403-by-defa
+
+
+## oauth
+
+https://github.com/royclarkson/spring-rest-service-oauth
