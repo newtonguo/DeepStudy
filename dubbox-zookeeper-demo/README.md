@@ -24,7 +24,8 @@ dataLogDir=E:\\workprograme\\dev\\zookeeper-logs
 2. 下载dubbox（也可以使用dubbo）
 
 > * 下载[dubbox](https://github.com/dangdangdotcom/dubbox)或[dubbo](dubbo.io)，也可以使用git clone命令下载对应的源码
-> * 在源码目录中执行mvn install -Dmaven.test.skip=true
+> * 在源码目录中执行
+mvn install -Dmaven.test.skip=true -Dmaven.repo.local=E:\MavenRepository
 > * 在dubbo-admin项目下的target下的war包拷备到tomcat的webapps目录
 > * 打开WEB-INF/dubbo.properties文件，配置内容如下，其中有zookeeper地址
 ```
@@ -43,3 +44,6 @@ dubbo.admin.guest.password=guest
 > * dubbo-zookeeper-client是接口调用工程
 
 
+## 参考
+
+https://github.com/mazhaoyong/dubbox-zookeeper-demo
