@@ -15,18 +15,18 @@ public class HelloWorldCommandTime extends HystrixCommand<String> {
     public HelloWorldCommandTime(String name) {
         super(HystrixCommand.Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("HelloWorldGroup"))
                 /* 配置依赖超时时间,500毫秒*/
-                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter().withExecutionIsolationThreadTimeoutInMilliseconds(500)));
+                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter().withExecutionIsolationThreadTimeoutInMilliseconds(5000)));
         this.name = name;
     }
     @Override
     protected String getFallback() {
-        return "exeucute Falled";
+        return Thread.currentThread().getName() + "exeucute Falled";
     }
 
     @Override
     protected String run() throws Exception {
         //sleep 1 秒,调用会超时
-        TimeUnit.MILLISECONDS.sleep(10000);
+        TimeUnit.MILLISECONDS.sleep(100000);
         return "Hello " + name +" thread:" + Thread.currentThread().getName();
     }
     public static void main(String[] args) throws Exception{

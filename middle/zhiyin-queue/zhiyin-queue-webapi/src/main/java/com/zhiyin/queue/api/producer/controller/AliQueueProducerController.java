@@ -24,7 +24,10 @@ import java.util.UUID;
 @Slf4j
 public class AliQueueProducerController {
 
-//    final static Logger log = LoggerFactory.getLogger(QueueProducerController.class);
+    @RequestMapping(method = RequestMethod.GET, path = "/oktest" )
+    public String oktest() {
+        return "hello";
+    }
 
 
     @RequestMapping(method = RequestMethod.GET, path = "/test" )

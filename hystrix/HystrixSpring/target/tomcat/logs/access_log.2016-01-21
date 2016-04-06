@@ -1,2 +1,0 @@
-127.0.0.1 - - [21/Jan/2016:13:36:00 +0800] "GET /test/hystrix.stream HTTP/1.1" 200 243 http-bio-9090-exec-2 8168
-127.0.0.1 - - [21/Jan/2016:13:38:59 +0800] "GET /test/message.html HTTP/1.1" 200 168 http-bio-9090-exec-1 200233
