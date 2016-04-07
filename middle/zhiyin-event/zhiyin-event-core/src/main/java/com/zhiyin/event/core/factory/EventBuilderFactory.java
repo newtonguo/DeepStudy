@@ -21,6 +21,10 @@ public class EventBuilderFactory {
 
 	}
 
+	/**
+	 * 创建内容添加事件
+	 * @return
+     */
 	public static EventEntity buildContentAddEvent() {
 		ContentAddBody tmp = new ContentAddBody();
 		tmp.setId(100L);

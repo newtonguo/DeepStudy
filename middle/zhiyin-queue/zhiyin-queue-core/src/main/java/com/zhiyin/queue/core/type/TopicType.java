@@ -9,7 +9,9 @@ import lombok.Getter;
 @Getter
 public enum TopicType {
 
-    HGTEST(1,"HG_TEST");
+    HGTEST(1,"HG_TEST"),
+
+    DBOP(2,"db_op_test");
 
     // 定义私有变量
     private int id ;

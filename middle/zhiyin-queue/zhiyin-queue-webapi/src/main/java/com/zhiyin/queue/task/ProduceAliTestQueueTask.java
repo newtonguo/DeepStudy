@@ -6,7 +6,7 @@ import com.zhiyin.queue.config.QueueConfig;
 import com.zhiyin.queue.config.SystemConfig;
 import com.zhiyin.queue.core.event.AliQueueEvent;
 import com.zhiyin.queue.core.type.ProducerType;
-import com.zhiyin.queue.core.util.BeanMapper;
+import com.zhiyin.utils.bean.BeanMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
 

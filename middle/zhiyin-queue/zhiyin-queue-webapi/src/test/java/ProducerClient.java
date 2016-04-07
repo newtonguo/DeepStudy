@@ -1,24 +1,24 @@
 import com.aliyun.openservices.ons.api.*;
+import com.zhiyin.queue.config.QueueConfig;
 
 import java.util.Properties;
 
 public class ProducerClient {
 
-    public static String acckey = "Ocz1wInjxU0LyBx4";
-    public static String seckey = "SHBpCSCMfoaIuNlriqtqJwiLNuGOsc";
+
 
     public static void main(String[] args) {
         Properties properties = new Properties();
-        properties.put(PropertyKeyConst.ProducerId, "PID_HG_TEST");
-        properties.put(PropertyKeyConst.AccessKey, Config.acckey);
-        properties.put(PropertyKeyConst.SecretKey, Config.seckey);
+        properties.put(PropertyKeyConst.ProducerId, "PID_DB_OP");
+        properties.put(PropertyKeyConst.AccessKey, QueueConfig.acckey);
+        properties.put(PropertyKeyConst.SecretKey, QueueConfig.seckey);
         Producer producer = ONSFactory.createProducer(properties);
 
         //在发送消息前，必须调用start方法来启动Producer，只需调用一次即可。
         producer.start();
         Message msg = new Message(
                 //Message Topic
-                "HG_TEST",
+                "db_op",
                 //Message Tag,
                 //可理解为Gmail中的标签，对消息进行再归类，方便Consumer指定过滤条件在ONS服务器过滤
                 "TagA",

@@ -11,7 +11,10 @@ public enum EventModuleType {
 	// 内容相关的 0001
 	Content("内容","0001"),
 
-	Demo("测试", "9999");
+	Demo("测试", "9999"),
+
+	MysqlBinlog("数据库binlog","0002")
+	;
 	
 
 
