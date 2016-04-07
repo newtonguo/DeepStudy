@@ -23,10 +23,10 @@ import java.io.Serializable;
 public class TestOkController {
 
     @ApiOperation(value = "更新用户信息", nickname = "修改用户信息", response = UpdateUserS2c.class)
-    @RequestMapping(value = "/test/get", method = RequestMethod.POST)
-    public ResponseEntity<String> update(@RequestBody UpdateUserC2s userId) {
+    @RequestMapping(value = "/testok", method = RequestMethod.GET)
+    public ResponseEntity<String> update() {
         log.info("test get");
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok("hello");
     }
 
 }

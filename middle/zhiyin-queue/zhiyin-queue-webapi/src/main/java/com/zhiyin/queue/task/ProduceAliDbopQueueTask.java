@@ -42,6 +42,7 @@ public class ProduceAliDbopQueueTask extends Thread {
                 AliQueueEvent event = SystemConfig.ProduceAliDbopQueueEvent.take();
 
                 Message msg = BeanMapper.map(event, Message.class);
+                log.info("ali queue send body:{}",event.getBodyStr());
                 msg.setBody(event.getBodyStr().getBytes());
                 msg.setKey(DateTime.now().getMillis() + "");
 

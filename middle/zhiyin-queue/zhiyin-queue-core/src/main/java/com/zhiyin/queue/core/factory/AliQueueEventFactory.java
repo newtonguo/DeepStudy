@@ -2,6 +2,8 @@ package com.zhiyin.queue.core.factory;
 
 import com.alibaba.fastjson.JSON;
 import com.zhiyin.event.core.EventEntity;
+import com.zhiyin.event.core.body.binlog.BinlogEventBody;
+import com.zhiyin.event.core.factory.BinlogEventFactory;
 import com.zhiyin.queue.core.event.AliQueueEvent;
 import com.zhiyin.queue.core.type.TopicType;
 import com.zhiyin.utils.json.JSONUtil;
@@ -59,6 +61,7 @@ public class AliQueueEventFactory {
 
         msg.setTopic( TopicType.DBOP.getName() );
 
+        log.info("ali queue event body:{}",msg.getBodyStr());
 
         return msg;
     }
@@ -73,6 +76,7 @@ public class AliQueueEventFactory {
 
         if(  TopicType.DBOP.getName().equals( queue.getTopic() ) ){
             String str = queue.getBodyStr();
+            log.info("rec event:" + str);
             EventEntity event = JSONUtil.parseJson(str, EventEntity.class);
             if(event == null){
                 log.error("get ali event is null, {}", JSONUtil.toJson(queue));
@@ -87,4 +91,18 @@ public class AliQueueEventFactory {
         return null;
     }
 
+    
+    public static void main(String[] args){
+        BinlogEventBody body = new BinlogEventBody();
+        body.setDbName("zhiyin");
+        EventEntity event = BinlogEventFactory.binglog(body);
+        AliQueueEvent ali = genDbOpEvent(event);
+
+        String eventStr = JSONUtil.toJson(event);
+        log.info(eventStr);
+
+        EventEntity parseEvent = JSONUtil.parseJson(eventStr, EventEntity.class);
+        log.info( JSONUtil.toJson(parseEvent.getBody()));
+        
+  }
 }

@@ -38,22 +38,21 @@ public class ComsumeAliDbopQueueTask extends Thread {
         while (true) {
 
             try {
-                AliQueueEvent msg = SystemConfig.ConsumeAliDbopQueueEvent.take();
+                BinlogEventBody body = SystemConfig.ConsumeBinlogEvent.take();
 
-
-                EventEntity event = AliQueueEventFactory.reDbopEvent(msg);
-
-                BinlogEventBody body = (BinlogEventBody) event.getBody();
                 BinlogOpType opType = body.getOpType();
 
+                if( !body.getDbName().contentEquals("zhiyin") || !body.getTableName().equals("zhiyin_content_basic_content")){
+                    continue;
+                }
                 // 构建索引
                 if (BinlogOpType.UPDATE.equals(opType)) {
                     Long id = body.getDataId();
-
                     Map<String, Long> val = Maps.newHashMap();
                     val.put("id", id);
                     try {
                         HttpRequestFactory.post(HttpUrlFactory.get("contents.search.addOrUpdateByIdById"), val);
+                        log.info("build search index, tb:{} id:{}",body.getTableName(),body.getDataId());
                     } catch (Exception e) {
                         log.error("build searcher index error", e);
                     }
