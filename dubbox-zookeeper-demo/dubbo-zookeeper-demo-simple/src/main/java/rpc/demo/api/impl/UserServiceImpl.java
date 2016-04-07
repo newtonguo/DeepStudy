@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 
 import rpc.demo.api.UserService;
 
+@org.springframework.stereotype.Service
 @Service(protocol = { "dubbo" })
 public class UserServiceImpl implements UserService {
 

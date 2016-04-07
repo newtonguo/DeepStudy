@@ -18,13 +18,5 @@
 		<appender-ref ref="CONSOLE" />
 	</root>
 
-	<!-- logback为java中的包 -->
-	<logger name="uaas" />
-
-	<!--logback.LogbackDemo：类的全路径 -->
-	<logger name="uaas.controller.RoleController" level="DEBUG"
-		additivity="false">
-		<appender-ref ref="CONSOLE" />
-	</logger>
 
 </configuration>

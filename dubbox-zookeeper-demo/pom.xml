@@ -21,4 +21,17 @@
         <module>dubbo-zookeeper-demo-simple</module>
         <module>dubbo-zookeeper-demo-client</module>
 	</modules>
+
+
+
+	<repositories>
+
+
+		<repository>
+			<id>zhiyin-maven-repo</id>
+            <name>zhiyin-maven-repo</name>
+			<url>https://raw.github.com/huiwq1990/MavenRepository/repository</url>
+		</repository>
+	</repositories>
+
 </project>
