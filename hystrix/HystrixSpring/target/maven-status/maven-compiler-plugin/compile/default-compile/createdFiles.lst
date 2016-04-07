@@ -1,7 +1,0 @@
-de\mirkosertic\GetIdBean.class
-de\mirkosertic\controller\HelloWorldController.class
-de\mirkosertic\controller\GenIdController.class
-de\mirkosertic\CircuitBreaker.class
-de\mirkosertic\aspect\CircuitBreakerAspect$1.class
-de\mirkosertic\RandomBean.class
-de\mirkosertic\aspect\CircuitBreakerAspect.class
