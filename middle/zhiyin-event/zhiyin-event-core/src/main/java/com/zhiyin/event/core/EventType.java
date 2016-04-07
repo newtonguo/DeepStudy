@@ -13,7 +13,10 @@ public enum EventType {
 	
 	ContentAdd("内容生产","0001",EventModuleType.Content),
 
-	DemoAdd("示例添加","0001",EventModuleType.Demo);
+	DemoAdd("示例添加","0002",EventModuleType.Demo),
+
+	MysqlBinlog("示例添加","0003",EventModuleType.MysqlBinlog)
+	;
 	
 	private String name;
 	private String code;

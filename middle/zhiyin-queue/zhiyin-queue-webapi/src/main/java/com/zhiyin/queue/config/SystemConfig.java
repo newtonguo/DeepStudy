@@ -15,5 +15,8 @@ public class SystemConfig {
     public static BlockingDeque<AliQueueEvent> ProduceAliTestQueueEvent = new LinkedBlockingDeque<>();
     public static BlockingDeque<AliQueueEvent> ConsumeAliTestQueueEvent = new LinkedBlockingDeque<>();
 
+    public static BlockingDeque<AliQueueEvent> ProduceAliDbopQueueEvent = new LinkedBlockingDeque<>();
+    public static BlockingDeque<AliQueueEvent> ConsumeAliDbopQueueEvent = new LinkedBlockingDeque<>();
+
 
 }

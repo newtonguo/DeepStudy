@@ -1,12 +1,10 @@
 package com.zhiyin.queue.task;
 
 import com.alibaba.fastjson.JSON;
-import com.squareup.okhttp.*;
 import com.zhiyin.queue.config.SystemConfig;
 import com.zhiyin.queue.core.event.AliQueueEvent;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class ComsumeAliTestQueueTask extends Thread {
 
-    public static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
+//    public static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
 
     public static final String ServiceUrl = "";
 
@@ -35,22 +33,22 @@ public class ComsumeAliTestQueueTask extends Thread {
                 log.info("receive and process message:{}", postStr);
 
 
-                OkHttpClient client = new OkHttpClient();
-
-
-                RequestBody body = RequestBody.create(MEDIA_TYPE, postStr);
-
-                Request request = new Request.Builder()
-                        .url(ServiceUrl)
-                        .post(body)
-                        .build();
-
-                Response response = client.newCall(request).execute();
-                if (response.isSuccessful()) {
-                    log.info("invoke http service error.");
-                }else{
-                    log.error("invoke http service succ.");
-                }
+//                OkHttpClient client = new OkHttpClient();
+//
+//
+//                RequestBody body = RequestBody.create(MEDIA_TYPE, postStr);
+//
+//                Request request = new Request.Builder()
+//                        .url(ServiceUrl)
+//                        .post(body)
+//                        .build();
+//
+//                Response response = client.newCall(request).execute();
+//                if (response.isSuccessful()) {
+//                    log.info("invoke http service error.");
+//                }else{
+//                    log.error("invoke http service succ.");
+//                }
             }catch(Exception e){
                 log.error("consume event error,",e);
             }

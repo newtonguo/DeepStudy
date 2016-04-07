@@ -9,7 +9,9 @@ import lombok.Getter;
 @Getter
 public enum ConsumerType {
 
-    HGTEST(1,"CID_HG_TEST",TopicType.HGTEST.getName());
+    HGTEST(1,"CID_HG_TEST",TopicType.HGTEST.getName()),
+    ESINDEXUPDATE(1,"CID_ES_INDEX_UPDATE_TEST",TopicType.DBOP.getName());
+
 
     // 定义私有变量
     private int id ;

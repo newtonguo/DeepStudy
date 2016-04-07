@@ -11,7 +11,7 @@
     <parent>
         <groupId>com.zhiyin.queue</groupId>
         <artifactId>zhiyin-queue</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <properties>
@@ -24,6 +24,18 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.zhiyin</groupId>
+            <artifactId>zhiyin-utils</artifactId>
+            <version>4.3.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zhiyin</groupId>
+            <artifactId>zhiyin-http</artifactId>
+            <version>4.3.0-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -57,12 +69,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-cache</artifactId>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-cache</artifactId>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-jdbc</artifactId>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-jdbc</artifactId>-->
         <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -77,22 +89,18 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.squareup.okhttp</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>2.6.0</version>
-        </dependency>
+
 
         <!-- oauth -->
         <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-security</artifactId>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-security</artifactId>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
-            <!--<groupId>org.springframework.security.oauth</groupId>-->
-            <!--<artifactId>spring-security-oauth2</artifactId>-->
-            <!--<version>2.0.9.RELEASE</version>-->
+        <!--<groupId>org.springframework.security.oauth</groupId>-->
+        <!--<artifactId>spring-security-oauth2</artifactId>-->
+        <!--<version>2.0.9.RELEASE</version>-->
         <!--</dependency>-->
 
         <!-- oauth -->
@@ -107,17 +115,17 @@
 
 
         <!--<dependency>-->
-            <!--<groupId>mysql</groupId>-->
-            <!--<artifactId>mysql-connector-java</artifactId>-->
-            <!--<version>5.1.38</version>-->
+        <!--<groupId>mysql</groupId>-->
+        <!--<artifactId>mysql-connector-java</artifactId>-->
+        <!--<version>5.1.38</version>-->
         <!--</dependency>-->
 
 
         <!--<dependency>-->
-            <!--<groupId>com.h2database</groupId>-->
-            <!--<artifactId>h2</artifactId>-->
-            <!--<version></version>-->
-            <!--<scope>runtime</scope>-->
+        <!--<groupId>com.h2database</groupId>-->
+        <!--<artifactId>h2</artifactId>-->
+        <!--<version></version>-->
+        <!--<scope>runtime</scope>-->
         <!--</dependency>-->
 
 
@@ -166,7 +174,6 @@
         </dependency>
 
 
-
         <!-- swagger -->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -195,17 +202,17 @@
         <dependency>
             <groupId>com.zhiyin.queue</groupId>
             <artifactId>zhiyin-queue-core</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>com.jayway.jsonpath</groupId>-->
-            <!--<artifactId>json-path</artifactId>-->
-            <!--<scope>test</scope>-->
+        <!--<groupId>com.jayway.jsonpath</groupId>-->
+        <!--<artifactId>json-path</artifactId>-->
+        <!--<scope>test</scope>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>com.jayway.jsonpath</groupId>-->
-            <!--<artifactId>json-path-assert</artifactId>-->
-            <!--<scope>test</scope>-->
+        <!--<groupId>com.jayway.jsonpath</groupId>-->
+        <!--<artifactId>json-path-assert</artifactId>-->
+        <!--<scope>test</scope>-->
         <!--</dependency>-->
 
     </dependencies>
@@ -223,24 +230,62 @@
     </dependencyManagement>
 
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>UTF-8</encoding>
+                    <!-- 忽略错误继续编译 -->
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <warName>zhiyin-queue</warName>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
 
     <!--<build>-->
-        <!--<filters>-->
-            <!--<filter>profile-${env}.properties</filter>-->
-        <!--</filters>-->
-        <!--<plugins>-->
-            <!--<plugin>-->
-                <!--<groupId>org.springframework.boot</groupId>-->
-                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
-                <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>org.springframework</groupId>-->
-                        <!--<artifactId>springloaded</artifactId>-->
-                        <!--<version>1.2.5.RELEASE</version>-->
-                    <!--</dependency>-->
-                <!--</dependencies>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
+    <!--<filters>-->
+    <!--<filter>profile-${env}.properties</filter>-->
+    <!--</filters>-->
+    <!--<plugins>-->
+    <!--<plugin>-->
+    <!--<groupId>org.springframework.boot</groupId>-->
+    <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--<dependencies>-->
+    <!--<dependency>-->
+    <!--<groupId>org.springframework</groupId>-->
+    <!--<artifactId>springloaded</artifactId>-->
+    <!--<version>1.2.5.RELEASE</version>-->
+    <!--</dependency>-->
+    <!--</dependencies>-->
+    <!--</plugin>-->
+    <!--</plugins>-->
     <!--</build>-->
 
 
@@ -257,7 +302,7 @@
             <build>
                 <resources>
                     <resource>
-                        <directory>deploy/test</directory>
+                        <directory>deploy/dev</directory>
                     </resource>
                     <resource>
                         <directory>src/main/resources</directory>
@@ -285,7 +330,6 @@
         </profile>
 
     </profiles>
-
 
 
 </project>

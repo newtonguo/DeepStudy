@@ -8,7 +8,10 @@ import lombok.Getter;
 @Getter
 public enum ProducerType {
 
-    HGTEST(1,"HG_TEST");
+    HGTEST(1,"HG_TEST"),
+
+    DBOP(1,"PID_DB_OP_TEST");
+
 
     // 定义私有变量
     private int id ;
