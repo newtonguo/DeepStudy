@@ -1,6 +1,9 @@
 package com.zhiyin.queue.ini;
 
 import com.aliyun.openservices.ons.api.*;
+import com.zhiyin.event.core.EventEntity;
+import com.zhiyin.event.core.body.BasicEventBody;
+import com.zhiyin.event.core.body.binlog.BinlogEventBody;
 import com.zhiyin.queue.config.HttpUrlConfig;
 import com.zhiyin.queue.config.QueueConfig;
 import com.zhiyin.queue.config.SystemConfig;
@@ -11,6 +14,7 @@ import com.zhiyin.queue.task.ComsumeAliTestQueueTask;
 import com.zhiyin.queue.task.ProduceAliDbopQueueTask;
 import com.zhiyin.queue.task.ProduceAliTestQueueTask;
 import com.zhiyin.utils.bean.BeanMapper;
+import com.zhiyin.utils.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,10 +90,15 @@ public class SysInitBean implements InitializingBean {
         consumer.subscribe(ConsumerType.ESINDEXUPDATE.getTopic(), "*", new MessageListener() {
             public Action consume(Message message, ConsumeContext context) {
 
-                AliQueueEvent event = BeanMapper.map(message, AliQueueEvent.class);
+                log.info("dbop comsumer rec msg:{}",message);
+                String eventBody = new String(message.getBody());
+//                String eventBody = String.valueOf( message.getBody() );
+                log.info("ali queue rec body:{}",eventBody);
+                EventEntity event = JSONUtil.parseJson(eventBody, EventEntity.class);
+                BinlogEventBody body = (BinlogEventBody) event.getBody();
 
                 try {
-                    SystemConfig.ConsumeAliDbopQueueEvent.put(event);
+                    SystemConfig.ConsumeBinlogEvent.put(body);
                 } catch (InterruptedException e) {
                     log.error("get queue error.", e);
                 }

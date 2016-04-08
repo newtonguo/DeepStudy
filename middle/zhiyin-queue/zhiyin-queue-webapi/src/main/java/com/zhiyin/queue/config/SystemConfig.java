@@ -1,5 +1,6 @@
 package com.zhiyin.queue.config;
 
+import com.zhiyin.event.core.body.binlog.BinlogEventBody;
 import com.zhiyin.queue.core.event.AliQueueEvent;
 
 import java.util.concurrent.BlockingDeque;
@@ -17,6 +18,8 @@ public class SystemConfig {
 
     public static BlockingDeque<AliQueueEvent> ProduceAliDbopQueueEvent = new LinkedBlockingDeque<>();
     public static BlockingDeque<AliQueueEvent> ConsumeAliDbopQueueEvent = new LinkedBlockingDeque<>();
+
+    public static BlockingDeque<BinlogEventBody> ConsumeBinlogEvent = new LinkedBlockingDeque<>();
 
 
 }

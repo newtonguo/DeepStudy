@@ -10,5 +10,11 @@ public class LogTest {
     public void t(){
         log.debug("de");
         log.info("info");
+
+        byte[] byteArray = new byte[] {87, 79, 87, 46, 46, 46};
+
+        String value = new String(byteArray);
+
+        System.out.println(value);
     }
 }
