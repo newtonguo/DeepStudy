@@ -1,5 +1,7 @@
 package com.zhiyin.queue.core.event;
 
+import com.zhiyin.event.core.EventEntity;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +17,14 @@ public class AliQueueEvent implements Serializable {
     private String topic;
     private String tag;
     private String key;
-    private String bodyStr;
+
+    @Setter(AccessLevel.NONE)
+    private String bodyStr; // EventEntity的序列化值
+
+    //
+    public void setEvent(EventEntity event){
+        this.bodyStr = event.serialize();
+    }
 
 
 }

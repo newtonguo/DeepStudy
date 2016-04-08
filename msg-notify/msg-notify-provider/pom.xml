@@ -198,9 +198,9 @@
     </dependencies>
 
     <build>
-        <filters>
-            <filter>profile-${env}.properties</filter>
-        </filters>
+        <!--<filters>-->
+            <!--<filter>profile-${env}.properties</filter>-->
+        <!--</filters>-->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -216,10 +216,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
+
             </plugin>
         </plugins>
     </build>
@@ -227,7 +224,7 @@
     <profiles>
 
         <profile>
-            <id>dev</id>
+            <id>prov-dev</id>
             <properties>
                 <env>dev</env>
             </properties>
@@ -237,7 +234,7 @@
             <build>
                 <resources>
                     <resource>
-                        <directory>deploy/test</directory>
+                        <directory>deploy/dev</directory>
                     </resource>
                     <resource>
                         <directory>src/main/resources</directory>
@@ -248,7 +245,7 @@
 
 
         <profile>
-            <id>product</id>
+            <id>prov-product</id>
             <properties>
                 <env>product</env>
             </properties>

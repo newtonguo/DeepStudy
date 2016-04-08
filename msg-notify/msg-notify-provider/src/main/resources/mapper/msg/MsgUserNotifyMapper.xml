@@ -40,6 +40,15 @@
 
 
 
+  <select id="selectByUid" resultMap="BaseResultMap"  parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from msg_user_notify
+    where
+    user_id = #{userId}
+    order by create_time desc
+  </select>
+
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select

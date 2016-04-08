@@ -1,6 +1,5 @@
 package com.hg.msg.service;
 
-import com.hg.msg.entity.MsgNotify;
 import com.hg.msg.entity.MsgSubscriptionConfig;
 import com.hg.msg.entity.MsgUserNotify;
 
@@ -100,7 +99,7 @@ public interface IMsgNotifyService {
      *     获取用户的消息列表
 
      */
-    public List<MsgNotify> getUserNotify(Long uid);
+    public List<MsgUserNotify> getUserNotify(Long uid);
 
 
     /**

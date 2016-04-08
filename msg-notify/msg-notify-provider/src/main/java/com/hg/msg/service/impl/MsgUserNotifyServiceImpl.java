@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by wangqinghui on 2016/3/31.
@@ -53,6 +54,12 @@ public class MsgUserNotifyServiceImpl implements IMsgUserNotifyService {
         return  insertSelective(msgUserNotify);
     }
 
+
+    @Override
+    public List<MsgUserNotify> selectByUid(Long userId) {
+
+        return msgUserNotifyMapper.selectByUid(userId) ;
+    }
 
 
 }

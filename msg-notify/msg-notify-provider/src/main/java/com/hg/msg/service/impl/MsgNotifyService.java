@@ -65,6 +65,8 @@ public class MsgNotifyService implements IMsgNotifyService {
 //        return msgNotify.getId();
 //    }
 
+//    public List<MsgUserNotify> get
+
     @Override
     public Long createAnnounce(String content, Long sender) {
         MsgNotify msgNotify = new MsgNotify();
@@ -254,8 +256,11 @@ return sel;
     }
 
     @Override
-    public List<MsgNotify> getUserNotify(Long uid) {
-        return null;
+    public List<MsgUserNotify> getUserNotify(Long uid) {
+
+
+        return msgUserNotifyService.selectByUid(uid);
+
     }
 
 //    @Override

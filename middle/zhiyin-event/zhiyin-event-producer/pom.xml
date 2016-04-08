@@ -4,11 +4,17 @@
 
 	<groupId>com.zhiyin.event</groupId>
 	<artifactId>zhiyin-event-producer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>zhiyin event producer</name>
+    <name>${project.artifactId}</name>
 	<url>http://maven.apache.org</url>
+
+    <parent>
+        <groupId>com.zhiyin.event</groupId>
+        <artifactId>zhiyin-event</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
 
 	<properties>
 		<project.build.sourceVersion>1.7</project.build.sourceVersion>

@@ -23,4 +23,6 @@ public interface MsgUserNotifyMapper {
     MsgUserNotify selectLatestNotify(@Param("userId") Long userId,@Param("notifyType") Integer notifyType);
 
     List<MsgUserNotify> selectUserNewNotify(Long userId, Date createTime, int notifyType);
+
+    List<MsgUserNotify> selectByUid( @Param("userId") Long userId);
 }

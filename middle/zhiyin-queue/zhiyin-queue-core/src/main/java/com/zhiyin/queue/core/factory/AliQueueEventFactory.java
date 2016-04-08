@@ -1,7 +1,9 @@
 package com.zhiyin.queue.core.factory;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.zhiyin.event.core.EventEntity;
+import com.zhiyin.event.core.body.BasicEventBody;
 import com.zhiyin.event.core.body.binlog.BinlogEventBody;
 import com.zhiyin.event.core.factory.BinlogEventFactory;
 import com.zhiyin.queue.core.event.AliQueueEvent;
@@ -56,8 +58,10 @@ public class AliQueueEventFactory {
 
         AliQueueEvent msg = new AliQueueEvent();
 
-        msg.setBodyStr(JSON.toJSONString(event) );
+        // 调用原生的序列化方式
+        msg.setEvent(event);
         msg.setTag("dbop");
+
 
         msg.setTopic( TopicType.DBOP.getName() );
 
@@ -72,17 +76,17 @@ public class AliQueueEventFactory {
      * @param queue
      * @return
      */
+//    @Deprecated
     public static EventEntity reDbopEvent(AliQueueEvent queue){
 
         if(  TopicType.DBOP.getName().equals( queue.getTopic() ) ){
             String str = queue.getBodyStr();
             log.info("rec event:" + str);
-            EventEntity event = JSONUtil.parseJson(str, EventEntity.class);
+            EventEntity event = EventEntity.deserialize(str);
             if(event == null){
                 log.error("get ali event is null, {}", JSONUtil.toJson(queue));
                 throw new RuntimeException("event is null.");
             }
-//            JSONUtil.parseJsonList( event.getBody(), BinlogEventBody.class );
 
             return event;
         }
@@ -91,18 +95,5 @@ public class AliQueueEventFactory {
         return null;
     }
 
-    
-    public static void main(String[] args){
-        BinlogEventBody body = new BinlogEventBody();
-        body.setDbName("zhiyin");
-        EventEntity event = BinlogEventFactory.binglog(body);
-        AliQueueEvent ali = genDbOpEvent(event);
 
-        String eventStr = JSONUtil.toJson(event);
-        log.info(eventStr);
-
-        EventEntity parseEvent = JSONUtil.parseJson(eventStr, EventEntity.class);
-        log.info( JSONUtil.toJson(parseEvent.getBody()));
-        
-  }
 }

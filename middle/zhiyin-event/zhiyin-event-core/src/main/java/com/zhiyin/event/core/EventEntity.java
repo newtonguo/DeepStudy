@@ -1,64 +1,82 @@
 package com.zhiyin.event.core;
 
+import com.alibaba.fastjson.JSONObject;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.zhiyin.event.core.body.BasicEventBody;
+import com.zhiyin.event.core.body.EventBodyAdapter;
 import com.zhiyin.event.core.body.ISerializable;
+import com.zhiyin.event.core.body.binlog.BinlogEventBody;
+import com.zhiyin.event.core.factory.BinlogEventFactory;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 
 import com.alibaba.fastjson.JSON;
 
-
+@Slf4j
 @Getter
 @Setter
 public class EventEntity implements ISerializable {
 
-	private String id;//事件id
-	private String crateTime;//时间戳
-	
-	private BasicEventBody body;
-//	private EventType eventDetail = EventType.Undefine;
-//	private EventProducerType producerType;//事件生产者 
-	private String type = EventType.Undefine.getCode();
-	
-	private String producer ;
-	private String extra;//附加信息
+    private String id;//事件id
+    private String crateTime;//时间戳
 
-	public EventEntity() {
+    private String bodyStr;
+
+    private BasicEventBody body;
+    //	private EventType eventDetail = EventType.Undefine;
+//	private EventProducerType producerType;//事件生产者 
+    private String type = EventType.Undefine.getCode();
+
+    private String producer;
+    private String extra;//附加信息
+
+    public EventEntity() {
 
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 //		this.dttm = sdf.format(new Date());
 //		String s = UUID.randomUUID().toString();
 //		this.id =(new StringBuilder()).append(s.substring(0, 8)).append(s.substring(9, 13)).append(s.substring(14, 18)).append(s.substring(19, 23)).append(s.substring(24)).toString();
-	
-	}
-	
-	@Override
-	public String serialize() {
-		return JSON.toJSONString(this);
-	}
+
+    }
+
+    private static Gson gson = (new GsonBuilder()).registerTypeAdapter(BasicEventBody.class, new EventBodyAdapter()).create();
 
 
-	public EventEntity deserialize(String str) {
-		if (StringUtils.isEmpty(str)) {
-			return null;
-		}		
-		return JSON.parseObject(str, EventEntity.class);
-	}
+    @Override
+    public String serialize() {
 
-	@Override
-	public String toString() {
-		return JSON.toJSONString(this);
-	}
+        String bodyStr = gson.toJson(this.body, BasicEventBody.class);
+
+        this.setBodyStr(bodyStr);
+        return JSON.toJSONString(this);
+    }
 
 
-	public String getProducer() {
-		return producer;
-	}
+    public static EventEntity deserialize(String eventStr) {
+        if (StringUtils.isEmpty(eventStr)) {
+            return null;
+        }
+
+        EventEntity parseEvent = JSON.parseObject(eventStr, EventEntity.class);
+
+        JSONObject jsonObj = JSON.parseObject(eventStr);
+        String bodyStr = jsonObj.getString("bodyStr");
+        BasicEventBody parseBodyObj = gson.fromJson(bodyStr, BasicEventBody.class);
+//        BinlogEventBody parseBodyObj = JSON.parseObject(bodyStr, BinlogEventBody.class);
+
+        parseEvent.setBody(parseBodyObj);
+        return parseEvent;
+    }
 
 
-	public void setProducer(String producer) {
-		this.producer = producer;
-	}
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
+    }
+
+
 
 }

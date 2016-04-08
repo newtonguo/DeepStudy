@@ -1,6 +1,11 @@
 package com.hg.msg.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Lists;
 import com.hg.msg.Application;
+import com.hg.msg.entity.MsgUserNotify;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +15,13 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import java.util.List;
+
 /**
  * Created by wangqinghui on 2016/3/29.
  */
 
-
+@Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {Application.class})
 @WebAppConfiguration
@@ -35,29 +42,55 @@ public class MsgNotifyServiceTest {
     @Autowired
     private MsgNotifyService msgNotifyService;
 
+    List<MsgUserNotify> userNotifyList = Lists.newArrayList();
     @Test
     public void testAnnounce() throws Exception {
 
-        msgNotifyService.createAnnounce("sd",adminId);
+        userNotifyList = msgNotifyService.getUserNotify(testUserId);
+        Assert.assertTrue( userNotifyList.size() == 0 );
+
+
+        // 创建公告
+        msgNotifyService.createAnnounce("anno1",adminId);
+        msgNotifyService.createAnnounce("anno2",adminId);
+
+        // 拉取公告
         msgNotifyService.pullAnnounce( testUserId );
-//        msgNotifyService.selectUserNewNotify(testUserId, DateTime.now().minusHours(1).toDate());
+
+        userNotifyList = msgNotifyService.getUserNotify(testUserId);
+        Assert.assertTrue( userNotifyList.size() == 2 );
+
+
+        msgNotifyService.createAnnounce("anno3",adminId);
+        msgNotifyService.pullAnnounce( testUserId );
+        userNotifyList = msgNotifyService.getUserNotify(testUserId);
+        Assert.assertTrue( userNotifyList.size() == 3 );
+
+
+        log.info(JSON.toJSONString( userNotifyList ) );
+
     }
 
     @Test
     public void testCreateMessage() throws Exception {
 
-        msgNotifyService.createMessage("test message",UserAId,UserBId) ;
+        Long id = msgNotifyService.createMessage("test message", UserAId, UserBId);;
 
+        log.info("message id:{}",id);
+
+        userNotifyList = msgNotifyService.getUserNotify(UserBId);
+        log.info(JSON.toJSONString(userNotifyList));
+        Assert.assertTrue( userNotifyList.size() == 1 );
 
     }
+
+
 
     @Test
     public void testCreateRemind() throws Exception {
 
         // 用户B评论Product A
         msgNotifyService.createRemind(ProductAId,"product","comment",UserBId,"用户B评论Product A");
-
-
     }
 
 
@@ -82,11 +115,15 @@ public class MsgNotifyServiceTest {
 
         Thread.sleep(1000);
 
-        // 用户B评论Product A
+        // 用户B评论ProductA
         msgNotifyService.createRemind(ProductAId,"product","comment",UserBId,"用户B评论Product A");
 
         msgNotifyService.pullRemind(UserAId);
 
+
+        userNotifyList = msgNotifyService.getUserNotify(UserAId);
+        Assert.assertTrue( userNotifyList.size() == 1 );
+        log.info(JSON.toJSONString(userNotifyList));
 
     }
 }

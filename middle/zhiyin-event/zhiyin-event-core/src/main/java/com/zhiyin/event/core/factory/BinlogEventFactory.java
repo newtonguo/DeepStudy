@@ -1,6 +1,7 @@
 package com.zhiyin.event.core.factory;
 
 
+import com.alibaba.fastjson.JSON;
 import com.zhiyin.event.core.EventProducerType;
 import com.zhiyin.event.core.EventType;
 import com.zhiyin.event.core.EventEntity;
@@ -17,6 +18,7 @@ public class BinlogEventFactory {
 	 * @param body
 	 * @return
      */
+    @Deprecated
 	public static EventEntity binglog(BinlogEventBody body) {
 
 		EventEntity event = EventBuilderFactory.build(
@@ -24,5 +26,22 @@ public class BinlogEventFactory {
 
 		return event;
 	}
+
+    public static EventEntity binlog(BinlogEventBody body) {
+
+        EventEntity event = EventBuilderFactory.build(
+                EventProducerType.MysqlBinlog, EventType.MysqlBinlog, body);
+
+        return event;
+    }
+
+//    public static deBinlog(String eventStr){
+//
+//        JSON.parse(eventStr);
+//
+//
+//    }
+
+
 
 }

@@ -6,7 +6,13 @@
 	<artifactId>zhiyin-event-web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>event-web</name>
+    <name>${project.artifactId}</name>
+
+    <parent>
+        <groupId>com.zhiyin.event</groupId>
+        <artifactId>zhiyin-event</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 
 	<properties>
 		<!-- 主要依赖库的版本定义 -->
