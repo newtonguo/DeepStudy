@@ -27,6 +27,7 @@ import java.util.List;
  */
 @Slf4j
 @Service
+@com.alibaba.dubbo.config.annotation.Service(protocol = { "dubbo" })
 public class MsgNotifyService implements IMsgNotifyService {
 
     @Autowired
@@ -45,6 +46,11 @@ public class MsgNotifyService implements IMsgNotifyService {
 
     @Autowired
     private MsgSubscriptionConfigMapper msgSubscriptionConfigMapper;
+
+    @Override
+    public String testok(String name){
+        return "hello "+name;
+    }
 
 //    public Long insertSelective( MsgNotify msgNotify){
 //

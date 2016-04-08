@@ -4,13 +4,14 @@ import com.hg.msg.entity.MsgNotify;
 import com.hg.msg.entity.MsgSubscriptionConfig;
 import com.hg.msg.entity.MsgUserNotify;
 
-import java.util.Date;
 import java.util.List;
 
 /**
  * Created by wangqinghui on 2016/3/22.
  */
 public interface IMsgNotifyService {
+
+    String testok(String name);
 
     /**
      往Notify表中插入一条公告记录
