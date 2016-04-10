@@ -65,12 +65,13 @@ public class AliQueueProducerController {
             try {
                 log.debug("rec event:{}", JSON.toJSONString(event));
                 SystemConfig.ProduceAliDbopQueueEvent.put(event);
+                log.info("put {} event succ.",TopicType.DBOP.getName());
             } catch (InterruptedException e) {
                 log.error("put msg error. ");
             }
         }
 
-        log.info("put event succ.");
+
 
         return "success";
     }

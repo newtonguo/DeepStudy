@@ -40,9 +40,11 @@ public class ComsumeAliDbopQueueTask extends Thread {
             try {
                 BinlogEventBody body = SystemConfig.ConsumeBinlogEvent.take();
 
+                log.info("ali db queue consumer build index, rec:{}",JSON.toJSONString(body));
                 BinlogOpType opType = body.getOpType();
 
-                if( !body.getDbName().contentEquals("zhiyin") || !body.getTableName().equals("zhiyin_content_basic_content")){
+                if( !"zhiyin".equals(body.getDbName()) && !"zhiyin_content_basic_content".equals(body.getTableName() ) ){
+                    log.warn("ingore not zhiyin.zhiyin_content_basic_content table");
                     continue;
                 }
                 // 构建索引

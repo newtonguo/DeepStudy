@@ -1,5 +1,10 @@
 package com.zhiyin.queue.core.factory;
 
+import com.alibaba.fastjson.JSON;
+import com.zhiyin.event.core.EventEntity;
+import com.zhiyin.event.core.body.binlog.BinlogEventBody;
+import com.zhiyin.event.core.factory.BinlogEventFactory;
+import com.zhiyin.queue.core.event.AliQueueEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -17,6 +22,15 @@ public class QueueEventGenFactoryTest {
 //        AliQueueEvent queue = AliQueueEventFactory.gen("topic", event);
 //
 //        log.info(JSON.toJSONString(queue));
+
+        BinlogEventBody body = new BinlogEventBody();
+        body.setDbName("zhiyin");
+        body.setTableName("zhiyin_content_basic_content");
+        body.setDataId(1L);
+
+        AliQueueEvent queueEvent = AliQueueEventFactory.genDbOpEvent( body );
+
+        log.info(JSON.toJSONString(queueEvent));
 
 
     }

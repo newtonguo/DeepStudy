@@ -8,6 +8,7 @@ import com.zhiyin.event.core.body.EventBodyAdapter;
 import com.zhiyin.event.core.body.ISerializable;
 import com.zhiyin.event.core.body.binlog.BinlogEventBody;
 import com.zhiyin.event.core.factory.BinlogEventFactory;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -23,9 +24,9 @@ public class EventEntity implements ISerializable {
     private String id;//事件id
     private String crateTime;//时间戳
 
-    private String bodyStr;
-
     private BasicEventBody body;
+    @Setter(AccessLevel.NONE)
+    private String bodyStr; // 存储body的序列化值
     //	private EventType eventDetail = EventType.Undefine;
 //	private EventProducerType producerType;//事件生产者 
     private String type = EventType.Undefine.getCode();
@@ -45,16 +46,23 @@ public class EventEntity implements ISerializable {
     private static Gson gson = (new GsonBuilder()).registerTypeAdapter(BasicEventBody.class, new EventBodyAdapter()).create();
 
 
+    /**
+     * 整体使用JSON序列化，body自定义序列化
+     * @return
+     */
     @Override
     public String serialize() {
-
         String bodyStr = gson.toJson(this.body, BasicEventBody.class);
-
-        this.setBodyStr(bodyStr);
+        this.bodyStr = bodyStr;
         return JSON.toJSONString(this);
     }
 
 
+    /**
+     * 反序列化
+     * @param eventStr
+     * @return
+     */
     public static EventEntity deserialize(String eventStr) {
         if (StringUtils.isEmpty(eventStr)) {
             return null;
@@ -65,12 +73,10 @@ public class EventEntity implements ISerializable {
         JSONObject jsonObj = JSON.parseObject(eventStr);
         String bodyStr = jsonObj.getString("bodyStr");
         BasicEventBody parseBodyObj = gson.fromJson(bodyStr, BasicEventBody.class);
-//        BinlogEventBody parseBodyObj = JSON.parseObject(bodyStr, BinlogEventBody.class);
 
         parseEvent.setBody(parseBodyObj);
         return parseEvent;
     }
-
 
     @Override
     public String toString() {

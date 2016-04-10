@@ -2,6 +2,7 @@ package com.zhiyin.queue.task;
 
 import com.alibaba.fastjson.JSON;
 import com.aliyun.openservices.ons.api.*;
+import com.google.common.base.Strings;
 import com.zhiyin.queue.config.QueueConfig;
 import com.zhiyin.queue.config.SystemConfig;
 import com.zhiyin.queue.core.event.AliQueueEvent;
@@ -42,14 +43,17 @@ public class ProduceAliDbopQueueTask extends Thread {
                 AliQueueEvent event = SystemConfig.ProduceAliDbopQueueEvent.take();
 
                 Message msg = BeanMapper.map(event, Message.class);
-                log.info("ali queue send body:{}",event.getBodyStr());
-                msg.setBody(event.getBodyStr().getBytes());
+                String eventStr = event.getEventStr();
+                if(Strings.isNullOrEmpty(eventStr)){
+                    log.error("send event str is null.");
+                }else{
+                    msg.setBody(event.getEventStr().getBytes());
+                }
                 msg.setKey(DateTime.now().getMillis() + "");
-
 
                 //发送消息，只要不抛异常就是成功
                 SendResult sendResult = producer.send(msg);
-                log.info("send event:{}, send result:{}",JSON.toJSONString(msg),sendResult);
+                log.info("send to ali server,send msg id:{}, event:{}",sendResult.getMessageId(),JSON.toJSONString(msg));
             } catch (InterruptedException e) {
                 log.error("send message error.",e);
             }
