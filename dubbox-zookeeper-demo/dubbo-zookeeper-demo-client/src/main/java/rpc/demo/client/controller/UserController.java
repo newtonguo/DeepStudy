@@ -12,23 +12,20 @@ import rpc.demo.api.UserService;
 @Controller
 public class UserController {
 
+	@Autowired
+//    @Reference
+	private UserService userService;
+
 	@RequestMapping("/")
 	@ResponseBody
 	public String hello(){
-		return this.getUserService().hello("admin");
+		return userService.hello("admin");
 	}
-	
-//	@Autowired
-	@Reference
-	private UserService userService;
-	
-	
-	public UserService getUserService() {
-		return userService;
-	}
-	
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
+
+    @RequestMapping("/timeout")
+    @ResponseBody
+    public String timeout(){
+        return userService.timeout("timeout");
+    }
 	
 }

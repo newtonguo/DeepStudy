@@ -15,6 +15,8 @@
 
     <properties>
         <java.version>1.7</java.version>
+
+        <druid.version>1.0.11</druid.version>
         <mybatis.version>3.3.0</mybatis.version>
         <mapper.version>3.3.4</mapper.version>
         <pagehelper.version>4.1.1</pagehelper.version>
@@ -51,7 +53,6 @@
             <artifactId>lombok</artifactId>
             <version>1.16.8</version>
         </dependency>
-
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
@@ -89,25 +90,27 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
+
+
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
         </dependency>
-
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-
-
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.0.11</version>
+            <version>${druid.version}</version>
         </dependency>
-        <!--Mybatis-->
+
+
+        <!-- start mybatis-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
@@ -138,6 +141,7 @@
             <artifactId>mapper</artifactId>
             <version>${mapper.version}</version>
         </dependency>
+        <!-- end mybatis -->
 
 
         <dependency>
@@ -228,9 +232,9 @@
             <properties>
                 <env>dev</env>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+            <!--<activation>-->
+                <!--<activeByDefault>true</activeByDefault>-->
+            <!--</activation>-->
             <build>
                 <resources>
                     <resource>
