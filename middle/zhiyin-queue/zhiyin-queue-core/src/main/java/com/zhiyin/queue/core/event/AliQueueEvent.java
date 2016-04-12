@@ -22,7 +22,7 @@ public class AliQueueEvent implements Serializable {
     private String tag;
     private String key;
 
-    @Setter(AccessLevel.NONE)
+//    @Setter(AccessLevel.NONE)
     private String eventStr; // EventEntity的序列化值，通过setEvent赋值
 
     @JSONField(serialize=false)

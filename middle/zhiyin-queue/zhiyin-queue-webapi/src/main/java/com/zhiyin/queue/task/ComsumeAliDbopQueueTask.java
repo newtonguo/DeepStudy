@@ -59,9 +59,11 @@ public class ComsumeAliDbopQueueTask extends Thread {
                         log.error("build searcher index error", e);
                     }
 
+                }else{
+                    log.error("table optype is null.");
                 }
 
-
+                log.info("consume binlog event succ.");
                 TimeUnit.SECONDS.sleep(10);
 
             } catch (InterruptedException e) {

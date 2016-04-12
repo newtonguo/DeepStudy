@@ -75,7 +75,6 @@ public class AliQueueEventFactory {
         msg.setEvent(event);
         msg.setTag("dbop");
 
-
         msg.setTopic( TopicType.DBOP.getName() );
 
         log.info("ali queue event body:{}",msg.getEventStr());

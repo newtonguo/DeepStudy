@@ -46,6 +46,7 @@ public class ProduceAliDbopQueueTask extends Thread {
                 String eventStr = event.getEventStr();
                 if(Strings.isNullOrEmpty(eventStr)){
                     log.error("send event str is null.");
+                    continue;
                 }else{
                     msg.setBody(event.getEventStr().getBytes());
                 }
