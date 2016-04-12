@@ -47,3 +47,10 @@ dubbo.admin.guest.password=guest
 ## 参考
 
 https://github.com/mazhaoyong/dubbox-zookeeper-demo
+
+
+## dubbo服务引用
+
+1. xml的方式中配置dubbo Reference，然后@Autowire注入
+2. 在controller中@Reference
+http://blog.csdn.net/fangxiaoji/article/details/41959333

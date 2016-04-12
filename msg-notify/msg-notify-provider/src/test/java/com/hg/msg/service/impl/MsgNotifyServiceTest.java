@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.hg.msg.Application;
 import com.hg.msg.entity.MsgUserNotify;
+import com.hg.msg.service.IMsgNotifyService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -26,7 +27,6 @@ import java.util.List;
 @SpringApplicationConfiguration(classes = {Application.class})
 @WebAppConfiguration
 @EnableAuthorizationServer
-//@EnableWebSecurity
 @EnableResourceServer
 public class MsgNotifyServiceTest {
 
@@ -40,9 +40,10 @@ public class MsgNotifyServiceTest {
     Long ProductAId = 435L;
 
     @Autowired
-    private MsgNotifyService msgNotifyService;
+    private IMsgNotifyService msgNotifyService;
 
     List<MsgUserNotify> userNotifyList = Lists.newArrayList();
+
     @Test
     public void testAnnounce() throws Exception {
 
@@ -74,7 +75,7 @@ public class MsgNotifyServiceTest {
     @Test
     public void testCreateMessage() throws Exception {
 
-        Long id = msgNotifyService.createMessage("test message", UserAId, UserBId);;
+        Long id = msgNotifyService.createMessage("test message", UserAId, UserBId);
 
         log.info("message id:{}",id);
 
