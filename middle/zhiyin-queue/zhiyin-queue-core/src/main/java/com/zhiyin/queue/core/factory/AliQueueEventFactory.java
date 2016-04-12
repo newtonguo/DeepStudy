@@ -25,12 +25,10 @@ public class AliQueueEventFactory {
 
         AliQueueEvent msg = new AliQueueEvent();
 
-        msg.setBodyStr(JSON.toJSONString(event) );
+        msg.setEvent(event);
         msg.setTag("test");
 
         msg.setTopic( topic );
-
-
         return msg;
     }
 
@@ -38,13 +36,10 @@ public class AliQueueEventFactory {
     public static AliQueueEvent genTestTopic( EventEntity event){
 
         AliQueueEvent msg = new AliQueueEvent();
-
-        msg.setBodyStr(JSON.toJSONString(event) );
+        msg.setEvent(event);
         msg.setTag("test");
 
         msg.setTopic( TopicType.HGTEST.getName() );
-
-
         return msg;
     }
 
@@ -54,6 +49,7 @@ public class AliQueueEventFactory {
      * @param event
      * @return
      */
+    @Deprecated
     public static AliQueueEvent genDbOpEvent( EventEntity event){
 
         AliQueueEvent msg = new AliQueueEvent();
@@ -65,7 +61,23 @@ public class AliQueueEventFactory {
 
         msg.setTopic( TopicType.DBOP.getName() );
 
-        log.info("ali queue event body:{}",msg.getBodyStr());
+
+        return msg;
+    }
+
+
+    public static AliQueueEvent genDbOpEvent( BinlogEventBody body){
+
+        AliQueueEvent msg = new AliQueueEvent();
+        EventEntity event = BinlogEventFactory.binlog(body);
+
+        // 调用原生的序列化方式
+        msg.setEvent(event);
+        msg.setTag("dbop");
+
+        msg.setTopic( TopicType.DBOP.getName() );
+
+        log.info("ali queue event body:{}",msg.getEventStr());
 
         return msg;
     }
@@ -80,7 +92,7 @@ public class AliQueueEventFactory {
     public static EventEntity reDbopEvent(AliQueueEvent queue){
 
         if(  TopicType.DBOP.getName().equals( queue.getTopic() ) ){
-            String str = queue.getBodyStr();
+            String str = queue.getEventStr();
             log.info("rec event:" + str);
             EventEntity event = EventEntity.deserialize(str);
             if(event == null){

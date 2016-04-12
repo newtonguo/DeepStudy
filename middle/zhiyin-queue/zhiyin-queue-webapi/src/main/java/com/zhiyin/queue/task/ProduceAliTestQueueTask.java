@@ -42,7 +42,7 @@ public class ProduceAliTestQueueTask extends Thread {
                 AliQueueEvent event = SystemConfig.ProduceAliTestQueueEvent.take();
 
                 Message message = BeanMapper.map(event, Message.class);
-                message.setBody(event.getBodyStr().getBytes());
+                message.setBody(event.getEventStr().getBytes());
                 message.setKey(DateTime.now().getMillis() + "");
 
                 //发送消息，只要不抛异常就是成功

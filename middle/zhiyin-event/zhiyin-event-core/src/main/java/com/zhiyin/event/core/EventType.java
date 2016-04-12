@@ -38,7 +38,6 @@ public enum EventType {
 	
 
 	/**
-	 * @param typeCode
 	 * @throws IllegalArgumentException if typeCode is not valid EventType code
 	 */
 	public static EventType fromEventCode(String eventCode) {

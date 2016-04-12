@@ -50,7 +50,8 @@ public class SysInitBean implements InitializingBean {
         dbopThread.start();
         log.info("处理生成者队列启动成功");
 
-        Thread dbopThread2 = new ComsumeAliDbopQueueTask("t2");
+        Thread dbopThread2 = new ComsumeAliDbopQueueTask("ComsumeAliDbopQueueTask");
+        log.info("ConsumeBinlogEvent");
         dbopThread2.start();
 
     }
@@ -91,12 +92,14 @@ public class SysInitBean implements InitializingBean {
             public Action consume(Message message, ConsumeContext context) {
 
                 log.info("dbop comsumer rec msg:{}",message);
-                String eventBody = new String(message.getBody());
-//                String eventBody = String.valueOf( message.getBody() );
-                log.info("ali queue rec body:{}",eventBody);
-                EventEntity event = JSONUtil.parseJson(eventBody, EventEntity.class);
+                String eventStr = new String(message.getBody());
+                EventEntity event = EventEntity.deserialize(eventStr);
                 BinlogEventBody body = (BinlogEventBody) event.getBody();
 
+                if( body == null ){
+                    log.error("binglog even body is null.");
+                    return Action.CommitMessage;
+                }
                 try {
                     SystemConfig.ConsumeBinlogEvent.put(body);
                 } catch (InterruptedException e) {
