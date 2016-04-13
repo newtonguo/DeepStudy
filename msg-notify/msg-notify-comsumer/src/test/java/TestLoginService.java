@@ -1,9 +1,7 @@
-import com.hg.msg.service.IMsgNotifyInfoService;
 import com.hg.msg.service.IMsgNotifyService;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

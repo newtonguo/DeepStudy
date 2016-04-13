@@ -2,7 +2,7 @@ package com.hg.msg.service.impl;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
-import com.hg.msg.config.NotifyType;
+import com.hg.msg.common.NotifyType;
 import com.hg.msg.entity.MsgNotify;
 import com.hg.msg.entity.MsgSubscription;
 import com.hg.msg.entity.MsgSubscriptionConfig;
@@ -52,29 +52,22 @@ public class MsgNotifyServiceImpl implements IMsgNotifyService {
         return "hello "+name;
     }
 
-//    @Override
-//    public String testTrans(Long id){
-//
-//
-//
-//
-//    }
+    /**
+     * 测试事务
+     * @return
+     */
+    @Override
+//    @Transactional
+    public String testTrans(){
+        MsgNotify notify = new MsgNotify();
+        msgNotifyInfoService.insertSelective(notify);
+        if(true){
+            throw new RuntimeException("throw");
+        }
+        msgNotifyInfoService.insertSelective(notify);
+        return null;
+    }
 
-
-//    public Long insertSelective( MsgNotify msgNotify){
-//
-//        msgNotify.setId( IdGen.gen() );
-//        msgNotify.setCreateTime(DateTime.now().toDate());
-//        msgNotify.setUpdateTime(DateTime.now().toDate());
-//
-//        msgNotify.setDelStatus(0);
-//
-//        msgNotifyMapper.insertSelective(msgNotify);
-//
-//        return msgNotify.getId();
-//    }
-
-//    public List<MsgUserNotify> get
 
     @Override
     public Long createAnnounce(String content, Long sender) {

@@ -12,6 +12,8 @@ public interface IMsgNotifyService {
 
     String testok(String name);
 
+    String testTrans();
+
     /**
      往Notify表中插入一条公告记录
      */

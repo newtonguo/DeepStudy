@@ -1,12 +1,13 @@
 package com.hg.msg.mapper;
 
 import com.hg.msg.entity.MsgUserNotify;
+import com.hg.msg.util.MyMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
 
-public interface MsgUserNotifyMapper {
+public interface MsgUserNotifyMapper extends MyMapper<MsgUserNotify> {
     int deleteByPrimaryKey(Long id);
 
     int insert(MsgUserNotify record);

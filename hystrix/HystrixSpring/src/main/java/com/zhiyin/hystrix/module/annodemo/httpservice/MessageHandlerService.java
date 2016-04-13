@@ -1,8 +1,8 @@
 package com.zhiyin.hystrix.module.annodemo.httpservice;
 
 
-import com.zhiyin.hystrix.module.annodemo.Message;
-import com.zhiyin.hystrix.module.annodemo.MessageAcknowledgement;
+import com.zhiyin.hystrix.module.annodemo.entity.Message;
+import com.zhiyin.hystrix.module.annodemo.entity.MessageAcknowledgement;
 
 /**
  * Created by wangqinghui on 2016/1/21.

@@ -1,23 +1,28 @@
 package com.hg.msg.mapper;
 
 import com.hg.msg.entity.MsgNotify;
+import com.hg.msg.util.MyMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
 
-public interface MsgNotifyMapper {
-    int deleteByPrimaryKey(Long id);
 
+
+
+public interface MsgNotifyMapper extends MyMapper<MsgNotify> {
+    int deleteByPrimaryKey(Long id);
     int insert(MsgNotify record);
 
     int insertSelective(MsgNotify record);
 
-    MsgNotify selectByPrimaryKey(Long id);
-
     int updateByPrimaryKeySelective(MsgNotify record);
 
     int updateByPrimaryKey(MsgNotify record);
+
+
+
+    MsgNotify selectByPrimaryKey(Long id);
 
     List<MsgNotify> selectNewByType(@Param("type") Integer type, @Param("createTime") Date createTime);
 

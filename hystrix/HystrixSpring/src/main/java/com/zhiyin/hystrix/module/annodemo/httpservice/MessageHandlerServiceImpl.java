@@ -1,11 +1,10 @@
 package com.zhiyin.hystrix.module.annodemo.httpservice;
 
 
-
-import com.zhiyin.hystrix.module.annodemo.Message;
-import com.zhiyin.hystrix.module.annodemo.MessageAcknowledgement;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.zhiyin.hystrix.module.annodemo.entity.Message;
+import com.zhiyin.hystrix.module.annodemo.entity.MessageAcknowledgement;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -14,16 +13,25 @@ import java.util.UUID;
  * Created by wangqinghui on 2016/1/21.
  */
 
+@Slf4j
 @Service
 public class MessageHandlerServiceImpl implements MessageHandlerService {
-    private static final Logger logger = LoggerFactory.getLogger(MessageHandlerServiceImpl.class);
 
-//    @Configuration("reply.message")
-//    private String replyMessage;
+//    public MessageAcknowledgement handleMessage(Message message) {
+//        log.info("About to Acknowledge");
+//        try {
+//            Thread.sleep(message.getDelayBy());
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return new MessageAcknowledgement(message.getId(), message.getPayload(), UUID.randomUUID().toString());
+//    }
 
 
+    @HystrixCommand(groupKey = "Annotation", fallbackMethod = "defaultMessage", commandKey = "RemoteMessageAnnotationClient")
     public MessageAcknowledgement handleMessage(Message message) {
-        logger.info("About to Acknowledge");
+        log.info("About to Acknowledge");
         try {
             Thread.sleep(message.getDelayBy());
         } catch (InterruptedException e) {
@@ -31,6 +39,10 @@ public class MessageHandlerServiceImpl implements MessageHandlerService {
         }
 
         return new MessageAcknowledgement(message.getId(), message.getPayload(), UUID.randomUUID().toString());
+    }
+
+    public MessageAcknowledgement defaultMessage(Message message) {
+        return new MessageAcknowledgement("-1", message.getPayload(), "Fallback Payload");
     }
 
 

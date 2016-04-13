@@ -1,8 +1,9 @@
 package com.hg.msg.mapper;
 
 import com.hg.msg.entity.MsgSaveRemind;
+import com.hg.msg.util.MyMapper;
 
-public interface MsgSaveRemindMapper {
+public interface MsgSaveRemindMapper  extends MyMapper<MsgSaveRemind> {
     int deleteByPrimaryKey(Long id);
 
     int insert(MsgSaveRemind record);

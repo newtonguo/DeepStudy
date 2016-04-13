@@ -44,6 +44,15 @@ public class MsgNotifyServiceTest {
 
     List<MsgUserNotify> userNotifyList = Lists.newArrayList();
 
+
+    /**
+     * 测试spring事物
+     */
+    @Test
+    public void testTrans(){
+        msgNotifyService.testTrans();
+    }
+
     @Test
     public void testAnnounce() throws Exception {
 

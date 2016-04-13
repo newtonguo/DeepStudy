@@ -1,11 +1,12 @@
 package com.hg.msg.mapper;
 
 import com.hg.msg.entity.MsgSubscription;
+import com.hg.msg.util.MyMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface MsgSubscriptionMapper {
+public interface MsgSubscriptionMapper extends MyMapper<MsgSubscription> {
     int deleteByPrimaryKey(Long id);
 
     int insert(MsgSubscription record);
