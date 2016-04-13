@@ -294,9 +294,6 @@
                 <version>${logback.version}</version>
                 <scope>provided</scope>
             </dependency>
-
-
-
         </dependencies>
     </dependencyManagement>
     
