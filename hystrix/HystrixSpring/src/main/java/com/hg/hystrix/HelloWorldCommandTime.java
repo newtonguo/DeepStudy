@@ -1,9 +1,10 @@
 package com.hg.hystrix;
 
-import com.netflix.hystrix.HystrixCommand;
-import com.netflix.hystrix.HystrixCommandGroupKey;
-import com.netflix.hystrix.HystrixCommandProperties;
+import com.alibaba.fastjson.JSON;
+import com.netflix.hystrix.*;
+import com.netflix.hystrix.util.HystrixRollingNumberEvent;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -26,15 +27,18 @@ public class HelloWorldCommandTime extends HystrixCommand<String> {
     @Override
     protected String run() throws Exception {
         //sleep 1 秒,调用会超时
-        TimeUnit.MILLISECONDS.sleep(100000);
+        TimeUnit.MILLISECONDS.sleep(100);
         return "Hello " + name +" thread:" + Thread.currentThread().getName();
     }
     public static void main(String[] args) throws Exception{
         for(int i=0;i<10; i++){
             HelloWorldCommandTime command = new HelloWorldCommandTime("test-Fallback");
             String result = command.execute();
+//            System.out.println(JSON.toJSONString(getHystrixMetrics()) );
             System.out.println(result);
         }
 
     }
+
+
 }

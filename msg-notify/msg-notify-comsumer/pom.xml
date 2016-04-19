@@ -20,6 +20,12 @@
            <artifactId>lombok</artifactId>
        </dependency>
 
+       <dependency>
+           <groupId>com.alibaba</groupId>
+           <artifactId>fastjson</artifactId>
+           <version>1.2.7</version>
+       </dependency>
+
        <!--业务-->
        <dependency>
            <groupId>com.zhiyin</groupId>
@@ -40,6 +46,22 @@
        <dependency>
            <groupId>com.101tec</groupId>
            <artifactId>zkclient</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>com.esotericsoftware.kryo</groupId>
+           <artifactId>kryo</artifactId>
+           <version>2.24.0</version>
+       </dependency>
+       <dependency>
+           <groupId>de.javakaffee</groupId>
+           <artifactId>kryo-serializers</artifactId>
+           <version>0.26</version>
+       </dependency>
+
+       <dependency>
+           <groupId>de.ruedigermoeller</groupId>
+           <artifactId>fst</artifactId>
+           <version>1.55</version>
        </dependency>
        <!-- end dubbo -->
 

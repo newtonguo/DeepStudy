@@ -33,6 +33,8 @@ public class HttpCallCommand extends HystrixCommand<String> {
     @Override
     protected String run() throws Exception {
 
+        return "";
+
 //        Decoder decoder = new GsonDecoder();
 //        GitHub github = Feign.builder()
 //                .decoder(decoder)

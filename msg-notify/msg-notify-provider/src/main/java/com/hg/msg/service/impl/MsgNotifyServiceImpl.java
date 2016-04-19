@@ -1,5 +1,6 @@
 package com.hg.msg.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.hg.msg.common.NotifyType;
@@ -262,8 +263,10 @@ return sel;
     @Override
     public List<MsgUserNotify> getUserNotify(Long uid) {
 
+        List<MsgUserNotify> list = msgUserNotifyService.selectByUid(uid);
 
-        return msgUserNotifyService.selectByUid(uid);
+        log.info(JSON.toJSONString(list));
+        return list;
 
     }
 

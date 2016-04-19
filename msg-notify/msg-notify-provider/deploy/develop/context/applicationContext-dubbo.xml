@@ -6,9 +6,11 @@
 
 
 	<dubbo:application name="msg-notify-proovider" owner="zhiyin" organization="dubbox" />
-    <dubbo:protocol name="dubbo" />
 
-    <dubbo:registry address="zookeeper://101.200.185.137:2181" version="develop" />
+    <dubbo:protocol name="dubbo" serialization="kryo" />
+
+    <dubbo:registry address="zookeeper://101.200.185.137:2181" />
+
 	<!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
 	<dubbo:annotation package="com.hg.msg" />
 
