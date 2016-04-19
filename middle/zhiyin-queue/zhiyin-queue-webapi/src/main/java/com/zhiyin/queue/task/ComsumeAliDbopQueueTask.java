@@ -2,19 +2,12 @@ package com.zhiyin.queue.task;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Maps;
-import com.sun.tools.internal.ws.processor.model.Response;
-import com.zhiyin.event.core.EventEntity;
 import com.zhiyin.event.core.body.binlog.BinlogEventBody;
 import com.zhiyin.event.core.body.binlog.BinlogOpType;
 import com.zhiyin.http.factory.HttpRequestFactory;
 import com.zhiyin.http.factory.HttpUrlFactory;
 import com.zhiyin.queue.config.SystemConfig;
-import com.zhiyin.queue.core.event.AliQueueEvent;
-import com.zhiyin.queue.core.factory.AliQueueEventFactory;
-import com.zhiyin.utils.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.omg.CORBA.Request;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;

@@ -2,7 +2,6 @@ package com.zhiyin.queue.ini;
 
 import com.aliyun.openservices.ons.api.*;
 import com.zhiyin.event.core.EventEntity;
-import com.zhiyin.event.core.body.BasicEventBody;
 import com.zhiyin.event.core.body.binlog.BinlogEventBody;
 import com.zhiyin.queue.config.HttpUrlConfig;
 import com.zhiyin.queue.config.QueueConfig;
@@ -14,7 +13,6 @@ import com.zhiyin.queue.task.ComsumeAliTestQueueTask;
 import com.zhiyin.queue.task.ProduceAliDbopQueueTask;
 import com.zhiyin.queue.task.ProduceAliTestQueueTask;
 import com.zhiyin.utils.bean.BeanMapper;
-import com.zhiyin.utils.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;

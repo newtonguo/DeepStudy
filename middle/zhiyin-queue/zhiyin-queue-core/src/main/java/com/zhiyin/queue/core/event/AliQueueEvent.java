@@ -3,7 +3,6 @@ package com.zhiyin.queue.core.event;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.zhiyin.event.core.EventEntity;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 

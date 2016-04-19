@@ -1,9 +1,6 @@
 package com.zhiyin.queue.core.factory;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.zhiyin.event.core.EventEntity;
-import com.zhiyin.event.core.body.BasicEventBody;
 import com.zhiyin.event.core.body.binlog.BinlogEventBody;
 import com.zhiyin.event.core.factory.BinlogEventFactory;
 import com.zhiyin.queue.core.event.AliQueueEvent;
