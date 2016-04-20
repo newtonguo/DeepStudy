@@ -21,9 +21,9 @@ public interface MsgUserNotifyMapper extends MyMapper<MsgUserNotify> {
     int updateByPrimaryKey(MsgUserNotify record);
 
     // 查询用户最近添加的notify
-    MsgUserNotify selectLatestNotify(@Param("userId") Long userId,@Param("notifyType") Integer notifyType);
+    MsgUserNotify selectLatestNotify(@Param("userId") Long userId, @Param("notifyType") Integer notifyType);
 
     List<MsgUserNotify> selectUserNewNotify(Long userId, Date createTime, int notifyType);
 
-    List<MsgUserNotify> selectByUid( @Param("userId") Long userId);
+    List<MsgUserNotify> selectByUid(@Param("userId") Long userId);
 }

@@ -15,31 +15,31 @@ import java.util.Set;
  */
 public class NotifyUtil {
 
-    public static MsgSubscriptionConfig defaultSubConfig(){
+    public static MsgSubscriptionConfig defaultSubConfig() {
 
         MsgSubscriptionConfig sub = new MsgSubscriptionConfig();
 
 
-        Map<String,String> map = Maps.newHashMap();
-        map.put("comment","true");
-        map.put("like","true");
+        Map<String, String> map = Maps.newHashMap();
+        map.put("comment", "true");
+        map.put("like", "true");
 
-        sub.setAction( JSON.toJSONString(map) );
+        sub.setAction(JSON.toJSONString(map));
 
         return sub;
     }
 
 
-    public static List<String> getSubAction(String action){
+    public static List<String> getSubAction(String action) {
 
         JSONObject obj = JSON.parseObject(action);
 
         Set<String> keys = obj.keySet();
 
         List<String> actionList = Lists.newArrayList();
-        for(String key : keys){
+        for (String key : keys) {
             String val = (String) obj.get(key);
-            if( "true".equals(val)){
+            if ("true".equals(val)) {
                 actionList.add(key);
             }
         }
@@ -50,18 +50,17 @@ public class NotifyUtil {
     }
 
 
+    public static void main(String[] args) {
 
-    public static void main(String[] args){
+        Map<String, String> map = Maps.newHashMap();
 
-        Map<String,String> map = Maps.newHashMap();
-
-        map.put("comment","true");
-       map.put("like","true");
+        map.put("comment", "true");
+        map.put("like", "true");
 
         String actionStr = JSON.toJSONString(map);
-        System.out.println(  actionStr );
+        System.out.println(actionStr);
 
 
-        System.out.print( getSubAction(actionStr) );
+        System.out.print(getSubAction(actionStr));
     }
 }

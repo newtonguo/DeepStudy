@@ -15,11 +15,11 @@ public class TrainingRepo {
     @Reference
     private IMsgNotifyService msgNotifyService;
 
-	@Test
-	public void testMybatis() {
-        System.out.println("==========================:"  );
+    @Test
+    public void testMybatis() {
+        System.out.println("==========================:");
 
 
-        System.out.println("==========================:" +  msgNotifyService.testok("admin"));
-	}
+        System.out.println("==========================:" + msgNotifyService.testok("admin"));
+    }
 }

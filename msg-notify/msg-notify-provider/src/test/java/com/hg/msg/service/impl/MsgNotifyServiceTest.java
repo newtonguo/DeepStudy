@@ -31,10 +31,10 @@ import java.util.List;
 public class MsgNotifyServiceTest {
 
 
-    Long testUserId = 11L ;
+    Long testUserId = 11L;
 
-    Long UserAId = 111L ;
-    Long UserBId = 112L ;
+    Long UserAId = 111L;
+    Long UserBId = 112L;
     Long adminId = 1L;
 
     Long ProductAId = 435L;
@@ -49,7 +49,7 @@ public class MsgNotifyServiceTest {
      * 测试spring事物
      */
     @Test
-    public void testTrans(){
+    public void testTrans() {
         msgNotifyService.testTrans();
     }
 
@@ -57,27 +57,27 @@ public class MsgNotifyServiceTest {
     public void testAnnounce() throws Exception {
 
         userNotifyList = msgNotifyService.getUserNotify(testUserId);
-        Assert.assertTrue( userNotifyList.size() == 0 );
+        Assert.assertTrue(userNotifyList.size() == 0);
 
 
         // 创建公告
-        msgNotifyService.createAnnounce("anno1",adminId);
-        msgNotifyService.createAnnounce("anno2",adminId);
+        msgNotifyService.createAnnounce("anno1", adminId);
+        msgNotifyService.createAnnounce("anno2", adminId);
 
         // 拉取公告
-        msgNotifyService.pullAnnounce( testUserId );
+        msgNotifyService.pullAnnounce(testUserId);
 
         userNotifyList = msgNotifyService.getUserNotify(testUserId);
-        Assert.assertTrue( userNotifyList.size() == 2 );
+        Assert.assertTrue(userNotifyList.size() == 2);
 
 
-        msgNotifyService.createAnnounce("anno3",adminId);
-        msgNotifyService.pullAnnounce( testUserId );
+        msgNotifyService.createAnnounce("anno3", adminId);
+        msgNotifyService.pullAnnounce(testUserId);
         userNotifyList = msgNotifyService.getUserNotify(testUserId);
-        Assert.assertTrue( userNotifyList.size() == 3 );
+        Assert.assertTrue(userNotifyList.size() == 3);
 
 
-        log.info(JSON.toJSONString( userNotifyList ) );
+        log.info(JSON.toJSONString(userNotifyList));
 
     }
 
@@ -86,32 +86,31 @@ public class MsgNotifyServiceTest {
 
         Long id = msgNotifyService.createMessage("test message", UserAId, UserBId);
 
-        log.info("message id:{}",id);
+        log.info("message id:{}", id);
 
         userNotifyList = msgNotifyService.getUserNotify(UserBId);
         log.info(JSON.toJSONString(userNotifyList));
-        Assert.assertTrue( userNotifyList.size() == 1 );
+        Assert.assertTrue(userNotifyList.size() == 1);
 
     }
-
 
 
     @Test
     public void testCreateRemind() throws Exception {
 
         // 用户B评论Product A
-        msgNotifyService.createRemind(ProductAId,"product","comment",UserBId,"用户B评论Product A");
+        msgNotifyService.createRemind(ProductAId, "product", "comment", UserBId, "用户B评论Product A");
     }
 
 
     @Test
-    public void testSubscribe(){
+    public void testSubscribe() {
 
-        msgNotifyService.subscribe(1L,22L,"product","create_product");
+        msgNotifyService.subscribe(1L, 22L, "product", "create_product");
     }
 
     @Test
-    public void testPullRemind(){
+    public void testPullRemind() {
 
         msgNotifyService.pullRemind(UserAId);
     }
@@ -121,18 +120,18 @@ public class MsgNotifyServiceTest {
     public void testRemindSuit() throws InterruptedException {
 
         // 用户A订阅ProductA的事件
-        msgNotifyService.subscribe(UserAId , ProductAId ,"product","like_product");
+        msgNotifyService.subscribe(UserAId, ProductAId, "product", "like_product");
 
         Thread.sleep(1000);
 
         // 用户B评论ProductA
-        msgNotifyService.createRemind(ProductAId,"product","comment",UserBId,"用户B评论Product A");
+        msgNotifyService.createRemind(ProductAId, "product", "comment", UserBId, "用户B评论Product A");
 
         msgNotifyService.pullRemind(UserAId);
 
 
         userNotifyList = msgNotifyService.getUserNotify(UserAId);
-        Assert.assertTrue( userNotifyList.size() == 1 );
+        Assert.assertTrue(userNotifyList.size() == 1);
         log.info(JSON.toJSONString(userNotifyList));
 
     }

@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by wangqinghui on 2016/4/19.
  */
-public class BaseEntity  implements Serializable {
+public class BaseEntity implements Serializable {
 
     private Long id;
 

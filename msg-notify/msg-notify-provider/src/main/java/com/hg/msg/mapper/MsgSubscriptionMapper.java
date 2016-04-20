@@ -21,7 +21,7 @@ public interface MsgSubscriptionMapper extends MyMapper<MsgSubscription> {
 
 
     // 查询用户的订阅
-    public MsgSubscription selectUserSub(@Param("target") Long target,@Param("targetType") String targetType,@Param("action") String action, @Param("userId") Long userId);
+    public MsgSubscription selectUserSub(@Param("target") Long target, @Param("targetType") String targetType, @Param("action") String action, @Param("userId") Long userId);
 
     List<MsgSubscription> selectByUserId(@Param("userId") Long userId);
 

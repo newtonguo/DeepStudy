@@ -27,8 +27,8 @@ public class MsgUserNotifyServiceImpl implements IMsgUserNotifyService {
     @Override
     public Long insertSelective(MsgUserNotify msgUserNotify) {
 
-        msgUserNotify.setId( IdGen.gen() );
-        msgUserNotify.setUpdateTime( DateTime.now().toDate() );
+        msgUserNotify.setId(IdGen.gen());
+        msgUserNotify.setUpdateTime(DateTime.now().toDate());
         msgUserNotify.setCreateTime(DateTime.now().toDate());
         msgUserNotify.setIsRead(0);
 
@@ -36,29 +36,29 @@ public class MsgUserNotifyServiceImpl implements IMsgUserNotifyService {
 
         // 获取notify type
         MsgNotify notify = msgNotifyMapper.selectByPrimaryKey(msgUserNotify.getNotifyId());
-        msgUserNotify.setNotifyType( notify.getType() );
+        msgUserNotify.setNotifyType(notify.getType());
 
-         msgUserNotifyMapper.insertSelective(msgUserNotify);
+        msgUserNotifyMapper.insertSelective(msgUserNotify);
         return msgUserNotify.getId();
     }
 
     @Override
     public Long insertSelective(Long userId, Long notifyId, Date notifyTime) {
         MsgUserNotify msgUserNotify = new MsgUserNotify();
-        msgUserNotify.setNotifyId( notifyId );
+        msgUserNotify.setNotifyId(notifyId);
         msgUserNotify.setUserId(userId);
 
         // notify的实际事件
         msgUserNotify.setNotifyTime(notifyTime);
 
-        return  insertSelective(msgUserNotify);
+        return insertSelective(msgUserNotify);
     }
 
 
     @Override
     public List<MsgUserNotify> selectByUid(Long userId) {
 
-        return msgUserNotifyMapper.selectByUid(userId) ;
+        return msgUserNotifyMapper.selectByUid(userId);
     }
 
 

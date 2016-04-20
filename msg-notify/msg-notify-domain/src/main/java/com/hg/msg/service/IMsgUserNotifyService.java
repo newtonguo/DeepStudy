@@ -12,7 +12,7 @@ public interface IMsgUserNotifyService {
 
     public Long insertSelective(MsgUserNotify msgUserNotify);
 
-    Long insertSelective(Long userId, Long notifyId , Date notifyTime) ;
+    Long insertSelective(Long userId, Long notifyId, Date notifyTime);
 
     List<MsgUserNotify> selectByUid(Long userId);
 }

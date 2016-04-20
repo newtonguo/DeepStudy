@@ -43,7 +43,7 @@
 
                     <!-- 自身包去除配置文件-->
                     <excludes>
-                            <exclude>**/log4j.properties</exclude>
+                        <exclude>**/log4j.properties</exclude>
                     </excludes>
 
                 </configuration>
@@ -58,21 +58,21 @@
                         <configuration>
                             <classifier>domain</classifier>
                             <excludes>
-                                    <exclude>**/log4j.properties</exclude>
+                                <exclude>**/log4j.properties</exclude>
                             </excludes>
                             <!--<includes>-->
-                                <!--<include>-->
-                                    <!--com/umetrip/infocenter/airline/service/iface/-->
-                                <!--</include>-->
-                                <!--<include>-->
-                                    <!--com/umetrip/infocenter/airline/domain/-->
-                                <!--</include>-->
-                                <!--<include>-->
-                                    <!--com/umetrip/infocenter/util/InfoCenterRemoteServiceFactory.*-->
-                                <!--</include>-->
-                                <!--<include>-->
-                                    <!--applicationContext-infocenter-client.xml-->
-                                <!--</include>-->
+                            <!--<include>-->
+                            <!--com/umetrip/infocenter/airline/service/iface/-->
+                            <!--</include>-->
+                            <!--<include>-->
+                            <!--com/umetrip/infocenter/airline/domain/-->
+                            <!--</include>-->
+                            <!--<include>-->
+                            <!--com/umetrip/infocenter/util/InfoCenterRemoteServiceFactory.*-->
+                            <!--</include>-->
+                            <!--<include>-->
+                            <!--applicationContext-infocenter-client.xml-->
+                            <!--</include>-->
                             <!--</includes>-->
                         </configuration>
                     </execution>

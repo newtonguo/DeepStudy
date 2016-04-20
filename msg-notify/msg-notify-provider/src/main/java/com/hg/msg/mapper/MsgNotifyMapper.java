@@ -8,10 +8,9 @@ import java.util.Date;
 import java.util.List;
 
 
-
-
 public interface MsgNotifyMapper extends MyMapper<MsgNotify> {
     int deleteByPrimaryKey(Long id);
+
     int insert(MsgNotify record);
 
     int insertSelective(MsgNotify record);
@@ -21,7 +20,6 @@ public interface MsgNotifyMapper extends MyMapper<MsgNotify> {
     int updateByPrimaryKey(MsgNotify record);
 
 
-
     MsgNotify selectByPrimaryKey(Long id);
 
     List<MsgNotify> selectNewByType(@Param("type") Integer type, @Param("createTime") Date createTime);
@@ -29,5 +27,5 @@ public interface MsgNotifyMapper extends MyMapper<MsgNotify> {
 //    MsgNotify selectSubNotify(MsgNotify msgNotify);
 
 
-    List<MsgNotify>  selectSubNotifyAfter(@Param("target") Long target, @Param("targetType") String targetType, @Param("action") String action, @Param("createTime") Date createTime);
+    List<MsgNotify> selectSubNotifyAfter(@Param("target") Long target, @Param("targetType") String targetType, @Param("action") String action, @Param("createTime") Date createTime);
 }

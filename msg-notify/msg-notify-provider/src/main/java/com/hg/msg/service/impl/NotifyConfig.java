@@ -20,13 +20,12 @@ public class NotifyConfig {
             "}";
 
 
-    public static List<String> action(String reason){
+    public static List<String> action(String reason) {
 //        JSONObject reasonJson = JSON.parseObject(NotifyConfig.reasonAction);
 //
 //        String[] actions = (String[]) reasonJson.get(reason);
 
-        Map<String,ArrayList<String>> map = Maps.newHashMap();
-
+        Map<String, ArrayList<String>> map = Maps.newHashMap();
 
 
         ArrayList<String> actions = Lists.newArrayList();
@@ -40,9 +39,8 @@ public class NotifyConfig {
         map.put("like_product", actions2);
 
 
-
         List<String> ret = Lists.newArrayList();
-        for(String tmp : map.get(reason)){
+        for (String tmp : map.get(reason)) {
             ret.add(tmp);
         }
         return ret;

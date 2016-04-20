@@ -23,9 +23,9 @@ public class MsgNotifyInfoServiceImpl implements IMsgNotifyInfoService {
     MsgNotifyMapper msgNotifyMapper;
 
     @Override
-    public Long insertSelective( MsgNotify msgNotify){
+    public Long insertSelective(MsgNotify msgNotify) {
 
-        msgNotify.setId( IdGen.gen() );
+        msgNotify.setId(IdGen.gen());
         msgNotify.setCreateTime(DateTime.now().toDate());
         msgNotify.setUpdateTime(DateTime.now().toDate());
 
@@ -37,13 +37,13 @@ public class MsgNotifyInfoServiceImpl implements IMsgNotifyInfoService {
     }
 
     @Override
-    public List<MsgNotify> selectNewByType(Integer type, Date createTime){
-        return msgNotifyMapper.selectNewByType(type,createTime);
+    public List<MsgNotify> selectNewByType(Integer type, Date createTime) {
+        return msgNotifyMapper.selectNewByType(type, createTime);
     }
 
     @Override
     public List<MsgNotify> selectSubNotifyAfter(Long target, String targetType, String action, Date createTime) {
-        return msgNotifyMapper.selectSubNotifyAfter(target,targetType,action,createTime);
+        return msgNotifyMapper.selectSubNotifyAfter(target, targetType, action, createTime);
     }
 
 

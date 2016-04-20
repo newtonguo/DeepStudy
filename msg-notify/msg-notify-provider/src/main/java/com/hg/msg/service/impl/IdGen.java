@@ -7,7 +7,7 @@ import org.joda.time.DateTime;
  */
 public class IdGen {
 
-    public static Long gen(){
+    public static Long gen() {
         return DateTime.now().getMillis();
     }
 }

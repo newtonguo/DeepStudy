@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class TestController {
 
-	@Autowired
-	private IMsgNotifyService msgNotifyService;
+    @Autowired
+    private IMsgNotifyService msgNotifyService;
 
-	@RequestMapping("/testok")
-	@ResponseBody
-	public String hello(){
-		msgNotifyService.getUserNotify(1L);
-		return "hello";
-	}
+    @RequestMapping("/testok")
+    @ResponseBody
+    public String hello() {
+        msgNotifyService.getUserNotify(1L);
+        return "hello";
+    }
 
 }
