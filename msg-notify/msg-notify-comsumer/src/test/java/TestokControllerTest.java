@@ -1,4 +1,4 @@
-import com.hg.Application;
+import com.hg.ConsumerApplication;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @WebAppConfiguration
 @EnableWebMvc
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
+@SpringApplicationConfiguration(classes = ConsumerApplication.class)
 public class TestokControllerTest {
 
 

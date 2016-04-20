@@ -1,5 +1,5 @@
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.hg.Application;
+import com.hg.ConsumerApplication;
 import com.hg.msg.service.IMsgNotifyService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @EnableWebMvc
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
+@SpringApplicationConfiguration(classes = ConsumerApplication.class)
 public class TrainingRepo {
 
     @Reference

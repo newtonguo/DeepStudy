@@ -2,7 +2,7 @@ package com.hg.msg.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
-import com.hg.msg.Application;
+import com.hg.msg.ProviderApplication;
 import com.hg.msg.entity.MsgUserNotify;
 import com.hg.msg.service.IMsgNotifyService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ import java.util.List;
 
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = {Application.class})
+@SpringApplicationConfiguration(classes = {ProviderApplication.class})
 @WebAppConfiguration
 @EnableAuthorizationServer
 @EnableResourceServer
