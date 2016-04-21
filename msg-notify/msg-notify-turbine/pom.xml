@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zhiyin</groupId>
-    <artifactId>msg-notify-dashboard</artifactId>
+    <artifactId>msg-notify-turbine</artifactId>
     <packaging>war</packaging>
     <name>${project.artifactId}</name>
     <url>http://maven.apache.org</url>

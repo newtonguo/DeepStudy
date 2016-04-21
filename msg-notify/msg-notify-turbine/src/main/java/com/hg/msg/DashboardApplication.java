@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @SpringBootApplication
 @EnableHystrixDashboard
-@Controller
 @EnableTurbine
 public class DashboardApplication {
 

@@ -34,6 +34,7 @@
         <module>msg-notify-comsumer</module>
         <module>msg-notify-register</module>
         <module>msg-notify-dashboard</module>
+        <module>msg-notify-turbine</module>
     </modules>
 
 
