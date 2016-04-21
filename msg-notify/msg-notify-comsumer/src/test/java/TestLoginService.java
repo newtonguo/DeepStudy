@@ -24,7 +24,7 @@ public class TestLoginService {
 
         String ok = msgNotifyService.testok("admin");
 
-        System.out.println("msgNotifyService return:" + ok );
+        System.out.println("msgNotifyService return:" + ok);
 
     }
 

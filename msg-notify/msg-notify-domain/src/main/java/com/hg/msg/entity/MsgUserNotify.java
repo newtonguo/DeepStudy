@@ -1,10 +1,9 @@
 package com.hg.msg.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 
-public class MsgUserNotify extends BaseEntity  {
+public class MsgUserNotify extends BaseEntity {
     private Long id;
 
     private Integer isRead;

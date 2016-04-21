@@ -38,7 +38,7 @@ public class TestokControllerTest {
     }
 
     @Test
-    public void testSayHelloWorld() throws Exception{
+    public void testSayHelloWorld() throws Exception {
         ResultActions ret = this.mockMvc.perform(get("/testok"));
         String retStr = ret.andReturn().getResponse().getContentAsString();
 

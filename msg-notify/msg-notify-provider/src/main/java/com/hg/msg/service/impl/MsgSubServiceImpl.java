@@ -19,17 +19,17 @@ public class MsgSubServiceImpl implements IMsgSubService {
 
     @Override
     public MsgSubscription selectUserSub(Long target, String targetType, String action, Long userId) {
-        return  msgSubscriptionMapper.selectUserSub(target,targetType,action,userId);
+        return msgSubscriptionMapper.selectUserSub(target, targetType, action, userId);
     }
 
 
     @Override
-    public Long insertSelective(Long target,String targetType,String action,Long userId) {
+    public Long insertSelective(Long target, String targetType, String action, Long userId) {
 
         MsgSubscription sub = msgSubscriptionMapper.selectUserSub(target, targetType, action, userId);
 
         // 如果已经订阅，进行更新
-        if(sub != null){
+        if (sub != null) {
             sub.setUpdateTime(DateTime.now().toDate());
             return sub.getId();
         }
@@ -39,8 +39,8 @@ public class MsgSubServiceImpl implements IMsgSubService {
         sub = new MsgSubscription();
 
 
-        sub.setId( IdGen.gen() );
-        sub.setUpdateTime( DateTime.now().toDate() );
+        sub.setId(IdGen.gen());
+        sub.setUpdateTime(DateTime.now().toDate());
         sub.setCreateTime(DateTime.now().toDate());
 
         sub.setDelStatus(0);
@@ -60,7 +60,7 @@ public class MsgSubServiceImpl implements IMsgSubService {
 
     @Override
     public int deleteTargetSub(Long userId, Long target, String targetType) {
-        return msgSubscriptionMapper.deleteTargetSub(userId,target,targetType);
+        return msgSubscriptionMapper.deleteTargetSub(userId, target, targetType);
     }
 
 }

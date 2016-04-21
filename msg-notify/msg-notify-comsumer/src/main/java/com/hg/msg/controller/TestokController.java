@@ -19,16 +19,16 @@ import java.util.List;
 @RestController
 public class TestokController {
 
-//    @Resource
+    //    @Resource
     @Reference
     private IMsgNotifyService msgNotifyService;
 
-    @RequestMapping(method = RequestMethod.GET, path = "/testok" ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(method = RequestMethod.GET, path = "/testok", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public String greeting() {
         log.info("test ok.");
         List<MsgUserNotify> tmp = msgNotifyService.getUserNotify(112L);
         log.info(JSON.toJSONString(tmp));
-       return msgNotifyService.testok("admin");
+        return msgNotifyService.testok("admin");
     }
 
 

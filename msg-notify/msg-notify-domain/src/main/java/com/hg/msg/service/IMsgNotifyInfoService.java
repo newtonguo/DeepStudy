@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface IMsgNotifyInfoService {
 
-    public Long insertSelective(MsgNotify msgNotify) ;
+    public Long insertSelective(MsgNotify msgNotify);
 
     List<MsgNotify> selectNewByType(Integer type, Date createTime);
 

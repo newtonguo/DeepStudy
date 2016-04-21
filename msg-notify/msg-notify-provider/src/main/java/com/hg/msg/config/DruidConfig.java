@@ -1,4 +1,5 @@
 package com.hg.msg.config;
+
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
@@ -23,10 +24,10 @@ public class DruidConfig {
         //reg.addInitParameter("deny","");// IP黑名单 (存在共同时，deny优先于allow)
         reg.addInitParameter("loginUsername", "admin");
         reg.addInitParameter("loginPassword", "admin");
-        reg.addInitParameter("restEnable","false");// 禁用HTML页面上的“Reset All”功能
+        reg.addInitParameter("restEnable", "false");// 禁用HTML页面上的“Reset All”功能
         return reg;
     }
- 
+
     @Bean
     public FilterRegistrationBean filterRegistrationBean() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();

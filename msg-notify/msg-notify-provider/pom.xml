@@ -115,8 +115,6 @@
         <!-- end cloud -->
 
 
-
-
         <!-- LOG4J for JDBC -->
         <dependency>
             <groupId>org.lazyluke</groupId>
@@ -139,7 +137,6 @@
             <artifactId>druid</artifactId>
             <version>${druid.version}</version>
         </dependency>
-
 
 
         <!-- start mybatis-->
@@ -183,7 +180,6 @@
         </dependency>
 
 
-
         <!-- swagger -->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -211,7 +207,6 @@
         </dependency>
 
 
-
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
@@ -235,7 +230,7 @@
 
     <build>
         <!--<filters>-->
-            <!--<filter>profile-${env}.properties</filter>-->
+        <!--<filter>profile-${env}.properties</filter>-->
         <!--</filters>-->
         <plugins>
             <plugin>

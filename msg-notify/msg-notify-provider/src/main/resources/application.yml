@@ -53,7 +53,7 @@ eureka:
 # HTTP Server
 server:
   port: 8081   # HTTP (Tomcat) port
-  context-path: /msg-provider
+#  context-path: /msg-provider
 
 
 ## acutor 设置
