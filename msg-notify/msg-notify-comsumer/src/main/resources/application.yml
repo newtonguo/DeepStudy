@@ -17,13 +17,17 @@ error:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:1111/eureka/
-
+      defaultZone: http://localhost:8761/eureka/
+#eureka:
+#  instance:
+#    statusPageUrl: https://${eureka.hostname}/info
+#    healthCheckUrl: https://${eureka.hostname}/health
+#    homePageUrl: https://${eureka.hostname}/
 
 # HTTP Server
 server:
-  port: 8080   # HTTP (Tomcat) port
-  context-path: /msg-comsumer
+  port: 8088   # HTTP (Tomcat) port
+#  context-path: /msg-comsumer
 
 
 ## acutor 设置

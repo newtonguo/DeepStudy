@@ -2,10 +2,23 @@ server:
   port: 8989
 
 
+InstanceDiscovery:
+#    impl: com.netflix.turbine.discovery.FileBasedInstanceDiscovery
+  impl: com.netflix.turbine.discovery.ConfigPropertyBasedDiscovery
+
 turbine:
+  appConfig: myFirstHystrixCluster
+#  clusterNameExpression: new String("default")
   aggregator:
-    clusterConfig: SAMPLE-HYSTRIX-AGGREGATE
-  appConfig: SAMPLE-HYSTRIX-AGGREGATE
+    clusterConfig: myFirstHystrixCluster
+
+  instanceUrlSuffix:
+    myFirstHystrixCluster: /hystrix.stream
+
+  ConfigPropertyBasedDiscovery:
+    myFirstHystrixCluster:
+      instances: localhost:8989
+
 
 logging:
-  level: INFO
+  level: DEBUG

@@ -16,7 +16,10 @@ public class HelloWorldCommandTime extends HystrixCommand<String> {
     public HelloWorldCommandTime(String name) {
         super(HystrixCommand.Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("HelloWorldGroup"))
                 /* 配置依赖超时时间,500毫秒*/
-                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter().withExecutionIsolationThreadTimeoutInMilliseconds(5000)));
+                .andCommandPropertiesDefaults(
+                        HystrixCommandProperties.Setter()
+                                .withRequestLogEnabled(true)
+                        .withExecutionIsolationThreadTimeoutInMilliseconds(5000)));
         this.name = name;
     }
     @Override

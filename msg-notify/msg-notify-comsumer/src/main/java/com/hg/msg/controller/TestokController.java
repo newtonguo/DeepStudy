@@ -4,7 +4,11 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.hg.msg.entity.MsgUserNotify;
 import com.hg.msg.service.IMsgNotifyService;
+import com.netflix.hystrix.HystrixCommand;
+import com.netflix.hystrix.HystrixCommandGroupKey;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,16 +23,29 @@ import java.util.List;
 @RestController
 public class TestokController {
 
-    //    @Resource
-    @Reference
-    private IMsgNotifyService msgNotifyService;
 
     @RequestMapping(method = RequestMethod.GET, path = "/testok", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public String greeting() {
-        log.info("test ok.");
-        List<MsgUserNotify> tmp = msgNotifyService.getUserNotify(112L);
-        log.info(JSON.toJSONString(tmp));
-        return msgNotifyService.testok("admin");
+        HelloWorldCommand helloWorldCommand = new HelloWorldCommand("admin2");
+        return helloWorldCommand.execute();
+    }
+
+     class HelloWorldCommand extends HystrixCommand<String> {
+
+          final Logger logger = LoggerFactory.getLogger(HelloWorldCommand.class);
+
+        private final String name;
+
+        public HelloWorldCommand(String name) {
+            super(HystrixCommandGroupKey.Factory.asKey("default"));
+            this.name = name;
+        }
+
+        @Override
+        protected String run() throws Exception {
+            logger.info("HelloWorld Command Invoked");
+            return "Hello " + name;
+        }
     }
 
 

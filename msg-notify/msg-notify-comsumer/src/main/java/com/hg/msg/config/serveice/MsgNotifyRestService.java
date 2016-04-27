@@ -1,6 +1,7 @@
 package com.hg.msg.config.serveice;
 
 import com.hg.msg.entity.MsgUserNotify;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,8 @@ public class MsgNotifyRestService {
                 + restTemplate.getRequestFactory());
     }
 
+
+    @HystrixCommand
     public List<MsgUserNotify> getUserNotify(Long uid) {
 
         log.info("byOwnerContains() invoked:  for " + uid);

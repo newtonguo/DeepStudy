@@ -20,6 +20,7 @@ public class ComsumerController {
     @Autowired
     protected MsgNotifyRestService msgNotifyRestService;
 
+
     @RequestMapping("/getUserNotify")
     public String greeting() {
         log.info("test ok.");
