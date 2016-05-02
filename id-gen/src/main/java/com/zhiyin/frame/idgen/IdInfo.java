@@ -10,11 +10,11 @@ import lombok.Setter;
 @Setter
 public class IdInfo {
 
+    private Long val;
     private Integer realLen;
     private Integer finalLen;
     private String timestamp;
     private String datacenter;
     private String sequence;
-
 
 }
