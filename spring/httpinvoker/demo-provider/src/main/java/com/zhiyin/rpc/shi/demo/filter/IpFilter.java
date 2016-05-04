@@ -1,74 +1,115 @@
 package com.zhiyin.rpc.shi.demo.filter;
 
-import lombok.extern.slf4j.Slf4j;
+import com.google.common.base.Strings;
 import org.apache.commons.net.util.SubnetUtils;
-import org.springframework.web.filter.RequestContextFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
-@Slf4j
+
 @WebFilter
-public class IpFilter extends RequestContextFilter {
-    // Get the user's real IP address, accounting for Cloudflare and Heroku proxying.
-    public static String getForwardedIp(HttpServletRequest request) {
-        String ip = null;
+public class IpFilter implements Filter {
 
-        // Believe the Cloudflare header only if the last IP was from Cloudflare.
-        if (ipIsInList(getForwardedIp(request, 1), cloudflareIps))
-            ip = request.getHeader("CF-Connecting-IP");
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-        // If there is no Cloudflare header, return the last known reliable IP.
-        if (ip == null) ip = getForwardedIp(request, 1);
-        return ip;
+    private FilterConfig config;
+
+    private String IpFilterFile = "ipfilter.properties";
+
+    public void init(FilterConfig filterConfig) {
+        this.config = filterConfig;
+        // optionally you can get regex from init parameter overwriting the class' private variable
+        String tmpFile = config.getInitParameter("IpFilterFile");
+
+        if(tmpFile == null){
+            System.out.println("ip filter file is null, user default file:"+IpFilterFile);
+        }else{
+            IpFilterFile = tmpFile;
+            System.out.println("ip filter file:"+IpFilterFile);
+        }
+
+
+        InputStream input = IpFilter.class
+                .getResourceAsStream("/" + IpFilterFile);
+
+        Properties prop = new Properties();
+        try {
+
+            if( input != null ){
+                prop.load(input);
+            }else{
+                log.error("ip filter file not found, file name:{}",IpFilterFile);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            log.error("read ip filter file error. ",e);
+        }
+
+        // 黑名单
+        String blacklistIpsStr = prop.getProperty("blacklistIps");
+        if(!Strings.isNullOrEmpty(blacklistIpsStr)){
+            blacklistIps = blacklistIpsStr.split(",");
+            System.out.println("filter ip is:"+ blacklistIpsStr);
+        }
+
+        // 白名单
+        String whitelistIpsStr = prop.getProperty("whitelistIps");
+        if(!Strings.isNullOrEmpty(whitelistIpsStr)){
+            whitelistIps = whitelistIpsStr.split(",");
+            System.out.println("filter ip is:"+ whitelistIpsStr);
+        }
+
     }
 
-    // Get the n-th latest IP from the X-Forwarded-For header.
-    public static String getForwardedIp(HttpServletRequest request, int degree) {
-        if (degree == 0) {
-            return request.getRemoteAddr();
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+
+        if (request instanceof HttpServletRequest ){
+            HttpServletRequest httpReq = (HttpServletRequest) request;
+            if (response instanceof HttpServletResponse){
+                HttpServletResponse httpResp = (HttpServletResponse) response;
+                doFilterInternal(httpReq,httpResp,chain);
+                return;
+            }
         }
 
-        // Believe the X-Forwarded-For header only if it came from a trusted internal IP.
-        if (!ipIsInList(request.getRemoteAddr(), internalIps)) {
-            System.err.println("Last IP address was " + request.getRemoteAddr() + ", which is not a trusted internal IP.");
-            return null;
-        }
-
-        // Return null if the X-Forwarded-For header was not found.
-        String header = request.getHeader("X-Forwarded-For");
-        if (header == null) return null;
-
-        String[] ips = header.split(",");
-        if (degree > ips.length) return null;
-        return ips[ips.length - degree].trim();
-    }
-
-    // Check if the IP falls within any of the CIDR IP ranges in the list.
-    public static boolean ipIsInList(String ip, String[] list) {
-        if (ip == null) return false;
-
-        int failed = 0;
-        for (String listIp : list) {
-            SubnetUtils subnet = new SubnetUtils(listIp);
-            subnet.setInclusiveHostCount(true);
-
-            if (!subnet.getInfo().isInRange(ip))
-                failed++;
-        }
-
-        return failed < list.length;
+        chain.doFilter(request,response);
+        return;
     }
 
     @Override
+    public void destroy() {
+
+    }
+
+
+
+    // Check if the IP falls within any of the CIDR IP ranges in the list.
+//    public static boolean ipIsInList(String ip, String[] list) {
+//        if (ip == null) return false;
+//
+//        int failed = 0;
+//        for (String listIp : list) {
+//            SubnetUtils subnet = new SubnetUtils(listIp);
+//            subnet.setInclusiveHostCount(true);
+//            if (!subnet.getInfo().isInRange(ip))
+//                failed++;
+//        }
+//
+//        return failed < list.length;
+//    }
+
+
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        log.info("ip filter.");
-
+        // httpinvoker contenttype
         if(!"application/x-java-serialized-object".equals(request.getContentType()) ){
             filterChain.doFilter(request, response);
             return;
@@ -80,31 +121,51 @@ public class IpFilter extends RequestContextFilter {
             return;
         }
 
+
+        boolean inwhite = false;
+
+        String realIp = request.getRemoteAddr();
+        for ( String ip : whitelistIps ) {
+            SubnetUtils subnet = new SubnetUtils(ip);
+            subnet.setInclusiveHostCount(true);
+            if (!subnet.getInfo().isInRange(realIp)) {
+                inwhite = true;
+            }
+        }
+
         boolean allowed = true;
+        if ( !inwhite ) {
 
-        // Refuse connections that circumvented Cloudflare.
-        // Checking the latest IP from the X-Forwarded-For header on Heroku, since request.getRemoteAddr() seems to return an IP in Heroku's internal network.
-        if (!ipIsInList(request.getRemoteAddr(), internalIps) || (getForwardedIp(request, 1) != null && !ipIsInList(getForwardedIp(request, 1), bypassCloudflareIps) && !ipIsInList(getForwardedIp(request, 1), cloudflareIps)))
-            allowed = false;
-
-        if (allowed) {
-            // Check if the IP before Cloudflare is blacklisted.
-            String proxiedIp = getForwardedIp(request, 2);
-
-            if (proxiedIp != null) {
+            if (realIp != null) {
                 for (String ip : blacklistIps) {
                     SubnetUtils subnet = new SubnetUtils(ip);
                     subnet.setInclusiveHostCount(true);
-                    if (!subnet.getInfo().isInRange(proxiedIp)) {
+                    if (subnet.getInfo().isInRange( realIp)) {
                         allowed = false;
+                        System.out.println(ip + "is not allowed.");
                         break;
                     }
                 }
             }
         }
 
+
+//        basePath:http://localhost:8080/test/
+//        getContextPath:/test
+//        getServletPath:/test.jsp
+//        getRequestURI:/test/test.jsp
+//        getRequestURL:http://localhost:8080/test/test.jsp
+//        getRealPath:D:\Tomcat 6.0\webapps\test\
+//        getServletContext().getRealPath:D:\Tomcat 6.0\webapps\test\
+//        getQueryString:p=fuck
+        String path = request.getServletPath();
+//        String url = request.getRequestURI();
+        
+        stat(realIp,path,allowed);
+
+
         // If the request failed one of the tests, send an error response and do not continue processing the request.
-        if (!allowed) {
+        if ( !allowed ) {
             response.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
             return;
         }
@@ -113,42 +174,16 @@ public class IpFilter extends RequestContextFilter {
         filterChain.doFilter(request, response);
     }
 
-    public static final String[] cloudflareIps = {
-//            "204.93.240.0/24",
-//            "204.93.177.0/24",
-//            "199.27.128.0/21",
-//            "173.245.48.0/20",
-//            "103.21.244.0/22",
-//            "103.22.200.0/22",
-//            "103.31.4.0/22",
-//            "141.101.64.0/18",
-//            "108.162.192.0/18",
-//            "190.93.240.0/20",
-//            "188.114.96.0/20",
-//            "197.234.240.0/22",
-//            "198.41.128.0/17",
-//            "162.158.0.0/15",
+    public void stat(String ip,String path ,boolean allow){
+
+        System.out.println( ip + " " + path + " " + allow );
+
+    }
+
+
+    public static  String[] blacklistIps = {
     };
 
-    public static final String[] bypassCloudflareIps = {
-            // UptimeRobot IPs
-//            "74.86.158.106/32",
-//            "74.86.158.107/32",
-//            "74.86.179.130/32",
-//            "74.86.179.131/32",
-//            "46.137.190.132/32",
-//            "122.248.234.23/32",
-    };
-
-    public static final String[] internalIps = {
-            // Heroku internal IPs
-//            "10.0.0.0/8",
-//            "172.16.0.0/12",
-//            "192.168.0.0/16",
-//            "127.0.0.1/32",
-    };
-
-    public static final String[] blacklistIps = {
-            "172.17.0.0/8",
+    public static  String[] whitelistIps = {
     };
 }
