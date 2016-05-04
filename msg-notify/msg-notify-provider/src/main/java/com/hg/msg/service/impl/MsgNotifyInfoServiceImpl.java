@@ -18,7 +18,6 @@ import java.util.List;
 @Service
 public class MsgNotifyInfoServiceImpl implements IMsgNotifyInfoService {
 
-
     @Autowired
     MsgNotifyMapper msgNotifyMapper;
 

@@ -4,13 +4,13 @@ import java.lang.reflect.Method;
 
 public class ControllerAndMehod {
 
-	public BaseController controller;
-	
-	public Method method;
+    public BaseController controller;
 
-	public ControllerAndMehod(BaseController controller, Method method) {
-		this.controller = controller;
-		this.method = method;
-	}
-	
+    public Method method;
+
+    public ControllerAndMehod(BaseController controller, Method method) {
+        this.controller = controller;
+        this.method = method;
+    }
+
 }

@@ -15,6 +15,20 @@
 
     <dependencies>
 
+        <!-- dubbo cache -->
+        <dependency>
+            <groupId>net.dubboclub</groupId>
+            <artifactId>cache</artifactId>
+            <version>0.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.5.2</version>
+        </dependency>
+        <!-- end dubbo cache -->
+
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -23,7 +37,6 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.7</version>
         </dependency>
 
         <!--业务-->

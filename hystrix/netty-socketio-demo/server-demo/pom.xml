@@ -16,9 +16,9 @@
 
     <dependencies>
         <!--<dependency>-->
-            <!--<groupId>com.corundumstudio.socketio</groupId>-->
-            <!--<artifactId>netty-socketio</artifactId>-->
-            <!--<version>1.7.7</version>-->
+        <!--<groupId>com.corundumstudio.socketio</groupId>-->
+        <!--<artifactId>netty-socketio</artifactId>-->
+        <!--<version>1.7.7</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>io.netty</groupId>

@@ -1,8 +1,5 @@
 package com.corundumstudio.socketio.demo;
 
-import com.corundumstudio.socketio.listener.*;
-import com.corundumstudio.socketio.*;
-
 public class ChatLauncher {
 
     public static void main(String[] args) throws InterruptedException {
