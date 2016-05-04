@@ -8,7 +8,7 @@ package org.predictor.idgenerator;
  * To change this template use File | Settings | File Templates.
  */
 public class GetHardwareIdFailedException extends Exception {
-    GetHardwareIdFailedException(String reason){
+    public GetHardwareIdFailedException(String reason){
         super(reason);
     }
     GetHardwareIdFailedException(Exception e){
