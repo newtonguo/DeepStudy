@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-monitor-springboot" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-monitor-springboot" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-quartz" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-quartz" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-jobclient-spring-annotation" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-jobclient-spring-annotation" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-jobtracker-java" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-jobtracker-java" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-jobtracker-springboot" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-jobtracker-springboot" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-jobtracker-spring-annotaion" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-jobtracker-spring-annotaion" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-jobtracker-spring-xml" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-jobtracker-spring-xml" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-tasktracker-java" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-tasktracker-java" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-tasktarcker-springboot" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-tasktarcker-springboot" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-tasktracker-spring-annotation-shard" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-tasktracker-spring-annotation-shard" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-tasktracker-spring-xml" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-tasktracker-spring-xml" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-tasktracker-spring-annotation" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-tasktracker-spring-annotation" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-tasktracker-spring-xml-shard" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-tasktracker-spring-xml-shard" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-tasktracker-tester" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-tasktracker-tester" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-tasktracker-springboot-shard" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-tasktracker-springboot-shard" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-jobclient-java" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-jobclient-java" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-example-jobclient-spring-xml" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-jobclient-spring-xml" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.7">
+      <module name="lts-example-jobclient" target="1.6" />
+      <module name="lts-example-jobclient-java" target="1.6" />
+      <module name="lts-example-jobclient-spring-annotation" target="1.6" />
+      <module name="lts-example-jobclient-spring-xml" target="1.6" />
+      <module name="lts-example-jobtracker" target="1.6" />
+      <module name="lts-example-jobtracker-java" target="1.6" />
+      <module name="lts-example-jobtracker-spring-annotaion" target="1.6" />
+      <module name="lts-example-jobtracker-spring-xml" target="1.6" />
+      <module name="lts-example-jobtracker-springboot" target="1.6" />
+      <module name="lts-example-monitor" target="1.6" />
+      <module name="lts-example-monitor-springboot" target="1.6" />
+      <module name="lts-example-quartz" target="1.6" />
+      <module name="lts-example-tasktarcker-springboot" target="1.6" />
+      <module name="lts-example-tasktracker" target="1.6" />
+      <module name="lts-example-tasktracker-java" target="1.6" />
+      <module name="lts-example-tasktracker-spring-annotation" target="1.6" />
+      <module name="lts-example-tasktracker-spring-annotation-shard" target="1.6" />
+      <module name="lts-example-tasktracker-spring-xml" target="1.6" />
+      <module name="lts-example-tasktracker-spring-xml-shard" target="1.6" />
+      <module name="lts-example-tasktracker-springboot-shard" target="1.6" />
+      <module name="lts-example-tasktracker-tester" target="1.6" />
+      <module name="lts-examples" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/lts-example-jobclient/lts-example-jobclient.iml" filepath="$PROJECT_DIR$/lts-example-jobclient/lts-example-jobclient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-jobclient/lts-example-jobclient-java/lts-example-jobclient-java.iml" filepath="$PROJECT_DIR$/lts-example-jobclient/lts-example-jobclient-java/lts-example-jobclient-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-jobclient/lts-example-jobclient-spring-annotation/lts-example-jobclient-spring-annotation.iml" filepath="$PROJECT_DIR$/lts-example-jobclient/lts-example-jobclient-spring-annotation/lts-example-jobclient-spring-annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-jobclient/lts-example-jobclient-spring-xml/lts-example-jobclient-spring-xml.iml" filepath="$PROJECT_DIR$/lts-example-jobclient/lts-example-jobclient-spring-xml/lts-example-jobclient-spring-xml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-jobtracker/lts-example-jobtracker.iml" filepath="$PROJECT_DIR$/lts-example-jobtracker/lts-example-jobtracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-jobtracker/lts-example-jobtracker-java/lts-example-jobtracker-java.iml" filepath="$PROJECT_DIR$/lts-example-jobtracker/lts-example-jobtracker-java/lts-example-jobtracker-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-jobtracker/lts-example-jobtracker-spring-annotaion/lts-example-jobtracker-spring-annotaion.iml" filepath="$PROJECT_DIR$/lts-example-jobtracker/lts-example-jobtracker-spring-annotaion/lts-example-jobtracker-spring-annotaion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-jobtracker/lts-example-jobtracker-spring-xml/lts-example-jobtracker-spring-xml.iml" filepath="$PROJECT_DIR$/lts-example-jobtracker/lts-example-jobtracker-spring-xml/lts-example-jobtracker-spring-xml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-jobtracker/lts-example-jobtracker-springboot/lts-example-jobtracker-springboot.iml" filepath="$PROJECT_DIR$/lts-example-jobtracker/lts-example-jobtracker-springboot/lts-example-jobtracker-springboot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-monitor/lts-example-monitor.iml" filepath="$PROJECT_DIR$/lts-example-monitor/lts-example-monitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-monitor/lts-example-monitor-springboot/lts-example-monitor-springboot.iml" filepath="$PROJECT_DIR$/lts-example-monitor/lts-example-monitor-springboot/lts-example-monitor-springboot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-quartz/lts-example-quartz.iml" filepath="$PROJECT_DIR$/lts-example-quartz/lts-example-quartz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktarcker-springboot/lts-example-tasktarcker-springboot.iml" filepath="$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktarcker-springboot/lts-example-tasktarcker-springboot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker.iml" filepath="$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker-java/lts-example-tasktracker-java.iml" filepath="$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker-java/lts-example-tasktracker-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker-spring-annotation/lts-example-tasktracker-spring-annotation.iml" filepath="$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker-spring-annotation/lts-example-tasktracker-spring-annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker-spring-annotation-shard/lts-example-tasktracker-spring-annotation-shard.iml" filepath="$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker-spring-annotation-shard/lts-example-tasktracker-spring-annotation-shard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker-spring-xml/lts-example-tasktracker-spring-xml.iml" filepath="$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker-spring-xml/lts-example-tasktracker-spring-xml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker-spring-xml-shard/lts-example-tasktracker-spring-xml-shard.iml" filepath="$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker-spring-xml-shard/lts-example-tasktracker-spring-xml-shard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker-springboot-shard/lts-example-tasktracker-springboot-shard.iml" filepath="$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker-springboot-shard/lts-example-tasktracker-springboot-shard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker-tester/lts-example-tasktracker-tester.iml" filepath="$PROJECT_DIR$/lts-example-tasktracker/lts-example-tasktracker-tester/lts-example-tasktracker-tester.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lts-examples.iml" filepath="$PROJECT_DIR$/lts-examples.iml" />
+    </modules>
+  </component>
+</project>

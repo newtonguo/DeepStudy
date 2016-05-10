@@ -49,5 +49,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.7" level="project" />
+    <orderEntry type="library" name="Maven: com.github.ltsopensource:lts-jobtracker:1.6.8-beta1" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-all:4.0.20.Final" level="project" />
   </component>
 </module>

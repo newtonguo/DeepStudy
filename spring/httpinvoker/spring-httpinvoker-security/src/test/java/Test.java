@@ -13,7 +13,6 @@ public class Test {
         double y1 = 1;
         double y2 = 19;
 
-
         int qu = 4;
 
          double recWidth = x2 -x1 ;
