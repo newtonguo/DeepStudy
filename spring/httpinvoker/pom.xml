@@ -30,7 +30,6 @@
 
 
     <modules>
-        <module>spring-httpinvoker-security</module>
         <module>demo-provider</module>
         <module>demo-consumer</module>
         <module>annno</module>
