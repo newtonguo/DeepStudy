@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zhiyin</groupId>
     <artifactId>msg-notify-register</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <url>http://maven.apache.org</url>
 
@@ -236,19 +236,12 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>springloaded</artifactId>
-                        <version>1.2.5.RELEASE</version>
-                    </dependency>
-                </dependencies>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-compiler-plugin</artifactId>-->
 
-            </plugin>
+            <!--</plugin>-->
         </plugins>
     </build>
 

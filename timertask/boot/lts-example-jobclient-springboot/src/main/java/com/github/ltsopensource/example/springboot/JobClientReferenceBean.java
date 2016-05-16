@@ -30,7 +30,7 @@ public class JobClientReferenceBean implements InitializingBean {
         job.setTaskTrackerNodeGroup("test_trade_TaskTracker");
         job.setNeedFeedback(true);
         job.setReplaceOnExist(true);        // 当任务队列中存在这个任务的时候，是否替换更新
-//        job.setCronExpression("0 0/1 * * * ?");
+        job.setCronExpression("0/5 * * * * ?");
 //        job.setTriggerTime(DateUtils.addDay(new Date(), 1));
         Response response = jobClient.submitJob(job);
         System.out.println(response);

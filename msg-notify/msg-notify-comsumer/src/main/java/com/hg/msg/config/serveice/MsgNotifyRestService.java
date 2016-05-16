@@ -46,9 +46,10 @@ public class MsgNotifyRestService {
         List<MsgUserNotify> accounts = null;
 
 
+
         try {
             accounts = restTemplate.getForObject(serviceUrl
-                    + "/notify/{uid}", List.class, uid);
+                    + "/msg-provider/notify/{uid}", List.class, uid);
 //            restTemplate.
         } catch (HttpClientErrorException e) { // 404
             // Nothing found
