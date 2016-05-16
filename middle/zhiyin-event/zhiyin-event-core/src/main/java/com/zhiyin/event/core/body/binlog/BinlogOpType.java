@@ -9,7 +9,9 @@ package com.zhiyin.event.core.body.binlog;
 public enum BinlogOpType {
     INSERT(1, "insert"),
     UPDATE(2, "update"),
-    DELETE(3, "delete");
+    DELETE(3, "delete"),
+    SELECT(4, "select");
+
     
     
     private final int index;
@@ -29,5 +31,17 @@ public enum BinlogOpType {
 	}
 
 
-    
+    public boolean delete(){
+        if(this.index == 3){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean updateOrInsert(){
+        if(this.index == 1 || this.index ==2){
+            return true;
+        }
+        return false;
+    }
 }
