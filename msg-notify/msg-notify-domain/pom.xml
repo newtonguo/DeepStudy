@@ -29,6 +29,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>4.1.1</version>
+        </dependency>
 
     </dependencies>
 

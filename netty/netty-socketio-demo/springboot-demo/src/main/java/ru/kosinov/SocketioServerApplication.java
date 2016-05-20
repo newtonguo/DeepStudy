@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan("ru.kosinov")
 @SpringBootApplication
-public class NettySocketioSpringApplication {
+public class SocketioServerApplication {
 
     @Value("${wss.server.host}")
     private String host;
@@ -31,6 +33,8 @@ public class NettySocketioSpringApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(NettySocketioSpringApplication.class, args);
+        SpringApplication.run(SocketioServerApplication.class, args);
     }
+
+
 }

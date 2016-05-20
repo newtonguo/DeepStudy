@@ -15,6 +15,7 @@
         <module>lts-example-tasktarcker-springboot</module>
         <module>lts-example-jobclient-springboot</module>
         <module>lts-example-monitor-springboot</module>
+        <module>zk-embed</module>
         <!--<module>lts-example-quartz-springboot</module>-->
     </modules>
 

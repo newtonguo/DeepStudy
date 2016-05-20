@@ -1,0 +1,32 @@
+# suppress inspection "UnusedProperty" for whole file
+
+
+#logging.level.org.springframework.boot.autoconfigure.security.AuthenticationManagerConfiguration=INFO
+
+management:
+  port: 8081
+  security:
+    enabled: false
+
+security:
+  basic:
+    enabled: false
+  user:
+    name: admin
+    password: admin
+
+server:
+  port: 8080
+
+
+spring:
+  application:
+    name: jmeter-demoserver
+  boot:
+    admin:
+      url: http://localhost:10008
+
+
+#endpoints:
+#  health:
+#    path: /health

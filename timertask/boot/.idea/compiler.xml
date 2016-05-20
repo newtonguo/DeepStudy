@@ -45,13 +45,29 @@
         <processorPath useClasspath="true" />
         <module name="lts-example-tasktarcker-springboot" />
       </profile>
+      <profile default="false" name="Annotation profile for lts-example-jobclient-springboot (1)" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-example-jobclient-springboot (1)" />
+      </profile>
+      <profile default="false" name="Annotation profile for lts-zk-embed" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lts-zk-embed" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.7">
       <module name="lts-example-jobclient-springboot" target="1.6" />
+      <module name="lts-example-jobclient-springboot (1)" target="1.6" />
       <module name="lts-example-jobtracker-springboot" target="1.6" />
       <module name="lts-example-monitor-springboot" target="1.6" />
       <module name="lts-example-tasktarcker-springboot" target="1.6" />
       <module name="lts-examples" target="1.6" />
+      <module name="lts-zk-embed" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>
