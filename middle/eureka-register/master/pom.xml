@@ -80,7 +80,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -94,17 +94,16 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.2.5.RELEASE</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>repackage</goal>
                         </goals>
-                        <configuration>
-                            <!--非必填项，即在生成的jar包名称后面追加该分类名称-->
-                            <classifier>boot</classifier>
-                            <mainClass>cn.qlt.service.UserService</mainClass>
-                        </configuration>
+                        <!--<configuration>-->
+                            <!--&lt;!&ndash;非必填项，即在生成的jar包名称后面追加该分类名称&ndash;&gt;-->
+                            <!--<classifier>boot</classifier>-->
+                            <!--<mainClass>cn.qlt.service.UserService</mainClass>-->
+                        <!--</configuration>-->
                     </execution>
                 </executions>
             </plugin>
