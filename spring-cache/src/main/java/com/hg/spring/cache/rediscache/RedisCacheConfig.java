@@ -88,13 +88,15 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
 	public CacheManager cacheManager() {
 
 		RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate());
-		cacheManager.setDefaultExpiration( 60 * 5 ); // Sets the default expire time
+		cacheManager.setDefaultExpiration( 60 * 1L ); // Sets the default expire time
 													// (in seconds)
 
 
         // 可以对每个cache的超时时间进行设置
         Map<String,Long> expire = Maps.newHashMap();
+
         expire.put("userCache",1*60L);
+//        expire.put("users.userinfo")
         cacheManager.setExpires(expire);
 
 		return cacheManager;
@@ -111,15 +113,19 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
 			public Object generate(Object o, Method method, Object... objects) {
 				StringBuilder sb = new StringBuilder();
 				sb.append(o.getClass().getName());
+				sb.append(".");
 				sb.append(method.getName());
+//                if(objects != null && objects.length > 1){
+//                    sb.append(".");
+//                }
 				for (Object obj : objects) {
-					sb.append(JSON.toJSONString(obj));
+					sb.append(obj);
+//					sb.append(JSON.toJSONString(obj));
 				}
 				return sb.toString();
 			}
 		};
-		
-		
+
 		// 使用参数对象的toString方法作为key，对象必须重写toString方法，否则问题很严重
 		//如果对象没有重写toString方法，每次生成的对象都不一样，cachekey也不一样，起不到缓存的作用。
 //		tmp =  new KeyGenerator() {
@@ -142,7 +148,8 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
 
         // 用于controller的请求缓存
 //		tmp = new ControllerKeyGenerator();
-		
+
+
 		return tmp;
 		
 	}

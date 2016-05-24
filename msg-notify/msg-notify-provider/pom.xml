@@ -15,11 +15,42 @@
 
     <properties>
         <java.version>1.7</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <lombok.version>1.16.8</lombok.version>
+        <fastjson.version>1.2.7</fastjson.version>
+        <slf4j.version>1.7.8</slf4j.version>
+        <logback.version>1.1.2</logback.version>
+        <guava.version>18.0</guava.version>
+        <jackson.version>2.4.4</jackson.version>
+        <fastjson.version>1.2.4</fastjson.version>
+        <aspectj.version>1.8.4</aspectj.version>
+        <metrics.version>3.1.0</metrics.version>
+        <httpclient.version>4.2.1</httpclient.version>
+
+        <springboot.version>1.3.3.RELEASE</springboot.version>
+        <springcloud.version>Angel.SR6</springcloud.version>
+        <springfox.version>2.2.2</springfox.version>
+
+        <mysql.version>5.1.22</mysql.version>
+        <h2.version>1.3.176</h2.version>
         <druid.version>1.0.11</druid.version>
+        <tomcat-jdbc.version>7.0.57</tomcat-jdbc.version>
+        <log4jdbc-remix.version>0.2.7</log4jdbc-remix.version>
+
         <mybatis.version>3.3.0</mybatis.version>
+        <mybatis-spring.version>1.2.3</mybatis-spring.version>
+        <mybatis-generator-core.version>1.3.2</mybatis-generator-core.version>
         <mapper.version>3.3.4</mapper.version>
         <pagehelper.version>4.1.1</pagehelper.version>
+
+        <junit.version>4.12</junit.version>
+        <assertj.version>1.7.0</assertj.version>
+        <mockito.version>1.10.17</mockito.version>
+        <selenium.version>2.44.0</selenium.version>
+        <jetty.version>8.1.16.v20140903</jetty.version>
+        <hamcrest.version>1.3</hamcrest.version>
+
     </properties>
 
     <dependencies>
@@ -45,7 +76,6 @@
             <groupId>com.101tec</groupId>
             <artifactId>zkclient</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.esotericsoftware.kryo</groupId>
             <artifactId>kryo</artifactId>
@@ -56,7 +86,6 @@
             <artifactId>kryo-serializers</artifactId>
             <version>0.26</version>
         </dependency>
-
         <dependency>
             <groupId>de.ruedigermoeller</groupId>
             <artifactId>fst</artifactId>
@@ -65,13 +94,37 @@
         <!-- end dubbo -->
 
 
+        <!-- common -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.8</version>
+            <version>${lombok.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <!-- end common -->
 
 
+
+        <!-- springboot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -84,24 +137,36 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+        </dependency>
+        <!-- end springboot -->
+
 
         <!-- oauth -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
         </dependency>
         <!-- oauth -->
-
-        <!-- 监控-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
 
         <!-- cloud -->
         <dependency>
@@ -114,14 +179,7 @@
         </dependency>
         <!-- end cloud -->
 
-
-        <!-- LOG4J for JDBC -->
-        <dependency>
-            <groupId>org.lazyluke</groupId>
-            <artifactId>log4jdbc-remix</artifactId>
-            <version>0.2.7</version>
-        </dependency>
-
+        <!-- database -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -137,9 +195,14 @@
             <artifactId>druid</artifactId>
             <version>${druid.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.lazyluke</groupId>
+            <artifactId>log4jdbc-remix</artifactId>
+            <version>${log4jdbc-remix.version}</version>
+        </dependency>
+        <!-- end database -->
 
-
-        <!-- start mybatis-->
+        <!--mybatis -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
@@ -148,23 +211,20 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
-            <version>1.2.3</version>
+            <version>${mybatis-spring.version}</version>
         </dependency>
-        <!-- Mybatis Generator -->
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
-            <version>1.3.2</version>
+            <version>${mybatis-generator-core.version}</version>
             <scope>compile</scope>
             <optional>true</optional>
         </dependency>
-        <!--分页插件-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
             <version>${pagehelper.version}</version>
         </dependency>
-        <!--通用Mapper-->
         <dependency>
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper</artifactId>
@@ -173,40 +233,28 @@
         <!-- end mybatis -->
 
 
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.7</version>
-        </dependency>
-
-
         <!-- swagger -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.2.2</version>
+            <version>${springfox.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.2.2</version>
+            <version>${springfox.version}</version>
             <scope>compile</scope>
         </dependency>
         <!-- end swagger -->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <!--<scope>provided</scope>-->
-        </dependency>
+
+        <!-- test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
@@ -217,14 +265,14 @@
             <artifactId>json-path-assert</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <!-- end test -->
 
         <dependency>
             <groupId>cn.dreampie</groupId>
             <artifactId>jfinal-captcha</artifactId>
             <version>0.1</version>
         </dependency>
-
+        <!-- test -->
 
     </dependencies>
 

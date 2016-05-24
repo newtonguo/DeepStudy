@@ -1,66 +1,50 @@
 package com.hg.spring.cache.rediscache.entity;
-
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
+@Table(name="cache_test_user_info")
 public class User implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	public Integer id;
-	public String name;
-	public String password;
 
-	
-	public String random;
-	
+	@Id
+	@GeneratedValue
+	private Long id;
 
+	@Column(nullable = false)
+	private String name;
 
+	@Column(nullable = false)
+	private Integer age;
 
-	public String getRandom() {
-		return random;
-	}
-
-	public void setRandom(String random) {
-		this.random = random;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	// 这个需要，不然在实体绑定的时候出错
 	public User(){}
-	
-	public User(Integer id, String name, String password) {
-		super();
-		this.id = id;
+
+	public User(String name, Integer age) {
 		this.name = name;
-		this.password = password;
+		this.age = age;
 	}
-	
-	public Integer getId() {
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
+
+	public Integer getAge() {
+		return age;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", password=" + password
-				+ "]";
+	public void setAge(Integer age) {
+		this.age = age;
 	}
+
 }

@@ -1,8 +1,3 @@
-
-import static org.junit.Assert.assertEquals;
-
-import java.util.Map;
-
 import com.hg.msg.EurekaServerApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,27 +10,31 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = EurekaServerApplication.class)
 @WebAppConfiguration
 @IntegrationTest("server.port=0")
 public class ApplicationTests {
-	
-	@Value("${local.server.port}")
-	private int port = 0;
 
-	@Test
-	public void catalogLoads() {
-		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = new TestRestTemplate().getForEntity("http://localhost:" + port + "/eureka/apps", Map.class);
-		assertEquals(HttpStatus.OK, entity.getStatusCode());
-	}
+    @Value("${local.server.port}")
+    private int port = 0;
 
-	@Test
-	public void adminLoads() {
-		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = new TestRestTemplate().getForEntity("http://localhost:" + port + "/env", Map.class);
-		assertEquals(HttpStatus.OK, entity.getStatusCode());
-	}
+    @Test
+    public void catalogLoads() {
+        @SuppressWarnings("rawtypes")
+        ResponseEntity<Map> entity = new TestRestTemplate().getForEntity("http://localhost:" + port + "/eureka/apps", Map.class);
+        assertEquals(HttpStatus.OK, entity.getStatusCode());
+    }
+
+    @Test
+    public void adminLoads() {
+        @SuppressWarnings("rawtypes")
+        ResponseEntity<Map> entity = new TestRestTemplate().getForEntity("http://localhost:" + port + "/env", Map.class);
+        assertEquals(HttpStatus.OK, entity.getStatusCode());
+    }
 
 }

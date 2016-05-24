@@ -1,6 +1,7 @@
 package com.hg.sb.act.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.hg.sb.act.entity.TestC2s;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,8 +19,12 @@ public class TestController {
         TestC2s c2s = new TestC2s();
         c2s.setId("1");
         c2s.setName("hello");
+        try {
+            Thread.sleep(100L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return JSON.toJSONString(c2s);
-
     }
 
     @RequestMapping(value = "/test/post", method = RequestMethod.POST ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

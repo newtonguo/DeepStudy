@@ -49,8 +49,7 @@ public class UserService {
 		removeById(u.getId());
 		userDao.updateUser(u);
 	}
-	
-	
+
 	public void removeByIdNoCache(Integer id){
 		userDao.removeById(id);
 	}
