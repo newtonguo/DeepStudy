@@ -29,9 +29,12 @@
 
 
     <modules>
-        <module>master</module>
+        <module>eureka-server</module>
         <module>slave1</module>
         <module>peer</module>
+
+        <module>notifications-service</module>
+        <module>api-service</module>
     </modules>
 
 

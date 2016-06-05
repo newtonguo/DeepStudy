@@ -14,11 +14,20 @@
       <version>3.8.1</version>
       <scope>test</scope>
       </dependency>
+
          <dependency>
             <groupId>com.baidu.disconf</groupId>
             <artifactId>disconf-client</artifactId>
             <version>2.6.31</version>
         </dependency>
+
+      <!--<dependency>-->
+          <!--<groupId>com.ume.disconf</groupId>-->
+          <!--<artifactId>disconf-client</artifactId>-->
+          <!--<version>2.7.32-SNAPSHOT</version>-->
+      <!--</dependency>-->
+
+
            <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>

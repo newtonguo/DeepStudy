@@ -10,3 +10,7 @@ https://github.com/liaokailin/springcloud
 http://cloud.spring.io/spring-cloud-netflix/spring-cloud-netflix.html
 
 https://github.com/rcapraro/spring-cloud-sample
+
+
+java8+eureka+feign
+https://github.com/Qkyrie/spring-boot-netflix-example

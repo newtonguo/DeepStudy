@@ -16,7 +16,6 @@ http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 
-
 	<!-- 使用disconf必须添加以下配置 -->
 	<bean id="disconfMgrBean" class="com.baidu.disconf.client.DisconfMgrBean"
 		destroy-method="destroy">

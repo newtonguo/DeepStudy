@@ -230,12 +230,12 @@
         </dependency>
         <!-- end test -->
 
+
         <dependency>
-            <groupId>cn.dreampie</groupId>
-            <artifactId>jfinal-captcha</artifactId>
-            <version>0.1</version>
+            <groupId>com.github.qiujiayu</groupId>
+            <artifactId>autoload-cache</artifactId>
+            <version>4.6</version>
         </dependency>
-        <!-- test -->
 
     </dependencies>
 
