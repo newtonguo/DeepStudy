@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zhiyin.frame</groupId>
-    <artifactId>eureka-register</artifactId>
+    <artifactId>boot-admin</artifactId>
     <packaging>pom</packaging>
     <version>4.3.0-SNAPSHOT</version>
     <name>${project.artifactId}</name>
@@ -29,11 +29,7 @@
 
 
     <modules>
-        <module>eureka-master</module>
-        <module>slave1</module>
-        <module>peer</module>
-
-        <module>notifications-service</module>
+        <module>admin-server</module>
         <module>api-service</module>
     </modules>
 

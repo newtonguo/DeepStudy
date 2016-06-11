@@ -1,0 +1,19 @@
+
+
+spring:
+  application:
+    name: api-service
+    version: 1.0.0
+
+  boot:
+    admin:
+  #      url: http://101.200.185.137:10008
+      url: http://localhost:10008
+
+
+server:
+  contextPath: /api-service
+  port: 8082
+
+
+

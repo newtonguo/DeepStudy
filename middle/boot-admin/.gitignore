@@ -1,0 +1,10 @@
+/data
+/bin
+/.settings
+/.project
+/.springBeans
+.idea
+*.iml
+target
+logContentFile.log
+/logs
