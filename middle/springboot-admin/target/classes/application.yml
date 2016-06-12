@@ -38,7 +38,7 @@ security:
 
 
 info:
-#  version: @pom.version@
+  version: 0.0.1-SNAPSHOT
   stage: test
 
 logging:
