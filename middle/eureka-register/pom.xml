@@ -30,11 +30,11 @@
 
     <modules>
         <module>eureka-server</module>
-        <module>slave1</module>
-        <module>peer</module>
+        <!--<module>slave1</module>-->
+        <!--<module>peer</module>-->
 
-        <module>notifications-service</module>
-        <module>api-service</module>
+        <module>demo-provider</module>
+        <module>demo-consumer</module>
     </modules>
 
 

@@ -30,7 +30,7 @@
 
     <modules>
         <module>admin-server</module>
-        <module>api-service</module>
+        <module>admin-client</module>
     </modules>
 
 

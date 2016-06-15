@@ -78,3 +78,5 @@ https://yq.aliyun.com/articles/2322
 http://www.jianshu.com/p/e20a5f42a395
 
 http://boot.ren/2015/08/26/spring-boot%E7%9B%91%E6%8E%A7/
+
+http://codecentric.github.io/spring-boot-admin/1.3.3/#getting-started
