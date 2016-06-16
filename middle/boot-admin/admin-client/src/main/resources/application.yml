@@ -13,13 +13,13 @@ spring:
 #        service-url: http://${server.address}:${server.port}${server.contextPath}
 
 server:
-  address: localhost
-  contextPath: /api-service
+#  address: localhost
+  contextPath: /${spring.application.name}
   port: 8085
 
 
 info:
   version: 0.0.1
-  info: admin-client
+  info: ${spring.application.name}
 
 
