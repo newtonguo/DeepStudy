@@ -10,9 +10,10 @@
 
     <modules>
         <module>dashboard</module>
-        <module>demo-app</module>
+        <!--<module>demo-app</module>-->
 
         <module>turbine-server</module>
+        <module>turbine-server2</module>
         <module>turbine-demo-app1</module>
         <module>turbine-demo-app2</module>
     </modules>

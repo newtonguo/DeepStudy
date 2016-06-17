@@ -8,12 +8,23 @@ server:
 #  contextPath: /demo-app
   port: 8081
 
+#turbine:
+#  appConfig: TrubineDemoAppCluster ## 配置需要聚合的应用
+#  aggregator:
+#    clusterConfig: TrubineDemoAppCluster
+#  clusterNameExpression: metadata['TrubineDemoAppCluster']
 
 turbine:
-  appConfig: node01,node02 ## 配置需要聚合的应用
+  appConfig: TrubineDemoAppCluster
   aggregator:
     clusterConfig: TrubineDemoAppCluster
-  clusterNameExpression: metadata['cluster']
+
+  instanceUrlSuffix:
+    TrubineDemoAppCluster: /hystrix.stream
+
+  ConfigPropertyBasedDiscovery:
+    TrubineDemoAppCluster:
+      instances: localhost:8081
 
 logging:
   file: logs/${spring.application.name}.log
