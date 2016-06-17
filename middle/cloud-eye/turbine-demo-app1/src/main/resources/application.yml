@@ -1,19 +1,12 @@
 
 spring:
   application:
-    name: demo-app
+    name: trubine-demo-app
     version: 0.0.1
 
 server:
 #  contextPath: /demo-app
-  port: 8080
-
-
-turbine:
-  appConfig: node01,node02 ## 配置需要聚合的应用
-  aggregator:
-    clusterConfig: TrubineDemoAppCluster
-  clusterNameExpression: metadata['cluster']
+  port: 10001
 
 logging:
   file: logs/${spring.application.name}.log

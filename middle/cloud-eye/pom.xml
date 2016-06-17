@@ -16,6 +16,8 @@
         <module>turbine-server2</module>
         <module>turbine-demo-app1</module>
         <module>turbine-demo-app2</module>
+
+        <module>zuul-server</module>
     </modules>
 
 

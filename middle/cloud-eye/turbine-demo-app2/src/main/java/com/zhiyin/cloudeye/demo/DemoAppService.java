@@ -5,7 +5,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.turbine.EnableTurbine;
 
-@EnableTurbine
 @EnableCircuitBreaker
 @SpringBootApplication
 public class DemoAppService {
