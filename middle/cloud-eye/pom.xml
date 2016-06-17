@@ -10,8 +10,11 @@
 
     <modules>
         <module>dashboard</module>
-        <module>turbine</module>
         <module>demo-app</module>
+
+        <module>turbine-server</module>
+        <module>turbine-demo-app1</module>
+        <module>turbine-demo-app2</module>
     </modules>
 
 
@@ -53,20 +56,21 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-parent</artifactId>
-                <!--<version>Brixton.SR1</version>-->
-                <!--<version>Brixton.RELEASE</version>-->
                 <version>Angel.SR3</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
 
-                <!--<dependency>-->
-                    <!--<groupId>org.springframework.cloud</groupId>-->
-                    <!--<artifactId>spring-cloud-netflix</artifactId>-->
-                    <!--<version>1.0.7.RELEASE</version>-->
-                    <!--<type>pom</type>-->
-                    <!--<scope>import</scope>-->
-                <!--</dependency>-->
+
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.cloud</groupId>-->
+                <!--<artifactId>spring-cloud-dependencies</artifactId>-->
+                <!--&lt;!&ndash;<version>Brixton.SR1</version>&ndash;&gt;-->
+                <!--&lt;!&ndash;<version>Brixton.RELEASE</version>&ndash;&gt;-->
+                <!--<type>pom</type>-->
+                <!--<scope>import</scope>-->
+            <!--</dependency>-->
+
 
         </dependencies>
     </dependencyManagement>
