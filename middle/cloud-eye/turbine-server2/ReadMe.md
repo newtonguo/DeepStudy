@@ -13,7 +13,7 @@ turbine.ConfigPropertyBasedDiscovery.myCluster.instances=localhost:8989
 
 其中myCluster为配置的集群名称
 
-为方便测试turbine聚合，需要就它与springboot进行集成
+为方便测试turbine聚合，需要就它与springboot进行集成，参考资料
 https://greencrayon00.wordpress.com/tag/turbine/
 
 
