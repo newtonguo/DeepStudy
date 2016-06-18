@@ -2,7 +2,7 @@
 # Discovery Server Dashboard uses FreeMarker.  Don't want Thymeleaf templates
 spring:
   application:
-    name: eureka-cluster
+    name: eureka-server
   profiles:
     active: default
   thymeleaf:
