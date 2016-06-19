@@ -62,6 +62,7 @@ http {
     }
 }
 
+cd /opt/program/zhiyin-web
 /opt/program/openresty/nginx/sbin/nginx -p `pwd` -c conf/nginx.conf
 
 
