@@ -37,7 +37,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-netflix</artifactId>
-                <version>1.0.7.RELEASE</version>
+                <version>Brixton.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
