@@ -1,5 +1,5 @@
 
-配置组
+### 配置组
 HystrixCommandGroupKey.Factory.asKey("ExampleGroup")
 会有缓存，key为name
 
@@ -8,7 +8,7 @@ HystrixCommandKey 默认使用Command类作为key
 
 
 
-HystrixCommandProperties Command属性
+### HystrixCommandProperties Command属性
 HystrixPropertiesFactory提供了以commandKey为键的缓存
 ```
     private static HystrixCommandProperties initCommandProperties(HystrixCommandKey commandKey, HystrixPropertiesStrategy propertiesStrategy, HystrixCommandProperties.Setter commandPropertiesDefaults) {
@@ -32,7 +32,7 @@ HystrixCircuitBreaker
 
 如果command已经存在，则直接返回
 
-···
+```
             HystrixCircuitBreaker previouslyCached = circuitBreakersByCommand.get(key.name());
             if (previouslyCached != null) {
                 return previouslyCached;

@@ -55,8 +55,9 @@
 	</properties>
 
     <modules>
-        <module>hystrix-example</module>
         <module>hystrix-demoservice</module>
+        <module>hystrix-examples</module>
+
     </modules>
 
 	<dependencyManagement>
@@ -65,6 +66,7 @@
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
 				<version>Brixton.RELEASE</version>
+				<!--<version>Angel.SR3</version>-->
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

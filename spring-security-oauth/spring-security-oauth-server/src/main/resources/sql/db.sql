@@ -1,3 +1,4 @@
+
 -- Dumping database structure for concretepage
 CREATE DATABASE IF NOT EXISTS `concretepage`;
 USE `concretepage`;
