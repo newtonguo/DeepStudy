@@ -1,6 +1,15 @@
-#spring.profiles.active=test
+
 
 server:
   contextPath: /oauth-server
-  port: 8081
+  port: 8096
 
+#  profiles:
+#    active: test
+
+management:
+  security:
+    enabled: false
+security:
+  basic:
+    enabled: false

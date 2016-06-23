@@ -1,11 +1,11 @@
 
 ### 配置组
+
 HystrixCommandGroupKey.Factory.asKey("ExampleGroup")
 会有缓存，key为name
 
 CommandKey
 HystrixCommandKey 默认使用Command类作为key
-
 
 
 ### HystrixCommandProperties Command属性
@@ -47,10 +47,11 @@ HystrixCircuitBreaker
                 return cbForCommand;
             }
 
-···
+```
 
 ## 通过archaius配置hystrix属性
- 
+
+
 ``` ConfigurationManager.getConfigInstance().setProperty("hystrix.threadpool.default.coreSize", 8);
         ConfigurationManager.getConfigInstance().setProperty("hystrix.command.CreditCardCommand.execution.isolation.thread.timeoutInMilliseconds", 3000);
 ```
@@ -59,7 +60,7 @@ HystrixCircuitBreaker
 public static HystrixCommandProperties getCommandProperties(HystrixCommandKey key, HystrixCommandProperties.Setter builder) {
         HystrixPropertiesStrategy hystrixPropertiesStrategy = HystrixPlugins.getInstance().getPropertiesStrategy();
         String cacheKey = hystrixPropertiesStrategy.getCommandPropertiesCacheKey(key, builder);
-		```
+```
 		
 		
 		    public static HystrixPlugins getInstance() {

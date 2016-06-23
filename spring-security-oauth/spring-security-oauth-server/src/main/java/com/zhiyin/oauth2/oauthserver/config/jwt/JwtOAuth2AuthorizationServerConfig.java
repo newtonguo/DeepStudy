@@ -1,4 +1,4 @@
-package com.zhiyin.oauth2.oauthserver.config.server;
+package com.zhiyin.oauth2.oauthserver.config.jwt;
 
 import java.util.Arrays;
 

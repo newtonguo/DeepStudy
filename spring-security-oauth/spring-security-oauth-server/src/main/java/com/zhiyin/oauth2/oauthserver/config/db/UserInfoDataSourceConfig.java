@@ -1,4 +1,4 @@
-package com.zhiyin.oauth2.oauthserver.config;
+package com.zhiyin.oauth2.oauthserver.config.db;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;

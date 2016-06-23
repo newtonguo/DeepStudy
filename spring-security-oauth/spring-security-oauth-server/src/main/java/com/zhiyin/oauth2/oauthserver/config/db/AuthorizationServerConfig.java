@@ -1,5 +1,6 @@
-package com.zhiyin.oauth2.oauthserver.config.server;
+package com.zhiyin.oauth2.oauthserver.config.db;
 
+import com.zhiyin.oauth2.oauthserver.config.common.ClientCommonConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,7 +32,7 @@ import javax.sql.DataSource;
 @PropertySource({ "classpath:persistence.properties" })
 @EnableAuthorizationServer
 @Configuration
-public class JdbcAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private Environment env;
@@ -45,42 +46,10 @@ public class JdbcAuthorizationServerConfig extends AuthorizationServerConfigurer
     private AuthenticationManager authenticationManager;
 
     @Override
-    public void configure(final ClientDetailsServiceConfigurer clients) throws Exception {// @formatter:off
-        clients
-               .jdbc( oauthDataSource )
-//               .inMemory()
+    public void configure(final ClientDetailsServiceConfigurer clients) throws Exception {
+        ClientCommonConfig.getClient(clients);
+    }
 
-                .withClient("admin")
-                .secret("admin")
-                .authorizedGrantTypes("password","authorization_code", "refresh_token")
-                .scopes("read","write","foo","bar")
-                .accessTokenValiditySeconds(3600) // 1 hour
-                .refreshTokenValiditySeconds(2592000) // 30 days
-
-                .and()
-               .withClient("sampleClientId")
-               .authorizedGrantTypes("implicit")
-               .scopes("read","write","foo","bar")
-               .autoApprove(false)
-               .accessTokenValiditySeconds(3600)
-
-               .and()
-               .withClient("fooClientIdPassword")
-               .secret("secret")
-               .authorizedGrantTypes("password","authorization_code", "refresh_token")
-               .scopes("foo","read","write")
-               .accessTokenValiditySeconds(3600) // 1 hour
-               .refreshTokenValiditySeconds(2592000) // 30 days
-
-               .and()
-               .withClient("barClientIdPassword")
-               .secret("secret")
-               .authorizedGrantTypes("password","authorization_code", "refresh_token")
-               .scopes("bar","read","write")
-               .accessTokenValiditySeconds(3600) // 1 hour
-               .refreshTokenValiditySeconds(2592000) // 30 days
-               ;
-    } // @formatter:on
 
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer oauthServer)

@@ -14,6 +14,11 @@ public class UserInfoRepo {
 
     private JdbcTemplate jdbcTemplate;
 
+
+	private static String tableUser = "users";
+    private static String tableAuthority = "user_authorities";
+
+
 //    @Resource(name="userInfoDataSource")
 //    private DataSource userInfoDataSource;
 
@@ -24,7 +29,7 @@ public class UserInfoRepo {
 
     public UserInfo getUserInfo(String username){
 		String sql = "SELECT u.username name, u.password pass, a.authority role FROM "+
-    			     "comp_users u INNER JOIN comp_authorities a on u.username=a.username WHERE "+
+    			     tableUser +" u INNER JOIN "+tableAuthority+" a on u.username=a.username WHERE "+
     			     "u.enabled =1 and u.username = ?";
     	UserInfo userInfo = (UserInfo)jdbcTemplate.queryForObject(sql, new Object[]{username},
     		new RowMapper<UserInfo>() {

@@ -1,4 +1,4 @@
-package com.hg.oauth2.resserver.conf.oauth;
+package com.hg.oauth2.resserver.conf.oauth.jwt;
 
 import java.io.IOException;
 
@@ -32,7 +32,7 @@ public class JwtOAuth2ResourceServerConfig extends ResourceServerConfigurerAdapt
 
     @Override
     public void configure(final HttpSecurity http) throws Exception {
-        // @formatter:off
+
         http
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
             .and().authorizeRequests().anyRequest().authenticated();
@@ -44,7 +44,7 @@ public class JwtOAuth2ResourceServerConfig extends ResourceServerConfigurerAdapt
 //                .antMatchers(HttpMethod.GET,"/bars/**").access("#oauth2.hasScope('bar') and #oauth2.hasScope('read')")
 //                .antMatchers(HttpMethod.POST,"/bars/**").access("#oauth2.hasScope('bar') and #oauth2.hasScope('write') and hasRole('ROLE_ADMIN')")
             ;
-        // @formatter:on
+
     }
 
     @Override

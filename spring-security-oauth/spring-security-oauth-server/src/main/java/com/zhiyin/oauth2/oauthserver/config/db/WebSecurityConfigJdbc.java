@@ -1,9 +1,10 @@
-package com.zhiyin.oauth2.oauthserver.config;
+package com.zhiyin.oauth2.oauthserver.config.db;
 
 import com.zhiyin.oauth2.oauthserver.user.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,6 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 @EnableWebSecurity
+@EnableAspectJAutoProxy(proxyTargetClass=true)
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 public class WebSecurityConfigJdbc extends WebSecurityConfigurerAdapter {
 
@@ -42,11 +44,19 @@ public class WebSecurityConfigJdbc extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
-        http.authorizeRequests()
-            .antMatchers("/login").permitAll()
-            .anyRequest().authenticated()
-            .and().formLogin().permitAll()
-            ;
+
+//        http.authorizeRequests()
+//            .antMatchers("/login").permitAll()
+//            .anyRequest().authenticated()
+//            .and().formLogin().permitAll()
+//            ;
+
+        http
+                .formLogin().loginPage("/login").permitAll()
+                .and()
+                .requestMatchers().antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access")
+                .and()
+                .authorizeRequests().anyRequest().authenticated();
         // @formatter:on
     }
 

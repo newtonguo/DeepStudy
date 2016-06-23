@@ -1,4 +1,4 @@
-package com.hg.oauth2.resserver.conf.oauth;
+package com.hg.oauth2.resserver.conf.oauth.remote;
 
 import java.io.IOException;
 
@@ -37,6 +37,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @EnableResourceServer
 public class RemoteOAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
+    private static final String RESOURCE_ID = "demo-res";
+
+
     @Autowired
     private Environment env;
 
@@ -57,9 +60,20 @@ public class RemoteOAuth2ResourceServerConfig extends ResourceServerConfigurerAd
 				filterChain.doFilter(request, response);
 			}
 		}, AbstractPreAuthenticatedProcessingFilter.class);
+
 		http.csrf().disable();
 		http.authorizeRequests().anyRequest().authenticated();
-	}
+
+        http.requestMatchers().antMatchers("/foos/**","/bars/**");
+
+    }
+
+    @Override
+    public void configure(final ResourceServerSecurityConfigurer config) {
+        config.resourceId(RESOURCE_ID);
+        config.tokenServices(remoteTokenServices());
+    }
+
 //
 //	@Override
 //	public void configure(final HttpSecurity http) throws Exception {
@@ -83,10 +97,21 @@ public class RemoteOAuth2ResourceServerConfig extends ResourceServerConfigurerAd
 		return new DefaultAccessTokenConverter();
 	}
 
-	@Override
-	public void configure(final ResourceServerSecurityConfigurer config) {
-		config.tokenServices(remoteTokenServices());
-	}
+
+
+//    @Bean
+//    public RemoteTokenServices remoteTokenServices(final @Value("${auth.server.url}") String checkTokenUrl,
+//                                                   final @Value("${auth.server.clientId}") String clientId,
+//                                                   final @Value("${auth.server.clientsecret}") String clientSecret) {
+//        final RemoteTokenServices remoteTokenServices = new RemoteTokenServices();
+//        remoteTokenServices.setCheckTokenEndpointUrl(checkTokenUrl);
+//        remoteTokenServices.setClientId(clientId);
+//        remoteTokenServices.setClientSecret(clientSecret);
+//        remoteTokenServices.setAccessTokenConverter(accessTokenConverter());
+//        return remoteTokenServices;
+//    }
+
+
 
 	@Bean
 	public RemoteTokenServices remoteTokenServices( ) {
@@ -97,4 +122,5 @@ public class RemoteOAuth2ResourceServerConfig extends ResourceServerConfigurerAd
 		remoteTokenServices.setAccessTokenConverter(accessTokenConverter());
 		return remoteTokenServices;
 	}
+
 }
