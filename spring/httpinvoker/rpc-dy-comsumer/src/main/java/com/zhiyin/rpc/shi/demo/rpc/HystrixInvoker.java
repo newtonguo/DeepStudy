@@ -38,10 +38,9 @@ public class HystrixInvoker extends SimpleHttpInvokerRequestExecutor {
 
         String masterName = "RPC";
         String commandKey = service.substring(service.lastIndexOf("/")+1);
-        logger.info(commandKey);
-        commandKey = "demoCk";
+        logger.info("command key is:" +commandKey);
 
-        commandKey = CommandKeyUtil.getCk("demoCk");
+        commandKey = CommandKeyUtil.getCk(commandKey);
 //        String[] splitService = service.split(";");
 //        String masterName = splitService[0];
 //        String subName = splitService[1];
