@@ -11,6 +11,8 @@ import com.netflix.config.ConfigurationManager;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixCommandMetrics;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,8 @@ import java.util.Map;
  */
 @Slf4j
 public class CommandKeyUtil {
+
+//    private Logger log = LoggerFactory.getLogger(CommandKeyUtil.class);
 
   public static   Map<String,Integer> keyIndexMap = Maps.newConcurrentMap();
 
@@ -85,7 +89,7 @@ public class CommandKeyUtil {
             keyIndexMap.put(key ,in);
         }
 
-        HystrixCommandMetrics.getInstance("").re
+        //HystrixCommandMetrics.getInstance("").re
 
     }
 }
