@@ -15,7 +15,12 @@
 
     <bean name="/demoService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
         <property name="service" ref="demoServiceImpl"/>
-        <property name="serviceInterface" value="com.zhiyin.rpc.shi.demo.service.DemoService"/>
+        <property name="serviceInterface" value="com.zhiyin.rpc.shi.demo.remote.service.DemoService"/>
+    </bean>
+
+    <bean name="/timeConsumeService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+        <property name="service" ref="timeConsumeServiceImpl"/>
+        <property name="serviceInterface" value="com.zhiyin.rpc.shi.demo.remote.service.TimeConsumeService"/>
     </bean>
 
 </beans>

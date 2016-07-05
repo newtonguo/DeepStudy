@@ -1,12 +1,11 @@
 package com.hg.spring.cache.ecache.webdemo.dao;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.hg.spring.cache.ecache.webdemo.entity.User;
 import org.springframework.stereotype.Repository;
 
-import com.hg.spring.cache.ecache.webdemo.entity.User;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 静态数据，模拟数据库操作

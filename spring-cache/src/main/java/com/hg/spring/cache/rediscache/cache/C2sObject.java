@@ -1,8 +1,7 @@
 package com.hg.spring.cache.rediscache.cache;
 
 import com.google.common.collect.Maps;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -10,11 +9,11 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Created by wangqinghui on 2016/1/12.
+ * Created by hg on 2016/1/12.
  */
-public class C2sObject {
 
-    private static Logger log = LoggerFactory.getLogger(C2sObject.class);
+@Slf4j
+public class C2sObject {
 
     public String getCacheKey(){
         log.warn("should not use this.");

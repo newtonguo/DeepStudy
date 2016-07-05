@@ -36,3 +36,10 @@ mvn clean install
     - spring-security-oauth-resource
     - spring-security-oauth-ui-implicit
     - spring-security-oauth-ui-password
+
+
+
+测试
+
+curl admin admin
+http://localhost:8096/oauth-server/oauth/token?client_id=admin&client_secret=admin&grant_type=password&scope=foo read write bar&username=krishna&password=k123

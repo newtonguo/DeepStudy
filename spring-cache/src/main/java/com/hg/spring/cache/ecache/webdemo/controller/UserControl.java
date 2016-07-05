@@ -1,7 +1,5 @@
 package com.hg.spring.cache.ecache.webdemo.controller;
 
-import java.util.List;
-
 import com.hg.spring.cache.ecache.webdemo.entity.User;
 import com.hg.spring.cache.ecache.webdemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 public class UserControl {

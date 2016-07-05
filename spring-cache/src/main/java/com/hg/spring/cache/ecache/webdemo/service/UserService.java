@@ -1,15 +1,14 @@
 package com.hg.spring.cache.ecache.webdemo.service;
 
 
-import java.util.List;
-
 import com.hg.spring.cache.ecache.webdemo.dao.UserDao;
+import com.hg.spring.cache.ecache.webdemo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.hg.spring.cache.ecache.webdemo.entity.User;
+import java.util.List;
 /**
  * 业务操作，
  */
