@@ -1,5 +1,5 @@
-package com.hg.spring.cache.rediscache.service.impl;
-import org.springframework.cache.annotation.CachePut;
+package com.hg.spring.cache.rediscache.service.impl.ck;
+
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
 

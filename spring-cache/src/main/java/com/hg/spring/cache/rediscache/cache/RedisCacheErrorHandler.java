@@ -1,4 +1,4 @@
-package com.hg.spring.cache.rediscache.config;
+package com.hg.spring.cache.rediscache.cache;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

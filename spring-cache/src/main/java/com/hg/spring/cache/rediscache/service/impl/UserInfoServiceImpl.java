@@ -2,9 +2,13 @@ package com.hg.spring.cache.rediscache.service.impl;
 
 import com.hg.spring.cache.rediscache.entity.User;
 import com.hg.spring.cache.rediscache.repo.UserRepository;
+import com.hg.spring.cache.rediscache.service.UserInfoService;
+import com.hg.spring.cache.rediscache.service.impl.ck.UserDelCache;
+import com.hg.spring.cache.rediscache.service.impl.ck.UserSaveCache;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.*;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +23,7 @@ import java.util.List;
 @Slf4j
 @Service("redisCacheService")
 @CacheConfig(cacheNames = {"users.userinfo"}) // 默认cache名称
-public class UserInfoService {
+public class UserInfoServiceImpl implements UserInfoService {
 
     @Autowired
     private UserRepository userRepository;

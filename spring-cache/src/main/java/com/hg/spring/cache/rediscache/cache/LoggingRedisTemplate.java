@@ -1,6 +1,4 @@
-package com.hg.spring.cache.rediscache.config;
-
-import java.util.List;
+package com.hg.spring.cache.rediscache.cache;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +7,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SessionCallback;
 import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.data.redis.serializer.RedisSerializer;
+
+import java.util.List;
 
 
 /**
