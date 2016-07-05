@@ -1,6 +1,0 @@
-com\hg\queue\core\event\EventType.class
-com\hg\queue\core\event\ConsumerType.class
-com\hg\queue\core\EventMessage.class
-com\hg\queue\core\event\TopicType.class
-com\hg\queue\core\event\ProducerType.class
-com\hg\queue\core\util\BeanMapper.class
