@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--<include resource="org/springframework/boot/logging/logback/base.xml" />-->
+
+
+    <property name="ConsoleLogPattern"
+              value="[%d{yyyy-MM-dd HH:mm:ss.SSS}][%logger][%level] %msg%n" />
+
+    <property name="FileLogPattern"
+              value="[%d{yyyy-MM-dd HH:mm:ss.SSS}][thread:%thread][%level] %msg%n" />
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+
+        <encoder>
+            <pattern>${ConsoleLogPattern}</pattern>
+        </encoder>
+    </appender>
+
+
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

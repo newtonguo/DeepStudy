@@ -1,10 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.baeldung</groupId>
-    <artifactId>spring-security-oauth</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-
-    <name>spring-security-oauth</name>
+    <groupId>com.zhiyin.oauth</groupId>
+    <artifactId>oauth-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>${project.artifactId}</name>
     <packaging>pom</packaging>
 
     <parent>
@@ -15,10 +14,11 @@
     </parent>
         
     <modules>
+        <module>oauth-core</module>
         <module>spring-security-oauth-server</module>
         <module>spring-security-oauth-resource</module>
-        <module>spring-security-oauth-ui-implicit</module>
-        <module>spring-security-oauth-ui-password</module>
+        <!--<module>spring-security-oauth-ui-implicit</module>-->
+        <!--<module>spring-security-oauth-ui-password</module>-->
     </modules>
 
     <build>

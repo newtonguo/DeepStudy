@@ -13,3 +13,6 @@ management:
 security:
   basic:
     enabled: false
+
+#logging:
+#  level: debug

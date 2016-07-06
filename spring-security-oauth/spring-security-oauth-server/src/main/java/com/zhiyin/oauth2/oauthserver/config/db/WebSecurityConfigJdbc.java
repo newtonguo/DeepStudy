@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -20,7 +21,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfigJdbc extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    AuthenticationService authenticationService;
+    private AuthenticationService authenticationService;
 
     @Autowired
     public void globalUserDetails(final AuthenticationManagerBuilder auth) throws Exception {
@@ -29,8 +30,11 @@ public class WebSecurityConfigJdbc extends WebSecurityConfigurerAdapter {
 //                and().
 //                withUser("john").password("123").roles("USER").
 //                and().
-//                withUser("tom").password("111").roles("ADMIN");
+//
+//        使用sha加密
         ShaPasswordEncoder encoder = new ShaPasswordEncoder();
+//md5加密
+//        Md5PasswordEncoder encoder = new Md5PasswordEncoder();
         auth.userDetailsService(authenticationService).passwordEncoder(encoder);
     }
 

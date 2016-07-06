@@ -11,13 +11,9 @@ public class PasswdTest2 {
 
 //        k123
 //        21a4ed0a0cf607e77e93bf7604e2bb1ad07757c5
-        String pass = "test";
-        String enPass = DigestUtils.sha1Hex(pass);
-        System.out.println(enPass);
+        String pass = DigestUtils.sha1Hex("app123");
+        System.out.println(pass);
 
-
-        enPass = DigestUtils.md5Hex(pass);
-        System.out.println(enPass);
 
 
     }

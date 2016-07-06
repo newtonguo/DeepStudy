@@ -2,6 +2,7 @@ package com.zhiyin.oauth2.oauthserver.config.db;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +22,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @PropertySource("classpath:jdbc.properties")
-public class UserInfoDataSourceConfig {
+public class DataSourceConfig {
 
     @Autowired
     Environment env;
@@ -29,7 +30,7 @@ public class UserInfoDataSourceConfig {
     @Value("classpath*:oauth-schema.sql")
     private Resource schemaScript;
 
-//    @Primary
+    @Qualifier("userInfoDataSource")
     @Bean(name="userInfoDataSource")
     public DataSource userInfoDataSource() {
         BasicDataSource dataSource = new BasicDataSource();

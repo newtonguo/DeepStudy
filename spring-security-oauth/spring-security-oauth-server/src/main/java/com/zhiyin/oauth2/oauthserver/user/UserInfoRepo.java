@@ -28,7 +28,7 @@ public class UserInfoRepo {
     }
 
     public UserInfo getUserInfo(String username){
-		String sql = "SELECT u.username name, u.password pass, a.authority role FROM "+
+		String sql = "SELECT u.username name, u.password pass FROM "+
     			     tableUser +" u INNER JOIN "+tableAuthority+" a on u.username=a.username WHERE "+
     			     "u.enabled =1 and u.username = ?";
     	UserInfo userInfo = (UserInfo)jdbcTemplate.queryForObject(sql, new Object[]{username},
@@ -37,10 +37,11 @@ public class UserInfoRepo {
 	                UserInfo user = new UserInfo();
 	                user.setUsername(rs.getString("name"));
 	                user.setPassword(rs.getString("pass"));
-	                user.setRole(rs.getString("role"));
 	                return user;
 	            }
         });
+
+//		jdbcTemplate.queryForList(" SELECT a.authority from user_authorities a where a.username=? ");
     	return userInfo;
     }
 } 
