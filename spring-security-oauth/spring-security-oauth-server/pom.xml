@@ -13,11 +13,11 @@
 
     <dependencies>
 
-        <!--<dependency>-->
-            <!--<groupId>com.zhiyin.frame</groupId>-->
-            <!--<artifactId>logcnf-base</artifactId>-->
-            <!--<version>0.0.1-SNAPSHOT</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.zhiyin.frame</groupId>
+            <artifactId>logcnf-base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>com.zhiyin.oauth</groupId>

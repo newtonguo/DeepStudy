@@ -19,23 +19,21 @@ public class AdminController {
 	public String home() {
 		return "home";
 	}
-	
+
 	@RequestMapping("/user")
-	@ResponseBody
 	public Principal user(Principal user) {
 		return user;
 	}
 
 
-	@RequestMapping("/user")
-	@ResponseBody
+	@RequestMapping("/user2")
 	public String show(@AuthenticationPrincipal UserDetails customUser) {
 
 		return JSON.toJSONString(customUser);
 	}
 
 
-		@RequestMapping("/adminresource")
+	@RequestMapping("/adminresource")
 	@PreAuthorize("hasRole('ROLE_ADMIN') and #oauth2.hasScope('read') or (!#oauth2.isOAuth() and hasRole('ROLE_ADMIN'))")
 	public String adminResource(Principal user) {
 		return "{\"id\":\"" + user.getName() + "\",\"content\":\"Hello World\"}";

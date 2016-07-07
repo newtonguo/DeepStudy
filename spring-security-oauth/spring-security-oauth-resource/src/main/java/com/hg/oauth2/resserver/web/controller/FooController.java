@@ -7,35 +7,26 @@ import com.hg.oauth2.resserver.web.dto.Foo;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
-@Controller
+@RestController
+@RequestMapping("/foos/")
 public class FooController {
 
-    public FooController() {
-        super();
-    }
 
     // API - read
     @PreAuthorize("#oauth2.hasScope('foo') and #oauth2.hasScope('read')")
-    @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
-    @ResponseBody
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public Foo findById(@PathVariable final long id, Principal user) {
         return new Foo(Long.parseLong(randomNumeric(2)), randomAlphabetic(4) + ",user name:" + user.getName());
     }
 
     // API - write
     @PreAuthorize("#oauth2.hasScope('foo') and #oauth2.hasScope('write')")
-    @RequestMapping(method = RequestMethod.POST, value = "/foos")
+    @RequestMapping(method = RequestMethod.POST, value = "")
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
     public Foo create(@RequestBody final Foo foo) {
         foo.setId(Long.parseLong(randomNumeric(2)));
         return foo;

@@ -39,7 +39,6 @@ public class RemoteOAuth2ResourceServerConfig extends ResourceServerConfigurerAd
 
     private static final String RESOURCE_ID = "demo-res";
 
-
     @Autowired
     private Environment env;
 
@@ -47,80 +46,41 @@ public class RemoteOAuth2ResourceServerConfig extends ResourceServerConfigurerAd
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.addFilterAfter(new OncePerRequestFilter() {
-			@Override
-			protected void doFilterInternal(HttpServletRequest request,
-					HttpServletResponse response, FilterChain filterChain)
-					throws ServletException, IOException {
-				// We don't want to allow access to a resource with no token so clear
-				// the security context in case it is actually an OAuth2Authentication
-				if (tokenExtractor.extract(request) == null) {
-					SecurityContextHolder.clearContext();
-				}
-				filterChain.doFilter(request, response);
-			}
-		}, AbstractPreAuthenticatedProcessingFilter.class);
-
-		http.csrf().disable();
-		http.authorizeRequests().anyRequest().authenticated();
-
-        http.requestMatchers().antMatchers("/foos/**","/bars/**");
-
-    }
-
-    @Override
-    public void configure(final ResourceServerSecurityConfigurer config) {
-        config.resourceId(RESOURCE_ID);
-        config.tokenServices(remoteTokenServices());
-    }
-
+//		http.addFilterAfter(new OncePerRequestFilter() {
+//			@Override
+//			protected void doFilterInternal(HttpServletRequest request,
+//					HttpServletResponse response, FilterChain filterChain)
+//					throws ServletException, IOException {
+//				// We don't want to allow access to a resource with no token so clear
+//				// the security context in case it is actually an OAuth2Authentication
+//				if (tokenExtractor.extract(request) == null) {
+//					SecurityContextHolder.clearContext();
+//				}
+//				filterChain.doFilter(request, response);
+//			}
+//		}, AbstractPreAuthenticatedProcessingFilter.class);
 //
-//	@Override
-//	public void configure(final HttpSecurity http) throws Exception {
-//		// @formatter:off
-//		http
-//				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-//				.and().authorizeRequests().anyRequest().authenticated();
-////            .requestMatchers().antMatchers("/foos/**","/bars/**")
-////            .and()
-////            .authorizeRequests()
-////                .antMatchers(HttpMethod.GET,"/foos/**").access("#oauth2.hasScope('foo') and #oauth2.hasScope('read')")
-////                .antMatchers(HttpMethod.POST,"/foos/**").access("#oauth2.hasScope('foo') and #oauth2.hasScope('write')")
-////                .antMatchers(HttpMethod.GET,"/bars/**").access("#oauth2.hasScope('bar') and #oauth2.hasScope('read')")
-////                .antMatchers(HttpMethod.POST,"/bars/**").access("#oauth2.hasScope('bar') and #oauth2.hasScope('write') and hasRole('ROLE_ADMIN')")
-//		;
-//		// @formatter:on
-//	}
+//		http.csrf().disable();
+//		http.authorizeRequests().anyRequest().authenticated(); //确保我们应用中的所有请求都需要用户被认证
+//
+//		http.requestMatchers().antMatchers("/foos/**","/bars/**","/users/**");
 
-	@Bean
-	public AccessTokenConverter accessTokenConverter() {
-		return new DefaultAccessTokenConverter();
-	}
+        http
+                .authorizeRequests()
+                .antMatchers("/**").authenticated()
+                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
 
+//		http.authorizeRequests().an
 
-//    @Bean
-//    public RemoteTokenServices remoteTokenServices(final @Value("${auth.server.url}") String checkTokenUrl,
-//                                                   final @Value("${auth.server.clientId}") String clientId,
-//                                                   final @Value("${auth.server.clientsecret}") String clientSecret) {
-//        final RemoteTokenServices remoteTokenServices = new RemoteTokenServices();
-//        remoteTokenServices.setCheckTokenEndpointUrl(checkTokenUrl);
-//        remoteTokenServices.setClientId(clientId);
-//        remoteTokenServices.setClientSecret(clientSecret);
-//        remoteTokenServices.setAccessTokenConverter(accessTokenConverter());
-//        return remoteTokenServices;
+    }
+
+//    @Override
+//    public void configure(final ResourceServerSecurityConfigurer config) {
+//        config.resourceId(RESOURCE_ID);
+//        config.tokenServices(remoteTokenServices());
 //    }
 
-
-
-	@Bean
-	public RemoteTokenServices remoteTokenServices( ) {
-		final RemoteTokenServices remoteTokenServices = new RemoteTokenServices();
-		remoteTokenServices.setCheckTokenEndpointUrl(env.getProperty("check_token_url"));
-		remoteTokenServices.setClientId( env.getProperty("client_id") );
-		remoteTokenServices.setClientSecret( env.getProperty("client_secret") );
-		remoteTokenServices.setAccessTokenConverter(accessTokenConverter());
-		return remoteTokenServices;
-	}
 
 }

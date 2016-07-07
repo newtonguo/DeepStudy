@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.alibaba.fastjson.JSON;
+import com.google.common.base.Function;
 import com.google.common.collect.Lists;
+import com.zhiyin.oauth.core.ZyUser;
 import com.zhiyin.oauth.core.ZyUserDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,33 +25,33 @@ public class AuthenticationService implements UserDetailsService {
 	@Autowired
 	private UserInfoRepo userInfoRepo;
 
-//	@Autowired
-//	private UserRoleRepo userRoleRepo;
+	@Autowired
+	private UserRoleRepo userRoleRepo;
 
 	@Override
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
 		UserInfo userInfo = userInfoRepo.getUserInfo(username);
 
-//        List<UserRole> roles = userRoleRepo.findByUsername(username);
-        List<UserRole> roles =Lists.newArrayList();
-        roles.add(new UserRole("ROLE_ADMIN"));
+        List<UserRole> roles = userRoleRepo.findByUsername(username);
 
-        List<SimpleGrantedAuthority> auhorities = Lists.newArrayList();
+//        设置默认的角色
+//        List<UserRole> roles =Lists.newArrayList();
+//        roles.add(new UserRole("ROLE_ADMIN"));
 
-        for (UserRole role : roles ) {
-            auhorities.add(new SimpleGrantedAuthority(role.getAuthority()));
-        }
+        List<SimpleGrantedAuthority> auhorities = Lists.transform(roles, new Function<UserRole, SimpleGrantedAuthority>() {
+            public SimpleGrantedAuthority apply(UserRole role) {
+                return new SimpleGrantedAuthority(role.getAuthority());
+            }
+        });
 
-        log.info(JSON.toJSONString(userInfo));
-        log.info(JSON.toJSONString(roles));
+        log.info("user info:{}; role info:{}",JSON.toJSONString(userInfo),JSON.toJSONString(roles));
 
-//		ZyUserDetails userDetails = new ZyUserDetails(userInfo.getId(),userInfo.getUsername(),
-//				userInfo.getPassword(), userInfo.getEnabled(),auhorities );
+		ZyUser userDetails = new ZyUser(userInfo.getUsername(),
+				userInfo.getPassword(),auhorities,userInfo.getId() );
 
-        GrantedAuthority authority = new SimpleGrantedAuthority( "ROLE_ADMIN" );
-        UserDetails userDetails = new User(userInfo.getUsername(),
-                userInfo.getPassword(), auhorities );
+//        UserDetails userDetails = new User(userInfo.getUsername(),
+//                userInfo.getPassword(), auhorities );
 
 		return userDetails;
 	}

@@ -1,6 +1,7 @@
 package com.zhiyin.oauth2.oauthserver.user;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.Id;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -14,11 +15,13 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "user_authorities")
 public class UserRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
 
     public UserRole(String authority){
         this.authority = authority;
