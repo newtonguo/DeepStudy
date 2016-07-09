@@ -17,6 +17,8 @@
         <module>oauth-core</module>
         <module>spring-security-oauth-server</module>
         <module>spring-security-oauth-resource</module>
+        <module>zy-oauth-server</module>
+
         <!--<module>spring-security-oauth-ui-implicit</module>-->
         <!--<module>spring-security-oauth-ui-password</module>-->
     </modules>

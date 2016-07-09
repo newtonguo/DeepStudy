@@ -60,14 +60,15 @@ public class RemoteOAuth2ResourceServerConfig extends ResourceServerConfigurerAd
 //			}
 //		}, AbstractPreAuthenticatedProcessingFilter.class);
 //
-//		http.csrf().disable();
+		http.csrf().disable();
 //		http.authorizeRequests().anyRequest().authenticated(); //确保我们应用中的所有请求都需要用户被认证
 //
 //		http.requestMatchers().antMatchers("/foos/**","/bars/**","/users/**");
 
         http
                 .authorizeRequests()
-                .antMatchers("/**").authenticated()
+                .antMatchers("/**").permitAll()
+//                .antMatchers("/**").anonymous()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
