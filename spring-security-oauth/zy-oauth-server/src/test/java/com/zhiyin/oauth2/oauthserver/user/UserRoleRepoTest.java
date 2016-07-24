@@ -21,8 +21,6 @@ public class UserRoleRepoTest {
     @Autowired
     private UserRoleRepo userRoleRepo;
 
-
-
     @Test
     public void test() throws Exception {
         List<UserRole> roles = userRoleRepo.findByUsername("admin");

@@ -17,7 +17,7 @@ public class ClientCommonConfig {
                 .secret("admin")
                 .authorizedGrantTypes("password","authorization_code", "refresh_token")
                 .scopes("read","write","foo","bar")
-                .accessTokenValiditySeconds(3600) // 1 hour
+                .accessTokenValiditySeconds(3600*24*30) // 30 days
                 .refreshTokenValiditySeconds(2592000) // 30 days
 
                 .and()
@@ -33,7 +33,7 @@ public class ClientCommonConfig {
                 .secret("mobile")
                 .authorizedGrantTypes("password","authorization_code", "refresh_token")
                 .scopes("read","write","app")
-                .accessTokenValiditySeconds(3600*24*30) // 1 hour
+                .accessTokenValiditySeconds(3600*24*30) // 30 days
                 .refreshTokenValiditySeconds(2592000) // 30 days
 
 
