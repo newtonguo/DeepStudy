@@ -10,11 +10,10 @@
             <!--<value>http://172.17.159.115:8180/demoService</value>-->
         </property>
         <property name="serviceInterface">
-            <value>com.zhiyin.rpc.shi.demo.remote.service.DemoService</value>
+            <value>com.zy.rpc.shi.demo.remote.service.DemoService</value>
         </property>
         <property name="httpInvokerRequestExecutor" ref="httpInvokerRequestExecutor"/>
     </bean>
-
 
     <bean id="timeConsumeService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
         <property name="serviceUrl">
@@ -22,7 +21,18 @@
             <!--<value>http://172.17.159.115:8180/demoService</value>-->
         </property>
         <property name="serviceInterface">
-            <value>com.zhiyin.rpc.shi.demo.remote.service.TimeConsumeService</value>
+            <value>com.zy.rpc.shi.demo.remote.service.TimeConsumeService</value>
+        </property>
+        <property name="httpInvokerRequestExecutor" ref="httpInvokerRequestExecutor"/>
+    </bean>
+
+    <bean id="tlService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+        <property name="serviceUrl">
+            <value>http://localhost:8180/tlService</value>
+            <!--<value>http://172.17.159.115:8180/demoService</value>-->
+        </property>
+        <property name="serviceInterface">
+            <value>com.zy.rpc.shi.demo.remote.service.IThreadLocalService</value>
         </property>
         <property name="httpInvokerRequestExecutor" ref="httpInvokerRequestExecutor"/>
     </bean>

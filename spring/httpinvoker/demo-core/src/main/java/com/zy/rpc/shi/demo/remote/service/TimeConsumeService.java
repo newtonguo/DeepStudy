@@ -1,4 +1,4 @@
-package com.zhiyin.rpc.shi.demo.remote.service;
+package com.zy.rpc.shi.demo.remote.service;
 
 public interface TimeConsumeService {
 

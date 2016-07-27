@@ -1,5 +1,5 @@
 
-import com.zhiyin.rpc.shi.demo.remote.service.DemoService;
+import com.zy.rpc.shi.demo.remote.service.DemoService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

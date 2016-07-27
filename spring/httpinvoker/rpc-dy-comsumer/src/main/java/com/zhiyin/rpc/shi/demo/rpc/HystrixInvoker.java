@@ -3,6 +3,9 @@ package com.zhiyin.rpc.shi.demo.rpc;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixCommandKey;
+import com.zy.rpc.shi.demo.remote.service.CatContext;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.remoting.httpinvoker.HttpInvokerClientConfiguration;
 import org.springframework.remoting.httpinvoker.SimpleHttpInvokerRequestExecutor;
 import org.springframework.remoting.support.RemoteInvocationResult;
@@ -14,8 +17,9 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 
 /**
- * Created by wangqinghui on 2016/6/24.
+ * Created by hg on 2016/6/24.
  */
+@Slf4j
 public class HystrixInvoker extends SimpleHttpInvokerRequestExecutor {
 
 
@@ -71,6 +75,15 @@ public class HystrixInvoker extends SimpleHttpInvokerRequestExecutor {
             throws IOException, ClassNotFoundException {
 
         HttpURLConnection con = openConnection(config);
+
+        int rootId = RandomUtils.nextInt();
+        int parId = RandomUtils.nextInt();
+        int childId = RandomUtils.nextInt();
+        log.info("testcat info:" + rootId + " "+ parId + " " +childId);
+        con.setRequestProperty(CatContext.HttpRootId,rootId +"");
+        con.setRequestProperty( CatContext.HttpParentId , parId + "");
+        con.setRequestProperty(CatContext.HttpChildId,childId+"");
+
         prepareConnection(con, baos.size());
         writeRequestBody(config, con, baos);
         validateResponse(config, con);

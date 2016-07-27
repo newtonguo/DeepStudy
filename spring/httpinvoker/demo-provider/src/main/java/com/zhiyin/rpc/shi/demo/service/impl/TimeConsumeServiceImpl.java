@@ -1,7 +1,6 @@
 package com.zhiyin.rpc.shi.demo.service.impl;
 
-import com.zhiyin.rpc.shi.demo.remote.service.DemoService;
-import com.zhiyin.rpc.shi.demo.remote.service.TimeConsumeService;
+import com.zy.rpc.shi.demo.remote.service.TimeConsumeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

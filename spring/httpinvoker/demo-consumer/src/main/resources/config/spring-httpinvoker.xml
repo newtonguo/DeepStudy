@@ -10,7 +10,7 @@
             <value>http://172.17.159.115:8180/demoService</value>
         </property>
         <property name="serviceInterface">
-            <value>com.zhiyin.rpc.shi.demo.remote.service.DemoService</value>
+            <value>com.zy.rpc.shi.demo.remote.service.DemoService</value>
         </property>
     </bean>
 
