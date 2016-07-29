@@ -13,7 +13,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 @EnableEurekaClient
 @EnableCircuitBreaker
-@EnableHystrixDashboard
 @EnableFeignClients
 public class ApiServiceApplication {
 

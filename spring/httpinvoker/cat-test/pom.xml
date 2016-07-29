@@ -1,23 +1,52 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.witown.open.demo</groupId>
-    <artifactId>demo-provider</artifactId>
+    <groupId>bob.dylan.demo.B</groupId>
+    <artifactId>cat-test</artifactId>
     <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
     <name>${project.artifactId}</name>
-
     <properties>
-        <spring.version>3.1.3.RELEASE</spring.version>
+        <spring.version>3.2.4.RELEASE</spring.version>
     </properties>
 
     <parent>
-        <version>0.0.1</version>
         <artifactId>spring-httpinvoker</artifactId>
         <groupId>com.zhiyin.rpc</groupId>
+        <version>0.0.1</version>
     </parent>
 
-
     <dependencies>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcomponents-client</artifactId>
+            <version>4.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.1</version>
+            <scope>test</scope>
+        </dependency>
 
 
         <!--cat -->
@@ -68,46 +97,8 @@
         </dependency>
         <!-- end cat -->
 
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.7</version>
-        </dependency>
-
-        <dependency>
-            <groupId>bob.dylan.demo.B</groupId>
-            <artifactId>demo-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.8</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-net</groupId>
-            <artifactId>commons-net</artifactId>
-            <version>3.3</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>19.0</version>
-        </dependency>
-
 
     </dependencies>
-
 
     <build>
         <plugins>

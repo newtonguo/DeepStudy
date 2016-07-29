@@ -1,5 +1,6 @@
 package com.zhiyin.rpc.shi.demo.config;
 
+import com.zhiyin.rpc.shi.demo.filter.CatLogFilter;
 import com.zhiyin.rpc.shi.demo.filter.IpFilter;
 import com.zhiyin.rpc.shi.demo.filter.LogFilter;
 import org.springframework.context.annotation.Bean;
@@ -18,8 +19,13 @@ public class HttpInvokerExportConf {
         return new IpFilter();
     }
 
+//    @Bean
+//    public LogFilter log() {
+//        return new LogFilter();
+//    }
+
     @Bean
-    public LogFilter log() {
-        return new LogFilter();
+    public CatLogFilter log() {
+        return new CatLogFilter();
     }
 }

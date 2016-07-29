@@ -11,7 +11,7 @@ spring:
 
 # HTTP Server
 server:
-  port: 8180   # HTTP (Tomcat) port
+  port: 8887   # HTTP (Tomcat) port
 #  context-path: /msg-provider
 
 

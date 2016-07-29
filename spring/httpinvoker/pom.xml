@@ -35,6 +35,7 @@
         <module>demo-consumer</module>
         <module>rpc-dy-comsumer</module>
         <module>annno</module>
+        <module>cat-test</module>
     </modules>
 
 
