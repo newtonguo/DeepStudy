@@ -29,6 +29,7 @@
 
 
     <modules>
+        <module>api-gateway</module>
         <module>eureka-server</module>
         <!--<module>slave1</module>-->
         <!--<module>peer</module>-->
