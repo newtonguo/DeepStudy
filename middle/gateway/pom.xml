@@ -34,7 +34,6 @@
         <!--<module>service-A</module>-->
         <!--<module>service-B</module>-->
         <module>api-gateway</module>
-        <module>gateway</module>
     </modules>
 
 
@@ -55,43 +54,10 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-
-        <!--<repository>-->
-        <!--<id>zhiyin-maven-repo</id>-->
-        <!--<url>https://raw.githubusercontent.com/huiwq1990/MavenRepository/master/repository</url>-->
-        <!--</repository>-->
-
     </repositories>
 
     <dependencyManagement>
         <dependencies>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-parent</artifactId>
-                <version>1.3.3.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-        <!--<dependency>-->
-                <!--<groupId>org.springframework.cloud</groupId>-->
-                <!--<artifactId>spring-cloud-dependencies</artifactId>-->
-                <!--<version>Brixton.RELEASE</version>-->
-                <!--<type>pom</type>-->
-                <!--<scope>import</scope>-->
-            <!--</dependency>-->
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-parent</artifactId>
-                <version>Angel.SR3</version>
-                <!--<spring-cloud.version>Brixton.RC1</spring-cloud.version>-->
-                <!--<version>Brixton.RC1</version>-->
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
 
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -106,9 +72,18 @@
             </dependency>
 
             <dependency>
-                <groupId>commons-dbcp</groupId>
-                <artifactId>commons-dbcp</artifactId>
-                <version>1.4</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>1.3.5.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Brixton.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
         </dependencies>

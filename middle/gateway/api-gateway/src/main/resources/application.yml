@@ -23,6 +23,6 @@ zuul:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8080/zhiyin-eureka/eureka/
+      defaultZone: http://localhost:8761/eureka/
 server:
   port: 8088
