@@ -1,9 +1,10 @@
 package com.hg.spring.cache.rediscache;
 
 import com.alibaba.fastjson.JSON;
+import com.hg.spring.cache.rediscache.config.RedisCacheName;
 import com.hg.spring.cache.rediscache.entity.User;
+import com.hg.spring.cache.rediscache.service.IUserInfoService;
 import com.hg.spring.cache.rediscache.service.impl.CacheNameFactory;
-import com.hg.spring.cache.rediscache.service.impl.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +28,9 @@ public class RedisCachableTest {
     private CacheManager cacheManager;
 
     @Autowired
-    UserInfoService userInfoService;
+    IUserInfoService userInfoService;
+
+
 
     @Test
     public void testFind() {
@@ -35,18 +38,43 @@ public class RedisCachableTest {
         User selFromService = userInfoService.findById(2L);
         assertThat(selFromService).isNotNull();
 
-        Cache cache = cacheManager.getCache("userCache");
+        Cache cache = cacheManager.getCache(RedisCacheName.UserCacheName);
         assertThat(cache).isNotNull();
 
-        User selFromCache = (User) cache.get("userinfo_id_2").get();
+        User selFromCache = (User) cache.get(RedisCacheName.UserCacheName + ".id.2").get();
         assertThat(selFromCache.getName()).isEqualTo(selFromService.getName());
 
     }
 
     @Test
-    public void testEmb() {
-        userInfoService.findByIdNoCache(2L);
+    public void testDel() {
+
+        User selFromService = userInfoService.findById(2L);
+        assertThat(selFromService).isNotNull();
+
+        userInfoService.deleteById(2L);
+        Cache cache = cacheManager.getCache(RedisCacheName.UserCacheName);
+        assertThat(cache).isNotNull();
+
+        Cache.ValueWrapper selFromCache = cache.get(RedisCacheName.UserCacheName + ".id.2");
+
+        assertThat(selFromCache == null);
+
     }
+
+
+    @Test
+    public void testInsert(){
+
+        User u = new User();
+        u.setId(11L);
+        u.setName("hg");
+        u.setAge(10);
+
+        userInfoService.insert(u);
+    }
+
+
 
 
     @Test

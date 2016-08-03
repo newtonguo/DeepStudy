@@ -1,12 +1,7 @@
-# suppress inspection "UnusedProperty" for whole file
-
-
-#logging.level.org.springframework.boot.autoconfigure.security.AuthenticationManagerConfiguration=INFO
-
 
 spring:
   application:
-    name: jmeter-demoserver
+    name: apm-demo
   boot:
     admin:
       url: http://localhost:10008

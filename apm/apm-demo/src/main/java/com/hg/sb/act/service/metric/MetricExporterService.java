@@ -28,6 +28,9 @@ class MetricExporterService {
         this.repository = repository;
     }
 
+
+
+
     @Scheduled(initialDelay = 1000 * 10, fixedDelay = 1000 * 10)
     void exportMetrics() {
         LOGGER.debug("Reporting metrics");
