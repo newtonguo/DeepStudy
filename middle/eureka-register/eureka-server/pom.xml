@@ -2,8 +2,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zhiyin.frame</groupId>
-    <artifactId>eureka-server</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>zhiyin-eureka</artifactId>
+    <packaging>war</packaging>
     <name>${project.artifactId}</name>
     <url>http://maven.apache.org</url>
 
@@ -107,6 +107,18 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <warName>${project.artifactId}</warName>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+
         </plugins>
     </build>
 
