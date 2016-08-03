@@ -25,6 +25,12 @@ class GreetingServiceMetricsAspect {
 
 //    @Autowired
     private GaugeService gaugeService;
+
+//    @Autowired
+//    public GreetingServiceMetricsAspect(CounterService counterService) {
+//        this.counterService = counterService;
+//    }
+
     @Autowired
     public GreetingServiceMetricsAspect(CounterService counterService, GaugeService gaugeService) {
         this.counterService = counterService;
@@ -33,6 +39,7 @@ class GreetingServiceMetricsAspect {
 
     @AfterReturning(pointcut = "execution(* com.hg.sb.act.service.greeting.GreetingService.getGreeting(int)) && args(number)", argNames = "number")
     public void afterCallingGetGreeting(int number) {
+        System.out.println("ssss");
         LOGGER.debug("Triggered after calling getGreeting()");
         counterService.increment("counter.calls.get_greeting");
         counterService.increment("counter.calls.get_greeting." + number);

@@ -71,6 +71,11 @@ http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-m
 
 这个属性配置管理URL只能本机访问。
 
+
+## 刷新周期
+
+admin client定时上传信息到server，可以进行配置
+
 ## 参考
 
 https://yq.aliyun.com/articles/2322

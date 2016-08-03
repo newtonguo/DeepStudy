@@ -17,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableCircuitBreaker
 @SpringBootApplication
 @RestController
-@ComponentScan(basePackages = { "com.test.service" })
+//@ComponentScan(basePackages = { "com.test.service" })
 public class HystrixClientApplication {
 
 	@Autowired
