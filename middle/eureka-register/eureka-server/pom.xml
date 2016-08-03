@@ -61,7 +61,6 @@
         </dependency>
         <!-- end cloud -->
 
-
         <!-- swagger -->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -117,7 +116,6 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-
 
         </plugins>
     </build>
@@ -176,7 +174,5 @@
             </build>
         </profile>
     </profiles>
-
-
 
 </project>
