@@ -35,6 +35,7 @@
 
         <module>eureka-demo-provider</module>
         <module>eureka-demo-consumer</module>
+        <module>demo-http-call</module>
     </modules>
 
 

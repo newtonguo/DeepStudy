@@ -30,6 +30,14 @@ public class RedisCachableTest {
     @Autowired
     IUserInfoService userInfoService;
 
+    @Test
+    public void testError() {
+
+        User selFromService = userInfoService.findById(2L);
+        assertThat(selFromService).isNotNull();
+
+
+    }
 
 
     @Test

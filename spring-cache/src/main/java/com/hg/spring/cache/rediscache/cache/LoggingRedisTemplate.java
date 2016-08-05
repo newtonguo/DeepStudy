@@ -23,6 +23,7 @@ public class LoggingRedisTemplate<K, V> extends RedisTemplate<K, V> {
     @Override
     public <T> T execute(final RedisCallback<T> action, final boolean exposeConnection, final boolean pipeline) {
         try {
+            logger.info("call ex");
             return super.execute(action, exposeConnection, pipeline);
         }
         catch(final Throwable t) {
@@ -55,6 +56,10 @@ public class LoggingRedisTemplate<K, V> extends RedisTemplate<K, V> {
         }
     }
 
+    public <T> T execute(RedisCallback<T> action) {
+        logger.info("call");
+        return execute(action, isExposeConnection());
+    }
 
     @Override
     public <T> T execute(final SessionCallback<T> session) {

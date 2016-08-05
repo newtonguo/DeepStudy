@@ -1,6 +1,7 @@
 package com.hg.spring.cache.rediscache.config;
 
 import com.google.common.collect.Maps;
+import com.hg.spring.cache.rediscache.cache.LoggingRedisTemplate;
 import com.hg.spring.cache.rediscache.cache.RedisCacheErrorHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 
@@ -56,8 +58,10 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
 	
 	// String类型的模板
 	@Bean
-	StringRedisTemplate redisTemplate() {
-		StringRedisTemplate redisTemplate = new StringRedisTemplate();
+	RedisTemplate redisTemplate() {
+//		StringRedisTemplate redisTemplate = new StringRedisTemplate();
+		LoggingRedisTemplate<String,String> redisTemplate = new LoggingRedisTemplate<String,String>();
+
 		redisTemplate.setConnectionFactory(jedisConnectionFactory());
 		
 //		JDK序列化，不方便查看
