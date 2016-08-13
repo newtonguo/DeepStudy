@@ -29,6 +29,7 @@
 
     <modules>
         <module>redisson</module>
+        <module>spring-cache</module>
     </modules>
 
 

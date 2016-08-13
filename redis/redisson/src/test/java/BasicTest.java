@@ -3,11 +3,13 @@ import org.redisson.Redisson;
 import org.redisson.RedissonClient;
 import org.redisson.core.RBucket;
 import org.redisson.core.RList;
+import org.redisson.core.RReadWriteLock;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
- * Created by wangqinghui on 2016/6/7.
+ * Created by hg on 2016/6/7.
  */
 public class BasicTest {
 
@@ -23,8 +25,6 @@ public class BasicTest {
         String getStr = bucket.get();
 
         System.out.println(getStr);
-
-
 
 //测试 list
         RList<String> strList = redisson.getList("strList");
