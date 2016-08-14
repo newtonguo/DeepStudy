@@ -1,3 +1,4 @@
+
 spring:
   application:
     name: zhiyin-gateway
@@ -14,17 +15,16 @@ zuul:
     zhiyin-ranker:
       path: /zhiyin-ranker/**
       serviceId: zhiyin-ranker
-
-# routes to url
-#zuul.routes.api-a-url.path=/api-a-url/**
-#zuul.routes.api-a-url.url=http://localhost:2222/
-#
+    appapi:
+      path: appapi/**
+      serviceId: zhiyin-appapi-prod
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+          defaultZone: http://10.44.145.103:8761/eureka/
+#      defaultZone: http://localhost:8761/eureka/
 
 
 server:
-  port: 8088
+  port: 8888
