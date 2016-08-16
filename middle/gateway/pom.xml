@@ -30,9 +30,9 @@
 
 
     <modules>
-        <!--<module>eureka-server</module>-->
-        <!--<module>service-A</module>-->
-        <!--<module>service-B</module>-->
+        <module>eureka-server</module>
+        <module>service-A</module>
+        <module>service-B</module>
         <module>api-gateway</module>
     </modules>
 
