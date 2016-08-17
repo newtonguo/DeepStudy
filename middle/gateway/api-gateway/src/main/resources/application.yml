@@ -6,12 +6,16 @@ spring:
 # routes to serviceId
 zuul:
   routes:
+    localhost:
+      path: local/**
+#      routes:
     api-a:
       path: /api-a/**
       serviceId: service-A
-    api-b:
-      path: /api-b/**
+    service-b:
+      path: /service-b/**
       serviceId: service-B
+      stripPrefix: false
     zhiyin-ranker:
       path: /zhiyin-ranker/**
       serviceId: zhiyin-ranker

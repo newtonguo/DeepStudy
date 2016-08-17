@@ -1,10 +1,7 @@
 package com.zhiyin.web;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by hg on 2016/3/29.
@@ -22,6 +19,14 @@ public class HelloController {
     public String helloName(@PathVariable("name") String name) {
         return "hello" + name;
     }
+
+
+    @RequestMapping(method = RequestMethod.POST, path = "/hello")
+    public String helloPost(@RequestBody String name) {
+        return "hello" + name;
+    }
+
+
 
     @RequestMapping(value = "/ok")
     public String ok() {

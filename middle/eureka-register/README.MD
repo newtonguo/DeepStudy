@@ -15,3 +15,12 @@ https://github.com/rcapraro/spring-cloud-sample
 
 java8+eureka+feign
 https://github.com/Qkyrie/spring-boot-netflix-example
+
+
+## Eureka Peer机制
+
+peer使用
+http://cloud.spring.io/spring-cloud-static/spring-cloud.html#_peer_awareness
+
+peer原理
+https://github.com/Netflix/eureka/wiki/Understanding-Eureka-Peer-to-Peer-Communication

@@ -1,14 +1,14 @@
 spring:
   application:
-    name: service-B
+    name: service-A
 
 server:
   port: 3333
-  context-path: /service-b
-
+  context-path: /sa
 
 eureka:
   client:
     serviceUrl:
 #          defaultZone: http://10.44.145.103:8761/eureka/
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8763/eureka/
+
