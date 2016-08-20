@@ -5,8 +5,7 @@ spring:
     name: eureka
   profiles:
     active: default
-  thymeleaf:
-    enabled: false     # Disable Thymeleaf
+
 
 # Configure this Discovery Server
 eureka:

@@ -57,8 +57,6 @@ public class GatewayApplication extends SpringBootServletInitializer {
             }
         }
 
-
-
     }
 
 

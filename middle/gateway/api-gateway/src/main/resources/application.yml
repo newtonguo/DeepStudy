@@ -21,7 +21,7 @@ zuul:
       serviceId: zhiyin-ranker
     appapi:
       path: appapi/**
-      serviceId: zhiyin-appapi-prod
+      serviceId: appapi
 
 eureka:
   client:
