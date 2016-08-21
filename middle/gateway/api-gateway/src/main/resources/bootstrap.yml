@@ -22,13 +22,15 @@ zuul:
     appapi:
       path: appapi/**
       serviceId: appapi
-
-eureka:
-  client:
-    serviceUrl:
-#          defaultZone: http://10.44.145.103:8761/eureka/
-      defaultZone: http://localhost:8761/eureka/
-
+      stripPrefix: false
+    appapi2:
+      path: appapi/**
+      serviceId: ZHIYIN-APPAPI-PROD
+      stripPrefix: false
+    appapi-prod:
+      path: appapi-prod/**
+      serviceId: ZHIYIN-APPAPI-PROD
+      stripPrefix: false
 
 server:
   port: 8888
