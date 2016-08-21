@@ -2,9 +2,7 @@
 # Discovery Server Dashboard uses FreeMarker.  Don't want Thymeleaf templates
 spring:
   application:
-    name: eureka
-  profiles:
-    active: default
+    name: eurekadd
 
 
 # Configure this Discovery Server
@@ -22,10 +20,10 @@ eureka:
 server:
   port: 8761   # HTTP (Tomcat) port
 
-security:
-  basic:
-    enabled: false
-  user:
-    name: admin
-    password: admin
+#security:
+#  basic:
+#    enabled: false
+#  user:
+#    name: admin
+#    password: admin
 
