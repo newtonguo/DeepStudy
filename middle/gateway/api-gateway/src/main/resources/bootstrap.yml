@@ -23,12 +23,15 @@ zuul:
       path: appapi/**
       serviceId: appapi
       stripPrefix: false
-    appapi2:
-      path: appapi/**
-      serviceId: ZHIYIN-APPAPI-PROD
-      stripPrefix: false
-    appapi-prod:
-      path: appapi-prod/**
-      serviceId: ZHIYIN-APPAPI-PROD
-      stripPrefix: false
+#    appapi2:
+#      path: appapi/**
+#      serviceId: ZHIYIN-APPAPI-PROD
+#      stripPrefix: false
+#    appapi-prod:
+#      path: appapi-prod/**
+#      serviceId: ZHIYIN-APPAPI-PROD
+#      stripPrefix: false
 
+
+server:
+  port: 80
