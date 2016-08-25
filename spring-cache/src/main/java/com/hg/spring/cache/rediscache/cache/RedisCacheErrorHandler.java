@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cache.Cache;
 import org.springframework.cache.interceptor.CacheErrorHandler;
 
+
 public class RedisCacheErrorHandler implements CacheErrorHandler {
 
 	 private static final Logger logger = LoggerFactory.getLogger(RedisCacheErrorHandler.class);
