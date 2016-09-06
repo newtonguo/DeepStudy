@@ -11,4 +11,10 @@ eureka:
     serviceUrl:
 #          defaultZone: http://10.44.145.103:8761/eureka/
       defaultZone: http://localhost:8761/eureka/
-
+#    initialInstanceInfoReplicationIntervalSeconds:
+#    lease:
+#      duration: 5
+  instance:
+    registryFetchIntervalSeconds: 1
+    leaseRenewalIntervalInSeconds: 2
+#    leaseExpirationDurationInSeconds: 5

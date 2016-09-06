@@ -24,3 +24,8 @@ http://cloud.spring.io/spring-cloud-static/spring-cloud.html#_peer_awareness
 
 peer原理
 https://github.com/Netflix/eureka/wiki/Understanding-Eureka-Peer-to-Peer-Communication
+
+
+
+## Eureka安全配置
+https://github.com/callistaenterprise/blog-microservices/blob/master/microservices/support/discovery-server/src/main/resources/application.yml
