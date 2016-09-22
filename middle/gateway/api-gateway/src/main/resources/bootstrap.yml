@@ -32,6 +32,5 @@ zuul:
 #      serviceId: ZHIYIN-APPAPI-PROD
 #      stripPrefix: false
 
-
 server:
   port: 80
