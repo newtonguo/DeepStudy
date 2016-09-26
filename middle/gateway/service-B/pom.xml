@@ -6,7 +6,7 @@
     <groupId>com.didispace</groupId>
     <artifactId>service-B</artifactId>
     <version>1.0.0</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>service-B</name>
     <description>Spring Cloud project</description>
@@ -59,6 +59,18 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <warName>service-b</warName>
+                    <!--<warName>${project.artifactId}-${profiles.active}</warName>-->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
