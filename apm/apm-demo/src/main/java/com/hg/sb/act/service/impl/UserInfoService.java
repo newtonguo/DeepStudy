@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserInfoService implements IUserInfoService {
 
-    @Timed
+    @Timed(name = "service.getName")
     @Override
     public String getName(Long id){
         try {

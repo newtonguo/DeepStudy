@@ -2,9 +2,9 @@
 spring:
   application:
     name: apm-demo
-  boot:
-    admin:
-      url: http://localhost:10008
+#  boot:
+#    admin:
+#      url: http://localhost:10008
 
 
 management:
@@ -35,8 +35,11 @@ server:
 # accesslog目录，默认在basedir/logs
 #server.tomcat.accesslog.directory=
 
-logging:
-# 日志文件目录
-  path: /springboot-tomcat-tmp
-# 日志文件名称，默认为spring.log
-  file: target/myapp.log
+#logging:
+## 日志文件目录
+#  path: /springboot-tomcat-tmp
+## 日志文件名称，默认为spring.log
+#  file: target/myapp.log
+
+
+

@@ -2,18 +2,17 @@ package com.hg.sb.act.config;
 
 import java.util.concurrent.TimeUnit;
 
-import com.codahale.metrics.Slf4jReporter;
+import com.codahale.metrics.*;
 import com.codahale.metrics.jvm.GarbageCollectorMetricSet;
 import com.codahale.metrics.jvm.MemoryUsageGaugeSet;
+import metrics_influxdb.InfluxdbReporter;
+import metrics_influxdb.api.protocols.InfluxdbProtocols;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.codahale.metrics.ConsoleReporter;
-import com.codahale.metrics.MetricRegistry;
-import com.codahale.metrics.SharedMetricRegistries;
 import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
 import com.ryantenney.metrics.spring.config.annotation.MetricsConfigurerAdapter;
 import org.springframework.core.env.Environment;
@@ -25,7 +24,7 @@ import javax.annotation.PostConstruct;
 public class MetricsReporter extends MetricsConfigurerAdapter {
 
     // reporting interval in milliseconds
-    private static long interval = 100 ;
+    private static long interval = 5 ;
 
     @Autowired
     Environment environment;
@@ -82,9 +81,23 @@ public class MetricsReporter extends MetricsConfigurerAdapter {
 
 //        Slf4jReporter.Builder builder = Slf4jReporter.forRegistry(metricRegistry);
 //        Slf4jReporter reporter = builder.build();
+
+//         控制台
         ConsoleReporter.Builder builder = ConsoleReporter.forRegistry(metricRegistry);
         ConsoleReporter reporter = builder.build();
         reporter.start(interval, TimeUnit.SECONDS);
+
+
+        ScheduledReporter reporter2 = InfluxdbReporter.forRegistry(metricRegistry)
+                .protocol(InfluxdbProtocols.http("101.200.185.137", 8086, "root", "root", "collectdb"))
+                .prefixedWith("hg")
+                .convertRatesTo(TimeUnit.SECONDS)
+                .convertDurationsTo(TimeUnit.MILLISECONDS)
+                .filter(MetricFilter.ALL)
+                .skipIdleMetrics(false)
+                .build();
+
+        reporter2.start(interval,TimeUnit.SECONDS);
     }
 
 
