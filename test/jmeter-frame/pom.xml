@@ -12,7 +12,8 @@
 
     <modules>
         <module>JMeterTesting</module>
-        <module>test-demoserver</module>
+        <module>demo-web</module>
+        <module>ume</module>
     </modules>
 
     <dependencyManagement>

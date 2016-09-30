@@ -14,8 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
 
+
+    @RequestMapping(value = "/ok", method = RequestMethod.GET)
+    public String ok() {
+
+        return "ok";
+    }
+
     @RequestMapping(value = "/getinfo", method = RequestMethod.GET)
-    public String hello( ) {
+    public String hello() {
 
         TestC2s c2s = new TestC2s();
         c2s.setId("1");
@@ -29,13 +36,11 @@ public class TestController {
     }
 
 
-    @RequestMapping(value = "/postinfo", method = RequestMethod.POST ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/postinfo", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public String hello(@RequestBody TestC2s c2s) {
         log.info(JSON.toJSONString(c2s));
         return JSON.toJSONString(c2s);
     }
-
-
 
 
 }
