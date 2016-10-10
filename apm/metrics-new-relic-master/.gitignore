@@ -1,0 +1,13 @@
+*.iml
+*.ipr
+*.iws
+*.swp
+./out
+.DS_Store
+.directory
+.gradle
+.idea
+build
+target
+out
+/newrelic

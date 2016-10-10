@@ -1,0 +1,6 @@
+server:
+  port: 9966
+
+zipkin:
+  storage:
+    type: mem #mysql #mem

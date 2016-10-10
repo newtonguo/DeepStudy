@@ -19,8 +19,10 @@
     </properties>
 
     <modules>
-<module>grafana-metrics-demo</module>
+        <module>grafana-metrics-demo</module>
         <module>apm-demo</module>
+        <module>metrics-new-relic</module>
+        <module>newrelic-springboot-demo</module>
     </modules>
 
     <dependencies>
@@ -31,7 +33,6 @@
             <version>2.4.1</version>
         </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
@@ -46,4 +47,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
