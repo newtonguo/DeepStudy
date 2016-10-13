@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by wangqinghui on 2016/1/21.
+ * Created by hg on 2016/1/21.
  */
 //重载HystrixCommand 的getFallback方法实现逻辑
 public class HelloWorldCommandTime extends HystrixCommand<String> {

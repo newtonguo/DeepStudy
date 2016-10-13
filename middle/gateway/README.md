@@ -12,3 +12,10 @@ https://github.com/Netflix/zuul/issues/196
 
 https://github.com/marcosbarbero/spring-cloud-starter-zuul-ratelimit
 
+## zuul 处理post请求
+
+https://github.com/Netflix/zuul/issues/193
+
+测试请求
+使用zuul将hello进行route，并可以更改请求信息。
+post localhost:8080/test/hello {"name":"sssss"}

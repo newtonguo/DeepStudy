@@ -16,27 +16,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableHystrix
 @EnableCircuitBreaker
 @SpringBootApplication
-@RestController
 //@ComponentScan(basePackages = { "com.test.service" })
 public class HystrixClientApplication {
-
-	@Autowired
-	private IEmployeeService employeeService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(HystrixClientApplication.class, args);
 	}
 
-	@RequestMapping("/list")
-	public String list() {
-		return employeeService.list();
-	}
-
-	static class ApplicationConfig extends WebMvcConfigurerAdapter {
-
-		@Bean
-		public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-			return new PropertySourcesPlaceholderConfigurer();
-		}
-	}
 }

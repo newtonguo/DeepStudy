@@ -8,7 +8,7 @@ import com.netflix.hystrix.util.HystrixRollingNumberEvent;
 import java.util.HashMap;
 
 /**
- * Created by wangqinghui on 2016/4/15.
+ * Created by hg on 2016/4/15.
  */
 public class CommandMetricsUtil {
 

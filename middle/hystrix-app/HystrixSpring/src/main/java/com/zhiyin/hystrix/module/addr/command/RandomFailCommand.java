@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.math.RandomUtils;
 
 /**
- * Created by wangqinghui on 2016/4/13.
+ * Created by hg on 2016/4/13.
  */
 @Slf4j
 public class RandomFailCommand extends HystrixCommand<String> {

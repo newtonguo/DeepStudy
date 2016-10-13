@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by wangqinghui on 2016/4/13.
+ * Created by hg on 2016/4/13.
  */
 public class HttpCallCommand extends HystrixCommand<String> {
 

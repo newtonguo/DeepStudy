@@ -7,7 +7,8 @@ spring:
 zuul:
   routes:
     localhost:
-      path: local/**
+      path: /test/**
+      url: http://localhost:8080
 #      routes:
     api-a:
       path: /api-a/**
@@ -33,4 +34,4 @@ zuul:
 #      stripPrefix: false
 
 server:
-  port: 80
+  port: 8080

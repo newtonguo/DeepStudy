@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Created by wangqinghui on 2016/1/21.
+ * Created by hg on 2016/1/21.
  */
 
 @Slf4j

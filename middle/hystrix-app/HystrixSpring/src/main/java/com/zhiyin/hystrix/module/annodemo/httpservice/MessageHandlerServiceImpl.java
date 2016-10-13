@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 /**
- * Created by wangqinghui on 2016/1/21.
+ * Created by hg on 2016/1/21.
  */
 
 @Slf4j

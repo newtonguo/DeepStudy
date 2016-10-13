@@ -10,6 +10,8 @@ import com.netflix.zuul.groovy.GroovyCompiler;
 import com.netflix.zuul.groovy.GroovyFileFilter;
 import com.netflix.zuul.http.ZuulServlet;
 import com.netflix.zuul.monitoring.MonitoringHelper;
+import com.zhiyin.gateway.filter.AccessFilter2;
+import com.zhiyin.gateway.filter.post.AutoResetInputStreamFilter;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -40,6 +42,15 @@ public class GatewayApplication extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(GatewayApplication.class);
+    }
+
+//        @Bean
+//    public AccessFilter2 accessFilter2() {
+//        return new AccessFilter2();
+//    }
+        @Bean
+    public AutoResetInputStreamFilter accessFilter() {
+        return new AutoResetInputStreamFilter();
     }
 
     @Component

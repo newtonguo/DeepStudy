@@ -10,7 +10,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by wangqinghui on 2016/1/21.
+ * Created by hg on 2016/1/21.
  */
 
 public class HelloWorldCommand extends HystrixCommand<String> {
