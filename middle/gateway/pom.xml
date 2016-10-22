@@ -34,7 +34,7 @@
         <module>service-A</module>
         <module>service-B</module>
         <module>api-gateway</module>
-        <module>zuul-simple-webapp</module>
+        <module>simple-webapp</module>
     </modules>
 
 
