@@ -35,10 +35,10 @@ public class HystrixClientApplication {
         return employeeService.list();
     }
 
-    @Bean
-    public DemoServletContextListener executorListener() {
-        return new DemoServletContextListener();
-    }
+//    @Bean
+//    public DemoServletContextListener executorListener() {
+//        return new DemoServletContextListener();
+//    }
 
     static class ApplicationConfig extends WebMvcConfigurerAdapter {
 
