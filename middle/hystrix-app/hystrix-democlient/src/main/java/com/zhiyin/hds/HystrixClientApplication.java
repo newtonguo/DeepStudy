@@ -6,6 +6,8 @@ import com.zhiyin.hds.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
@@ -21,14 +23,20 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @RestController
 @EnableHystrixDashboard
 @EnableFeignClients
-public class HystrixClientApplication {
-
-    @Autowired
-    private IEmployeeService employeeService;
+public class HystrixClientApplication  extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(HystrixClientApplication.class, args);
     }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(HystrixClientApplication.class);
+    }
+
+
+    @Autowired
+    private IEmployeeService employeeService;
 
     @RequestMapping("/list")
     public String list() {
@@ -40,12 +48,5 @@ public class HystrixClientApplication {
 //        return new DemoServletContextListener();
 //    }
 
-    static class ApplicationConfig extends WebMvcConfigurerAdapter {
-
-        @Bean
-        public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-            return new PropertySourcesPlaceholderConfigurer();
-        }
-    }
 
 }

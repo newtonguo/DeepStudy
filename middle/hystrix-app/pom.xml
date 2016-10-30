@@ -59,7 +59,7 @@
 		<module>hystrix-dashboard</module>
 	<module>hystrix-democlient</module>
         <module>hystrix-examples</module>
-		<module>HystrixSpring</module>
+		<!--<module>HystrixSpring</module>-->
 
     </modules>
 
