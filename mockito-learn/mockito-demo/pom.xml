@@ -5,16 +5,18 @@
 	<artifactId>mockito-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<dependencies>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>2.0.5-beta</version>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
 		</dependency>
 		<dependency>
 			<groupId>org.powermock</groupId>

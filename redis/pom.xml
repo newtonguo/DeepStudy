@@ -30,6 +30,7 @@
     <modules>
         <module>redisson</module>
         <module>spring-cache</module>
+        <module>ecache</module>
     </modules>
 
 
