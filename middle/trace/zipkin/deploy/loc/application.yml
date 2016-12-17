@@ -2,10 +2,6 @@
 server:
   port: 9966
 
-zipkin:
-  storage:
-    type: mysql
-
 spring:
   datasource:
     #spanstore-jdbc-0.9.3.jar
@@ -17,12 +13,3 @@ spring:
       # Switch this on to create the schema on startup:
     initialize: true
     continueOnError: true
-
-
-#  sleuth:
-#    # not use sleuth stream to trace zipkin server itself
-#    enabled: false
-#    #refer to org.springframework.cloud.sleuth.instrument.hystrix.SleuthHystrixAutoConfiguration.java
-#    hystrix:
-#      strategy:
-#      enabled: false

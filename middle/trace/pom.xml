@@ -28,10 +28,10 @@
 
     <modules>
         <module>dubbo-demo</module>
-        <module>zipkin-mysql</module>
+        <module>zipkin</module>
         <module>someapp</module>
         <module>sleuth</module>
-        <module>zipkin-demo</module>
+        <!--<module>zipkin-demo</module>-->
     </modules>
 
     <parent>
@@ -52,13 +52,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
-    <!--<parent>-->
-        <!--<groupId>com.zhiyin</groupId>-->
-        <!--<artifactId>zhiyin-parent</artifactId>-->
-        <!--<version>0.0.1-SNAPSHOT</version>-->
-    <!--</parent>-->
 
 	 <dependencies>
          <dependency>

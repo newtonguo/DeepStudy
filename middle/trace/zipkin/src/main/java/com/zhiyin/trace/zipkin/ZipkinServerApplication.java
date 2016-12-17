@@ -9,9 +9,9 @@ import zipkin.server.EnableZipkinServer;
 @SpringBootApplication
 //@EnableZipkinStreamServer
 @EnableZipkinServer
-public class ZipkinDemoApplication {
+public class ZipkinServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ZipkinDemoApplication.class, args);
+		SpringApplication.run(ZipkinServerApplication.class, args);
 	}
 }
