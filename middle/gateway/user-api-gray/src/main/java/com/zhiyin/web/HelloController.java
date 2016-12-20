@@ -12,7 +12,7 @@ public class HelloController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/hello")
     public String hello( ) {
-        return "hello, I'm service-a.";
+        return "hello, I'm gray user-api.";
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/hello/{name}")

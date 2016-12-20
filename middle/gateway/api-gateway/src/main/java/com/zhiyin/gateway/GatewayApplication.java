@@ -11,6 +11,7 @@ import com.netflix.zuul.groovy.GroovyFileFilter;
 import com.netflix.zuul.http.ZuulServlet;
 import com.netflix.zuul.monitoring.MonitoringHelper;
 import com.zhiyin.gateway.filter.AccessFilter2;
+import com.zhiyin.gateway.filter.AccessFilter22;
 import com.zhiyin.gateway.filter.post.AutoResetInputStreamFilter;
 import org.apache.commons.io.FileUtils;
 import org.springframework.boot.CommandLineRunner;
@@ -45,14 +46,15 @@ public class GatewayApplication extends SpringBootServletInitializer {
         return application.sources(GatewayApplication.class);
     }
 
-//        @Bean
-//    public AccessFilter2 accessFilter2() {
-//        return new AccessFilter2();
-//    }
-        @Bean
+
+    @Bean
+    public AccessFilter22 accessFilter2() {
+        return new AccessFilter22();
+    }
+/*        @Bean
     public AutoResetInputStreamFilter accessFilter() {
         return new AutoResetInputStreamFilter();
-    }
+    }*/
 
     @Component
     public static class MyCommandLineRunner implements CommandLineRunner {

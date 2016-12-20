@@ -35,6 +35,9 @@
         <module>service-B</module>
         <module>api-gateway</module>
         <module>simple-webapp</module>
+
+        <module>user-api</module>
+        <module>user-api-gray</module>
     </modules>
 
 
