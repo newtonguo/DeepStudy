@@ -12,6 +12,7 @@ import com.netflix.zuul.http.ZuulServlet;
 import com.netflix.zuul.monitoring.MonitoringHelper;
 import com.zhiyin.gateway.filter.AccessFilter2;
 import com.zhiyin.gateway.filter.post.AutoResetInputStreamFilter;
+import org.apache.commons.io.FileUtils;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -61,6 +62,7 @@ public class GatewayApplication extends SpringBootServletInitializer {
 
             FilterLoader.getInstance().setCompiler(new GroovyCompiler());
             try {
+                FileUtils.forceMkdir(new File("/opt/data/gateway/filter"));
                 FilterFileManager.setFilenameFilter(new GroovyFileFilter());
                 FilterFileManager.init(10,"/opt/data/gateway/filter");
             } catch (Exception e) {

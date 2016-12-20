@@ -31,11 +31,19 @@ public class HelloWorldCommandTime extends HystrixCommand<String>{
 
     @Override
     protected String run() throws Exception {
+        if(true){
+            throw new Exception("ss");
+        }
         //sleep 1 秒,调用会超时
         TimeUnit.MILLISECONDS.sleep( sleepMilliSecond );
         return RetSucc;
     }
 
+    public static void main(String[] args) throws Exception{
+        HelloWorldCommandTime command = new HelloWorldCommandTime("test-Fallback",1000);
+            String result = command.execute();
+        System.out.println(result);
+    }
 //    public static void main(String[] args) throws Exception{
 //
 //

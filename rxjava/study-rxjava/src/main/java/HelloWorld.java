@@ -1,6 +1,7 @@
 import org.junit.Test;
 import rx.Observable;
 import rx.Subscriber;
+import rx.functions.Action0;
 import rx.functions.Action1;
 
 /**
@@ -9,7 +10,7 @@ import rx.functions.Action1;
 public class HelloWorld {
 
     @Test
-    public void basic(){
+    public void basic() {
         Observable<String> myObservable = Observable.create(
                 new Observable.OnSubscribe<String>() {
                     @Override
@@ -18,16 +19,51 @@ public class HelloWorld {
                         sub.onCompleted();
                     }
                 }
-        );
+        )
+                .doOnTerminate(new Action0() {
+                    @Override
+                    public void call() {
+                        System.out.println("end");
+                    }
+                })
+                .lift(new Observable.Operator<String, String>() {
+                    @Override
+                    public Subscriber<? super String> call(Subscriber<? super String> subscriber) {
+                        return new Subscriber<String>() {
+                            @Override
+                            public void onCompleted() {
+                                System.out.println("lift end");
+                                subscriber.onCompleted();
+                            }
+
+                            @Override
+                            public void onError(Throwable throwable) {
+
+                            }
+
+                            @Override
+                            public void onNext(String s) {
+                                System.out.println("lift " + s);
+                                subscriber.onNext(s);
+                            }
+                        };
+                    }
+                });
+
         Subscriber<String> mySubscriber = new Subscriber<String>() {
             @Override
-            public void onNext(String s) { System.out.println(s); }
+            public void onNext(String s) {
+                System.out.println("sub " + s);
+            }
 
             @Override
-            public void onCompleted() { }
+            public void onCompleted() {
+                System.out.println("sub end");
+            }
 
             @Override
-            public void onError(Throwable e) { }
+            public void onError(Throwable e) {
+            }
         };
 
         myObservable.subscribe(mySubscriber);
@@ -35,7 +71,7 @@ public class HelloWorld {
     }
 
     @Test
-    public void basic2(){
+    public void basic2() {
         Observable<String> myObservable = Observable.just("Hello, world!");
 
         Action1<String> onNextAction = new Action1<String>() {
@@ -66,8 +102,6 @@ public class HelloWorld {
         Observable.just("Hello, world!")
                 .subscribe(s -> System.out.println(s));
     }
-
-
 
 
 }

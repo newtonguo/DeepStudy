@@ -24,6 +24,10 @@ zuul:
       path: appapi/**
       serviceId: appapi
       stripPrefix: false
+
+    zipkin:
+      path : /zipkin-server
+      stripPrefix: false
 #    appapi2:
 #      path: appapi/**
 #      serviceId: ZHIYIN-APPAPI-PROD
