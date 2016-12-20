@@ -9,3 +9,10 @@ http://stackoverflow.com/questions/35261231/autowire-defaulttokenservices-failin
 
 
 
+
+post
+
+头：Authorization 
+值：Basic YWRtaW46YWRtaW4=
+http://localhost:8081/zy-oauth-server/oauth/token?client_id=admin&client_secret=admin&grant_type=password&scope=foo read write bar&username=15600153528&password=123456
+
