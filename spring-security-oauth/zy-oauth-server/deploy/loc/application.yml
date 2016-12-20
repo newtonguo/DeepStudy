@@ -1,20 +1,26 @@
 
 spring:
-  jmx:
-    default-domain: ${spring.application.name}
-
-endpoints:
-  jmx:
-    unique-names: true
+  application:
+    name: zy-oauth-server
+    version: 0.0.1
 
 server:
   contextPath: /${spring.application.name}
   port: 8081
 
+#  profiles:
+#    active: test
 
 management:
   security:
     enabled: false
 security:
   basic:
+    enabled: false
+
+#logging:
+#  level: debug
+
+eureka:
+  client:
     enabled: false

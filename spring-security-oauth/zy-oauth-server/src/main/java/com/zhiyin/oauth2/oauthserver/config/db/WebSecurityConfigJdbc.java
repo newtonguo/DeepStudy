@@ -55,14 +55,6 @@ public class WebSecurityConfigJdbc extends WebSecurityConfigurerAdapter {
 //            .and().formLogin().permitAll()
 //            ;
 
-        http
-                .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .and()
-                .httpBasic().disable();
-
 //        http
 //                .formLogin().loginPage("/login").permitAll()
 //                .and()
@@ -72,7 +64,40 @@ public class WebSecurityConfigJdbc extends WebSecurityConfigurerAdapter {
 //                .authorizeRequests().anyRequest().authenticated();
         // @formatter:on
 
-    }
 
+        // old
+//        http
+//                .authorizeRequests()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .and()
+//                .httpBasic().disable();
+
+        // new
+      /*  http
+                .formLogin().loginPage("/login").permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/hello").permitAll()
+//                .and()
+//                .authorizeRequests().antMatchers("/user/*").authenticated()
+                .and()
+                .authorizeRequests().anyRequest().permitAll()
+                .and()
+                .httpBasic().disable();
+*/
+
+        http
+                .authorizeRequests()
+                .antMatchers("/", "/home").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll();
+    }
 
 }
