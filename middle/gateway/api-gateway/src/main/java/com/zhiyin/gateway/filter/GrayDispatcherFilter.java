@@ -6,6 +6,7 @@ import com.netflix.zuul.http.HttpServletRequestWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.util.UrlPathHelper;
 import org.springframework.web.util.WebUtils;
 
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  * https://github.com/spring-cloud/spring-cloud-netflix/issues/1169
  */
 @Slf4j
+@Component
 public class GrayDispatcherFilter extends ZuulFilter {
 
     @Override
@@ -50,9 +52,8 @@ public class GrayDispatcherFilter extends ZuulFilter {
 
         String testApp = "/user-api";
         if(servletPath.startsWith( testApp )){
-            String grayApp = requestUrl.replace( testApp ,testApp + "-gray");
-            RequestContext.getCurrentContext().getRequest().setAttribute(WebUtils.INCLUDE_REQUEST_URI_ATTRIBUTE, grayApp );
-
+//            String grayApp = requestUrl.replace( testApp ,testApp + "-gray");
+//            RequestContext.getCurrentContext().getRequest().setAttribute(WebUtils.INCLUDE_REQUEST_URI_ATTRIBUTE, grayApp );
         }
 
 //        ctx.getRequest().get
