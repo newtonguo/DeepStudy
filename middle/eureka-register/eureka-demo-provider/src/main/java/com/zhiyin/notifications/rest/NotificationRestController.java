@@ -28,19 +28,19 @@ public class NotificationRestController {
         return ResponseEntity.ok(version);
     }
 
-    @RequestMapping(value = "/notifications", method = RequestMethod.GET)
-    public DeferredResult<List<Notification>> notifications() {
-        final DeferredResult<List<Notification>> notificationDeferredResult = new DeferredResult<>();
-        notificationService
-                .findAll()
-                .toList()
-                .subscribe(new Action1<List<Notification>>() {
-                    @Override
-                    public void call(List<Notification> notifications) {
-                        notificationDeferredResult.setResult(notifications);
-                    }
-                });
-
-        return notificationDeferredResult;
-    }
+//    @RequestMapping(value = "/notifications", method = RequestMethod.GET)
+//    public DeferredResult<List<Notification>> notifications() {
+//        final DeferredResult<List<Notification>> notificationDeferredResult = new DeferredResult<>();
+//        notificationService
+//                .findAll()
+//                .toList()
+//                .subscribe(new Action1<List<Notification>>() {
+//                    @Override
+//                    public void call(List<Notification> notifications) {
+//                        notificationDeferredResult.setResult(notifications);
+//                    }
+//                });
+//
+//        return notificationDeferredResult;
+//    }
 }

@@ -38,7 +38,7 @@ public class NotificationService {
                 + restTemplate.getRequestFactory());
     }
 
-    @HystrixCommand
+//    @HystrixCommand
     public String version( ) {
 
         String accounts = null;
