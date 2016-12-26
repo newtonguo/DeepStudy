@@ -3,7 +3,7 @@ spring:
     name: service-A
 
 server:
-  port: 3333
+  port: 0
   context-path: /sa
 
 eureka:

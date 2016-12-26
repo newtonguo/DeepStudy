@@ -19,3 +19,9 @@ https://github.com/Netflix/zuul/issues/193
 测试请求
 使用zuul将hello进行route，并可以更改请求信息。
 post localhost:8080/test/hello {"name":"sssss"}
+
+
+## zuul router优化
+
+使用树优化
+https://jmnarloch.wordpress.com/2015/12/23/spring-cloud-zuul-trie-matcher/

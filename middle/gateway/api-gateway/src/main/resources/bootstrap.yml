@@ -36,6 +36,22 @@ zuul:
 #      path: appapi-prod/**
 #      serviceId: ZHIYIN-APPAPI-PROD
 #      stripPrefix: false
+    baidu:
+      path: /baidu/**
+      serviceId: baidu
+    user-api:
+      path: /user-api/**
+      stripPrefix: false
+    user-api-gray:
+      path: /user-api-gray/**
+      stripPrefix: false
+
+baidu:
+  robbon:
+    listOfServers: https://www.baidu.com/
 
 server:
   port: 8080
+
+logging:
+  level: debug

@@ -1,0 +1,16 @@
+
+
+
+spring:
+  application:
+    name: user-api
+
+# routes to serviceId
+zuul:
+  routes:
+    user-api:
+      path: /user-api/**
+      stripPrefix: false
+    user-api-gray:
+      path: /user-api-gray/**
+      stripPrefix: false

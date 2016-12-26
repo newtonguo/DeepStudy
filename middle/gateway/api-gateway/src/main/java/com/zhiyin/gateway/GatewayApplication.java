@@ -11,10 +11,12 @@ import com.netflix.zuul.groovy.GroovyFileFilter;
 import com.netflix.zuul.http.ZuulServlet;
 import com.netflix.zuul.monitoring.MonitoringHelper;
 import com.zhiyin.gateway.filter.AccessFilter2;
+import com.zhiyin.gateway.filter.GrayDispatcherFilter;
 import com.zhiyin.gateway.filter.post.AutoResetInputStreamFilter;
 import org.apache.commons.io.FileUtils;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
@@ -31,28 +33,29 @@ import java.io.IOException;
 /**
  * Created by hg on 16/5/24.
  */
-
+@EnableAutoConfiguration
 @EnableZuulProxy
 @SpringCloudApplication
-public class GatewayApplication extends SpringBootServletInitializer {
+public class GatewayApplication   {
 
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
     }
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(GatewayApplication.class);
-    }
-
-//        @Bean
-//    public AccessFilter2 accessFilter2() {
-//        return new AccessFilter2();
+//    @Override
+//    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//        return application.sources(GatewayApplication.class);
 //    }
-        @Bean
+
+
+    @Bean
+    public GrayDispatcherFilter accessFilter2() {
+        return new GrayDispatcherFilter();
+    }
+/*        @Bean
     public AutoResetInputStreamFilter accessFilter() {
         return new AutoResetInputStreamFilter();
-    }
+    }*/
 
     @Component
     public static class MyCommandLineRunner implements CommandLineRunner {
