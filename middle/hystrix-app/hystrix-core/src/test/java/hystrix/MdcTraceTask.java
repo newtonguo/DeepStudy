@@ -14,13 +14,15 @@ public class MdcTraceTask implements Runnable {
 
     @Override
     public void run() {
-        HystrixRequestContext context = HystrixRequestContext.initializeContext();
+//        HystrixRequestContext context = HystrixRequestContext.initializeContext();
 
         boolean trace = false;
         if( Integer.valueOf(tid) % 2 == 0){
             MDC.put("traceId",tid);
             trace =true;
         }
+        HystrixRequestContext context = HystrixRequestContext.initializeContext();
+
         try {
             MdcHystrixCommand d = new MdcHystrixCommand("mdc");
             String retTid = d.execute();

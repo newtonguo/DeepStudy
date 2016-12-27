@@ -19,8 +19,9 @@
     </properties>
 
     <modules>
+
+        <module>client-core</module>
         <module>eureka-server</module>
-        <!--<module>rabb</module>-->
         <!--<module>eureka-server2</module>-->
 
         <!--<module>peer1</module>-->
