@@ -18,7 +18,7 @@ public class LogService {
 
     public void log(String msg) {
 
-        Span logServiceSpan = this.tracer.createSpan("logService");
+        Span logServiceSpan = this.tracer.createSpan("pre-call-remote-api");
 
         try {
             LOGGER.info(msg);
@@ -28,4 +28,27 @@ public class LogService {
         }
     }
 
+    public void logPre(String msg) {
+
+        Span logServiceSpan = this.tracer.createSpan("pre-call-remote-api");
+
+        try {
+            LOGGER.info(msg);
+
+        } finally {
+            this.tracer.close(logServiceSpan);
+        }
+    }
+
+    public void logEnd(String msg) {
+
+        Span logServiceSpan = this.tracer.createSpan("after-call-remote-api");
+
+        try {
+            LOGGER.info(msg);
+
+        } finally {
+            this.tracer.close(logServiceSpan);
+        }
+    }
 }

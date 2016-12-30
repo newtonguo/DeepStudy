@@ -42,9 +42,12 @@ zuul:
     user-api:
       path: /user-api/**
       stripPrefix: false
+      serviceId: user-api
     user-api-gray:
       path: /user-api-gray/**
       stripPrefix: false
+      serviceId: user-api-gray
+
 
 baidu:
   robbon:
@@ -55,3 +58,10 @@ server:
 
 logging:
   level: debug
+
+ribbon:
+  invoker:
+    marks:
+      user-api:
+        serverMark: GRAY
+        candidateServerMarks: ONLINE,*

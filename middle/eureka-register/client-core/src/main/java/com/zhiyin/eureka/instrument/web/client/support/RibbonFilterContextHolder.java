@@ -18,6 +18,8 @@ package com.zhiyin.eureka.instrument.web.client.support;
 
 import com.zhiyin.eureka.instrument.web.client.api.RibbonFilterContext;
 
+import java.util.List;
+
 /**
  * The Ribbon filter context holder.
  *
@@ -35,6 +37,8 @@ public class RibbonFilterContextHolder {
         }
     };
 
+    private static final ThreadLocal<List<String>> markMap = new InheritableThreadLocal<List<String>>();
+
     /**
      * Retrieves the current thread bound instance of {@link RibbonFilterContext}.
      *
@@ -49,5 +53,13 @@ public class RibbonFilterContextHolder {
      */
     public static void clearCurrentContext() {
         contextHolder.remove();
+    }
+
+    public static void setMarkMap(List<String> list){
+        markMap.set(list);
+    }
+
+    public static List<String> getMark(){
+        return markMap.get();
     }
 }

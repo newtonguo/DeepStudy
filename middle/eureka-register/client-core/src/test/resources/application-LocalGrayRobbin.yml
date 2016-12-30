@@ -1,16 +1,17 @@
 server:
-  port: 8761
+  port: 1111
 
 spring:
   application:
-    name: eureka
+    name: GrayRobbin
 eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
 
 ribbon:
-  router:
-    config:
-      serverMark: GRAY
-      candidateServerMarks: ONLINE1,*
+  invoker:
+    marks:
+      local:
+        serverMark: GRAY
+        candidateServerMarks: ONLINE1,*

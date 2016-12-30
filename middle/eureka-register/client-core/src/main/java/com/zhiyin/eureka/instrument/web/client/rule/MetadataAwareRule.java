@@ -33,28 +33,27 @@ public class MetadataAwareRule extends DiscoveryEnabledRule {
         this(new MetadataAwarePredicate());
     }
 
-
-    public MetadataAwareRule(List<String> candidateServerMarks) {
-        this(new MetadataAwarePredicate());
-        this.candidateServerMarks = candidateServerMarks;
-    }
-
     public MetadataAwareRule(DiscoveryEnabledPredicate predicate) {
         super(predicate);
     }
 
     @Override
     public Server choose(Object key) {
+
+//        List<Server> server = getLoadBalancer().getAllServers();
+//        if
+
+
         Server ret = super.choose(key);
 
         if (ret != null) {
             return ret;
         }
 
+        candidateServerMarks = RibbonFilterContextHolder.getMark();
         if (candidateServerMarks == null || candidateServerMarks.size() == 0) {
             return ret;
         }
-
         for (String markMap : candidateServerMarks) {
             RibbonFilterContextHolder.getCurrentContext().add(ServerInvokerConst.SERVER_MARK_NAME, markMap);
             if( "*".equals(markMap) ){

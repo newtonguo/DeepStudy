@@ -17,7 +17,8 @@ package com.zhiyin.eureka.instrument.web.client.support;
 
 import com.google.common.collect.Lists;
 import com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList;
-import com.zhiyin.eureka.instrument.web.client.ServerInvokerConfig;
+import com.zhiyin.eureka.instrument.web.client.ServerInvokerProperty;
+import com.zhiyin.eureka.instrument.web.client.ServerMarkRestTemplateInterceptor;
 import com.zhiyin.eureka.instrument.web.client.rule.DiscoveryEnabledRule;
 import com.zhiyin.eureka.instrument.web.client.rule.MetadataAwareRule;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,13 +41,13 @@ import java.util.List;
 public class RibbonDiscoveryRuleAutoConfiguration {
 
     @Autowired
-    private ServerInvokerConfig serverInvokerConfig;
+    private ServerInvokerProperty serverInvokerProperty ;
 
     @Bean
     @ConditionalOnMissingBean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public DiscoveryEnabledRule metadataAwareRule() {
-        return new MetadataAwareRule(serverInvokerConfig.getCandidateServerMarks());
+        return new MetadataAwareRule();
     }
 
 }

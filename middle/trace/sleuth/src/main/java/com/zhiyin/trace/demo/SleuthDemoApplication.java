@@ -50,10 +50,11 @@ public class SleuthDemoApplication {
     public String getRemoteTime() throws URISyntaxException {
         log.info("Request to /getRemoteTime endpoint");
 
-        logService.log("Will call remote service");
+        logService.logPre("Will call remote service");
 
         ResponseEntity<String> forEntity = restTemplate.getForEntity(new URI("http://localhost:"+otherappPort+"/getTime"), String.class);
         log.info("Got response code: {}", forEntity.getStatusCode().toString());
+        logService.logEnd("call finsih");
         return "The remote time is: " + forEntity.getBody();
     }
 

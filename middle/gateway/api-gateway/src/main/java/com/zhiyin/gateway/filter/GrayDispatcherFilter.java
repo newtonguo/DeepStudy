@@ -52,10 +52,11 @@ public class GrayDispatcherFilter extends ZuulFilter {
 
         String testApp = "/user-api";
         if(servletPath.startsWith( testApp )){
-//            String grayApp = requestUrl.replace( testApp ,testApp + "-gray");
-//            RequestContext.getCurrentContext().getRequest().setAttribute(WebUtils.INCLUDE_REQUEST_URI_ATTRIBUTE, grayApp );
+            if( "admin".equals(request.getParameter("name")) ){
+                String grayApp = requestUrl.replace( testApp ,testApp + "-gray");
+                RequestContext.getCurrentContext().getRequest().setAttribute(WebUtils.INCLUDE_REQUEST_URI_ATTRIBUTE, grayApp );
+            }
         }
-
 //        ctx.getRequest().get
 //        if(contextPath.startsWith("service-b")){
 //            System.out.println("");

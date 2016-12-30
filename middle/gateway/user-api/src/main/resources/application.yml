@@ -17,4 +17,6 @@ eureka:
   instance:
     registryFetchIntervalSeconds: 1
     leaseRenewalIntervalInSeconds: 2
-#    leaseExpirationDurationInSeconds: 5
+
+    metadata-map: #    leaseExpirationDurationInSeconds: 5
+      serviceMark: ONLINE

@@ -1,6 +1,4 @@
 
-
-
 ## 服务器部署须知
 
 mkdir -p /opt/data/gateway/filter
