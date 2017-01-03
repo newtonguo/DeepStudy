@@ -1,5 +1,10 @@
 
+## 参数配置
 
+http://tietang.wang/2016/11/17/hystrix/zuu%E5%8F%82%E6%95%B0l%E4%BC%98%E5%8C%96%E5%92%8C%E9%85%8D%E7%BD%AE/
+
+## https配置
+http://www.tuicool.com/articles/iEvUnuj
 
 ## 服务器部署须知
 

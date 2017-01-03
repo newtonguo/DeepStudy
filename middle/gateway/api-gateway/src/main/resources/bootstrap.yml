@@ -7,9 +7,8 @@ spring:
 zuul:
   routes:
     localhost:
-      path: /test/**
-      url: http://localhost:8080
-#      routes:
+      path: /local/**
+      url: http://localhost:${server.port}
     api-a:
       path: /api-a/**
       serviceId: service-A
@@ -28,6 +27,7 @@ zuul:
     zipkin:
       path : /zipkin-server
       stripPrefix: false
+
 #    appapi2:
 #      path: appapi/**
 #      serviceId: ZHIYIN-APPAPI-PROD
@@ -53,5 +53,5 @@ baidu:
 server:
   port: 8080
 
-logging:
-  level: debug
+#logging:
+#  level: debug

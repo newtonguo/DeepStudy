@@ -47,15 +47,14 @@ public class GatewayApplication   {
 //        return application.sources(GatewayApplication.class);
 //    }
 
-
     @Bean
     public GrayDispatcherFilter accessFilter2() {
         return new GrayDispatcherFilter();
     }
-/*        @Bean
+    @Bean
     public AutoResetInputStreamFilter accessFilter() {
         return new AutoResetInputStreamFilter();
-    }*/
+    }
 
     @Component
     public static class MyCommandLineRunner implements CommandLineRunner {

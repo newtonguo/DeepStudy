@@ -19,8 +19,6 @@ import java.nio.charset.Charset;
 @Slf4j
 public class AutoResetInputStreamFilter extends ZuulFilter {
 
-    public static final Logger LOG = LoggerFactory.getLogger(AutoResetInputStreamFilter.class);
-
     @Override
     public String filterType() {
         return "pre";
@@ -43,7 +41,6 @@ public class AutoResetInputStreamFilter extends ZuulFilter {
     @Override
     public Object run() {
 
-        log.info("filter");
         RequestContext ctx = RequestContext.getCurrentContext();
         setAutoResetRequestEntity(ctx);
 
@@ -53,7 +50,7 @@ public class AutoResetInputStreamFilter extends ZuulFilter {
     protected void setAutoResetRequestEntity(RequestContext ctx) {
         HttpServletRequest request = ctx.getRequest();
 
-        if ( request.getContentLength() > 0 ) {
+        if (request.getContentLength() > 0) {
             try {
 
                 String originStr = IOUtils.toString(request.getInputStream());
@@ -62,9 +59,9 @@ public class AutoResetInputStreamFilter extends ZuulFilter {
 
                 log.info("end");
 
-                ctx.set("requestEntity", getInputStream(originStr) );
+                ctx.set("requestEntity", getInputStream(originStr));
             } catch (IOException e) {
-                LOG.error("Could not get request input stream, skipping AutoResetInputStreamFilter", e);
+                log.error("Could not get request input stream, skipping AutoResetInputStreamFilter", e);
             }
 
         }
@@ -75,9 +72,6 @@ public class AutoResetInputStreamFilter extends ZuulFilter {
                 new ByteArrayInputStream(body.getBytes(Charset.forName("utf-8")));
         return new ServletWrappperInputstream(byteArrayInputStream);
     }
-
-
-
 
 }
 
