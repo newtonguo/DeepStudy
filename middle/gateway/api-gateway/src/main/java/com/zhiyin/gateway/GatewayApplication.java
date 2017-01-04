@@ -23,6 +23,8 @@ import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -33,6 +35,7 @@ import java.io.IOException;
 /**
  * Created by hg on 16/5/24.
  */
+@EnableHystrix
 @EnableAutoConfiguration
 @EnableZuulProxy
 @SpringCloudApplication

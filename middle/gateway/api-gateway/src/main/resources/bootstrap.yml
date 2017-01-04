@@ -6,9 +6,9 @@ spring:
 # routes to serviceId
 zuul:
   routes:
-    localhost:
+    local:
       path: /local/**
-      url: http://localhost:${server.port}
+      serviceId: local
     api-a:
       path: /api-a/**
       serviceId: service-A
@@ -47,11 +47,23 @@ zuul:
       stripPrefix: false
 
 baidu:
-  robbon:
+  ribbon:
     listOfServers: https://www.baidu.com/
 
+
+local:
+  ribbon:
+    listOfServers: http://localhost:${server.port}
+
 server:
-  port: 8080
+  port: 8088
 
 #logging:
 #  level: debug
+
+hystrix:
+  command.default.execution.isolation.strategy: THREAD
+  command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+  command.default.execution.timeout.enabled: false
+  command.default.fallback.enabled: false
+  threadpool.default.coreSize: 20

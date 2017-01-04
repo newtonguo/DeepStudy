@@ -1,7 +1,35 @@
 
 eureka:
-  server:
-    enabled: false
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+#eureka:
+#  server:
+#    enabled: false
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+
+ribbon:
+#  # Max number of next servers to retry (excluding the first server)
+#  MaxAutoRetries: 1
+#  # Whether all operations can be retried for this client
+#  MaxAutoRetriesNextServer: 1
+#  # Interval to refresh the server list from the source
+#  OkToRetryOnAllOperations: true
+#  # Interval to refresh the server list from the source
+#  ServerListRefreshInterval: 2000
+#  # Connect timeout used by Apache HttpClient
+  ConnectTimeout: 3000
+#  # Read timeout used by Apache HttpClient
+  ReadTimeout: 3000
