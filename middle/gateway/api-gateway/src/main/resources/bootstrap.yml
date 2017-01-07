@@ -20,10 +20,9 @@ zuul:
       path: /zhiyin-ranker/**
       serviceId: zhiyin-ranker
     appapi:
-      path: appapi/**
+      path: /appapi/**
       serviceId: appapi
       stripPrefix: false
-
     zipkin:
       path : /zipkin-server
       stripPrefix: false
@@ -54,6 +53,9 @@ baidu:
 local:
   ribbon:
     listOfServers: http://localhost:${server.port}
+
+
+
 
 server:
   port: 8088

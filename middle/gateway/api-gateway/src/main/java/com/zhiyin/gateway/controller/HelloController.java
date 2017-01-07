@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class HelloController {
 
-    @RequestMapping(method = RequestMethod.GET, path = "/hello/{name}")
-    public String hello(@PathVariable("name") String name) {
-        return "hello" + name;
+    @RequestMapping(method = RequestMethod.GET, path = "/hello")
+    public String hello( ) {
+        return "Hi!" ;
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/hello/{name}")
+    public String hello(@PathVariable("name") String name) {
+        return "hello " + name;
+    }
 
     @RequestMapping(method = RequestMethod.POST, path = "/hello", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public String helloPost(@RequestBody User user) {
