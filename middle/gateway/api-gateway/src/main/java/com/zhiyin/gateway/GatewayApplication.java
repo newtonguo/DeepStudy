@@ -2,39 +2,33 @@ package com.zhiyin.gateway;
 
 import com.netflix.zuul.FilterFileManager;
 import com.netflix.zuul.FilterLoader;
-import com.netflix.zuul.ZuulFilter;
-import com.netflix.zuul.context.ContextLifecycleFilter;
-import com.netflix.zuul.context.RequestContext;
-import com.netflix.zuul.filters.FilterRegistry;
 import com.netflix.zuul.groovy.GroovyCompiler;
 import com.netflix.zuul.groovy.GroovyFileFilter;
-import com.netflix.zuul.http.ZuulServlet;
 import com.netflix.zuul.monitoring.MonitoringHelper;
-import com.zhiyin.gateway.filter.AccessFilter2;
 import com.zhiyin.gateway.filter.GrayDispatcherFilter;
 import com.zhiyin.gateway.filter.post.AutoResetInputStreamFilter;
+import com.zhiyin.gateway.extend.MineHttpClientRibbonCommandFactory;
 import org.apache.commons.io.FileUtils;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.embedded.FilterRegistrationBean;
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.cloud.client.SpringCloudApplication;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.netflix.ribbon.SpringClientFactory;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
+import org.springframework.cloud.netflix.zuul.filters.route.RibbonCommandFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by hg on 16/5/24.
  */
+@EnableHystrixDashboard
 @EnableHystrix
 @EnableAutoConfiguration
 @EnableZuulProxy
@@ -49,6 +43,14 @@ public class GatewayApplication   {
 //    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 //        return application.sources(GatewayApplication.class);
 //    }
+
+
+    @Primary
+        @Bean
+        public RibbonCommandFactory<?> ribbonCommandFactory(
+                SpringClientFactory clientFactory, ZuulProperties zuulProperties) {
+            return new MineHttpClientRibbonCommandFactory(clientFactory, zuulProperties);
+        }
 
     @Bean
     public GrayDispatcherFilter accessFilter2() {

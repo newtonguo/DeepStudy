@@ -61,12 +61,7 @@ local:
 server:
   port: 8088
 
-#logging:
-#  level: debug
 
-<<<<<<< HEAD
-logging:
-  level: debug
 
 ribbon:
   invoker:
@@ -74,11 +69,11 @@ ribbon:
       user-api:
         serverMark: GRAY
         candidateServerMarks: ONLINE,*
-=======
+
 hystrix:
   command.default.execution.isolation.strategy: THREAD
   command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
   command.default.execution.timeout.enabled: false
   command.default.fallback.enabled: false
   threadpool.default.coreSize: 20
->>>>>>> fb80b6ae2ad1f54499d161327ad3168a82eb5fce
+
