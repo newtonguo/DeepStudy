@@ -57,8 +57,6 @@ public class AutoResetInputStreamFilter extends ZuulFilter {
 
                 log.info("req body:" + originStr);
 
-                log.info("end");
-
                 ctx.set("requestEntity", getInputStream(originStr));
             } catch (IOException e) {
                 log.error("Could not get request input stream, skipping AutoResetInputStreamFilter", e);
