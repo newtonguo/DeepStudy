@@ -13,7 +13,7 @@ https://github.com/Netflix/zuul/issues/196
 https://github.com/marcosbarbero/spring-cloud-starter-zuul-ratelimit
 
 ## zuul 处理post请求
-
+http://stackoverflow.com/questions/35088498/how-to-get-response-body-in-zuul-post-filter
 https://github.com/Netflix/zuul/issues/193
 
 测试请求
